@@ -11,7 +11,7 @@
 <body>
 
 <div ng-app="">
-  <p>名字 : <input type="text" ng-model="name"></p>
+  <p>Hi,github</p>
   <h1>Hello {{name}}</h1>
 </div>
 
