@@ -1,15 +1,281 @@
+<!--<script>
+setTimeout("self.location.reload();",600000);
+</script>-->
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
-</head>
-<body>
+  <title>运维监控</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style type="text/css">
 
-<div ng-app="">
-  <p>名字 : <input type="text" ng-model="name"></p>
-  <h1>Hello {{name}}</h1>
+body
+
+{
+
+font-family : 微软雅黑,宋体;
+
+font-size : 1em;
+
+//color : #f00;
+color : #333333;
+//background: #4169E1  no-repeat fixed top;
+background:  #000000 no-repeat fixed top;
+border-radius:25px;
+-moz-border-radius:25px;
+}
+
+.div_a{ width:35%; height:650; text-align:center; display:inline}
+.div_b{ width:100%; height:650; text-align:center; display:inline}
+.div_c{ width:100%; height:650; text-align:center; display:inline}
+  .carousel-inner img {
+      width: 100%;
+      height: 100%;
+  }
+
+</style>
+
+</head>
+
+<!--meta http-equiv="refresh" content="60000000000000000"-->
+<body>
+<!--table border="0" width=100% class="gridtable" border-radius="25px" >
+  <tr>
+    <h1 class="text-center text-dark text-danger bg-light text-dark">运维监控</h1>
+	
+    
+  </tr>
+  
+</table-->
+<div id="demo" class="carousel slide" data-ride="carousel">
+ 
+  <!-- 指示符 -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+	<li data-target="#demo" data-slide-to="3"></li>
+	<li data-target="#demo" data-slide-to="4"></li>
+	<li data-target="#demo" data-slide-to="5"></li>
+	<li data-target="#demo" data-slide-to="6"></li>
+	<li data-target="#demo" data-slide-to="7"></li>
+	<li data-target="#demo" data-slide-to="8"></li>
+	<li data-target="#demo" data-slide-to="9"></li>
+	<li data-target="#demo" data-slide-to="10"></li>
+	<li data-target="#demo" data-slide-to="11"></li>
+	
+	
+  </ul>
+ <h1 class="text-center ">运维监控</h1>
+  <!-- 轮播图片 -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./IT图片轮播/江西农信智能运维大数据4.jpg">
+    </div>
+    <div class="carousel-item">
+      <img src="./IT图片轮播/AI-移动1.jpg">
+    </div>
+    <div class="carousel-item">
+      <img src="./IT图片轮播/江西农信数据采集与服务架构1.jpg">
+    </div>
+	 <div class="carousel-item">
+      <img src="./IT图片轮播/saas云1.jpg">
+    </div>
+	<div class="carousel-item">
+      <img src="./IT图片轮播/看书.jpg">
+    </div>
+	<div class="carousel-item">
+      <img src="./IT图片轮播/计算机背景kpi.jpg">
+    </div>
+	
+	<div class="carousel-item">
+      <img src="./IT图片轮播/fzw2zxw8jv.jpeg">
+    </div>
+	<div class="carousel-item">
+      <img src="./IT图片轮播/运维层次图.jpg">
+    </div>
+	<div class="carousel-item">
+      <img src="./IT图片轮播/运维层次1.jpg">
+    </div>
+	<div class="carousel-item">
+      <img src="./IT图片轮播/运维层次2.jpg">
+    </div>
+	<div class="carousel-item">
+      <img src="./IT图片轮播/timg (2).jpg">
+    </div>
+	<div class="carousel-item">
+      <img src="./IT图片轮播/COE-RPA.png">
+    </div>
+	
+	
+	
+  </div>
+ 
+  <!-- 左右切换按钮 -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+ 
 </div>
 
+<div class="container">
+  <h2>按钮样式</h2>
+  <button type="button" class="btn">基本按钮</button>
+  <button type="button" class="btn btn-primary">主要按钮</button>
+  <button type="button" class="btn btn-secondary">次要按钮</button>
+  <button type="button" class="btn btn-success">成功</button>
+  <button type="button" class="btn btn-info">信息</button>
+  <button type="button" class="btn btn-warning">警告</button>
+  <button type="button" class="btn btn-danger">危险</button>
+  <button type="button" class="btn btn-dark">黑色</button>
+  <button type="button" class="btn btn-light">浅色</button>
+  <!--button type="button" class="btn btn-link">链接</button-->      
+</div>
+
+<!--<div class="div_a">
+
+<iframe src="http://10.64.1.103" frameborder="0" scrolling="auto" width=33% height=100% allowfullscreen="true"" > </iframe>
+
+<iframe src="http://10.64.1.104:8888" frameborder="0" scrolling="no" width=33% height=100% allowfullscreen="true"></iframe>
+ 
+<iframe src="http://10.64.1.105:8888" frameborder="0" scrolling="auto" width=33% height=100% allowfullscreen="true"></iframe>
+</div>--> 
+<!--table border="0" width=100% class="gridtable" border-radius="25px" >
+  <tr>
+    <h1 class="text-center text-dark text-danger bg-light text-dark">运维监控</h1>
+	
+    
+  </tr>
+  
+</table-->
+<!--div class="container">
+  <h2>代表指定意义的文本颜色</h2>
+  <p class="text-muted">柔和的文本。</p>
+  <p class="text-primary">重要的文本。</p>
+  <p class="text-success">执行成功的文本。</p>
+  <p class="text-info">代表一些提示信息的文本。</p>
+  <p class="text-warning">警告文本。</p>
+  <p class="text-danger">危险操作文本。</p>
+  <p class="text-secondary">副标题。</p>
+  <p class="text-dark">深灰色文字。</p>
+  <p class="text-light">浅灰色文本（白色背景上看不清楚）。</p>
+  <p class="text-white">白色文本（白色背景上看不清楚）。</p>
+</div-->
+
+<!--table border="1" width=100% class="table table-dark" border-radius="25px" >
+  <tr>
+    <th>10.19.41.61</th>
+    <th>http://10.64.1.104:8888</th>
+	<th>http://10.64.1.104:60001</th>
+  </tr>
+  <tr>
+    <td><iframe src="http://10.19.41.61:8888" frameborder="0" scrolling="auto" width=100% height=600 allowfullscreen="true"" > </iframe></td>
+    <td><iframe src="http://10.64.1.104:8888" frameborder="0" scrolling="no" width=100% height=600 allowfullscreen="true"></iframe></td>
+	<td><iframe src="http://10.64.1.104:60001" frameborder="0" scrolling="yes" width=100% height=600 allowfullscreen="yes"></iframe></td>
+  </tr>
+  </tr>
+</table>
+<table border="1" width=100% class="table table-dark" border-radius="25px" >
+  <tr>
+    <th>https://10.64.1.164:5500/em/</th>
+
+  </tr>
+  <tr>
+    <td><iframe src="https://10.64.1.164:5500/em/login?returnUrl=/em/" frameborder="0" scrolling="yes" width=100% height=600 allowfullscreen="true"" > </iframe></td>
+
+  </tr>
+  </tr>
+</table>
+<table border="1" width=100% class="gridtable" border-radius="25px" >
+<table border="1" width=100% class="gridtable" border-radius="25px" >
+  <tr>
+    <th>10.64.1.104SSH</th>
+
+  </tr>
+  <tr>
+    <td><iframe src="http://10.64.1.104:12306" frameborder="0" scrolling="yes" width=100% height=600 allowfullscreen="true"" > </iframe></td>
+
+  </tr>
+  </tr>
+</table-->
+<!--table border="1" width=100% class="gridtable" border-radius="25px" >
+  <tr>
+    <th>youku优酷视频</th>
+
+  </tr>
+  <tr>
+    <td><iframe src="http://player.youku.com/embed/XODY3NDMzNjY4" frameborder="0" scrolling="yes" width=100% height=600 allowfullscreen="true"" > </iframe></td>
+   
+  </tr>
+  </tr>
+</table>
+
+<table border="1" width=100% class="gridtable" border-radius="25px" >
+  <tr>
+    <th>bilibili视频</th>
+
+  </tr>
+  <tr>
+    <td><iframe src="http://player.bilibili.com/player.html?aid=6117110&cid=9931722&page=1" frameborder="0" scrolling="yes" width=100% height=600 allowfullscreen="true"" > </iframe></td>
+   
+  </tr>
+  </tr>
+</table>
+
+<table border="1" width=100% class="gridtable" border-radius="25px" >
+  <tr>
+    <th>QQ视频</th>
+
+  </tr>
+  <tr>
+    <td><iframe src="http://v.qq.com/iframe/player.html?vid=d0015bg8v6k&tiny=0&auto=0" frameborder="0" scrolling="yes" width=100% height=600 allowfullscreen="true"" > </iframe></td>
+   
+  </tr>
+  </tr>
+</table-->
+
+
+<!--<table border="1" width=100% class="gridtable" border-radius="25px" >
+  <tr>
+    <th>10.64.1.104FTP</th>
+
+  </tr>
+  <tr>
+    <td><iframe src="ftp://10.64.1.104" frameborder="0" scrolling="no" width=100% height=600 allowfullscreen="false" > </iframe></td>
+
+  </tr>
+  </tr>
+</table>-->
+
+<!--div class="container">
+  <h1>h1 Bootstrap 标题 (2.5rem = 40px)</h1>
+  <h2>h2 Bootstrap 标题 (2rem = 32px)</h2>
+  <h3>h3 Bootstrap 标题 (1.75rem = 28px)</h3>
+  <h4>h4 Bootstrap 标题 (1.5rem = 24px)</h4>
+  <h5>h5 Bootstrap 标题 (1.25rem = 20px)</h5>
+  <h6>h6 Bootstrap 标题 (1rem = 16px)</h6>
+</div-->
+
+<frameset cols="100%,*" rows="*" frameborder="NO" border="0" framespacing="0" onload="load()">
+    <frame id="linkHtml" src="https://10.20.11.214/ui/#/login" />
+</frameset>
+<div class="container">
+  <h2>分页</h2>
+                  
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</div>
 </body>
 </html>
