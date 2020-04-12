@@ -72,7 +72,7 @@
 
      <!-- FEATURE -->
      <section id="home" data-stellar-background-ratio="0.5">
-          <div class="overlay"></div>
+          <!--div class="overlay"></div>
           <div class="container">
                <div class="row">
 
@@ -88,7 +88,35 @@
                     </div>
 
                </div>
+          </div-->
+          <div class="modal-dialog" style="margin-top: 10%;">    
+              <form class="loginForm" action="/user/login" method="post">		  
+               <div class="modal-content">          
+                      <div class="modal-header">  
+                           <h4 class="modal-title text-center" id="myModalLabel">登录</h4>    
+                      </div>           
+               <div class="modal-body" id = "model-body">        
+                         <div class="form-group">             
+                               <input type="text" class="form-control"placeholder="用户名" autocomplete="on">  
+                         </div>           
+                         <div class="form-group">                  
+                               <input type="password" class="form-control" placeholder="密码" autocomplete="on">       
+                         </div>           
+               </div>          
+                      
+                  <div class="modal-footer">               
+                        <div class="form-group">                  
+                               <button type="button" class="btn btn-primary form-control">登录</button>        
+                        </div>                
+                                            
+                    </div>        
+               </div>   
+			   
+                  </form>
           </div>
+
+      
+         
      </section>
 
 
