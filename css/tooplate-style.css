@@ -400,6 +400,62 @@
   }
 
 
+ /*---------------------------------------
+      SERVICE            
+  -----------------------------------------*/
+
+  #service {
+    background: #ffffff;
+  }
+
+  #service .nav-tabs {
+    border-bottom: 0;
+  }
+
+  #service .nav>li>a {
+    padding: 8px 0;
+  }
+
+  #service .nav-tabs>li>a {
+    color: #999999;
+    font-size: 18px;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    margin-right: 35px;
+  }
+
+  #service .nav-tabs>li.active>a, 
+  #service .nav-tabs>li.active>a:focus, 
+  #service .nav-tabs>li.active>a:hover {
+    background: transparent;
+    color: #202020;
+    border-bottom: 3px solid #29ca8e;
+  }
+
+  #service .nav>li>a:focus, 
+  #service .nav>li>a:hover {
+    background: transparent;
+    border-bottom: 3px solid #29ca8e;
+    color: #202020;
+  }
+
+  #service .tab-content {
+    margin-top: 50px;
+  }
+
+  .tab-pane-item {
+    margin: 20px 0;
+  }
+
+  .tab-pane-item h2 {
+    margin: 0 0 5px 0;
+  }
+
+  .service-image {
+    position: absolute;
+    bottom: -27em;
+  }
 
   /*---------------------------------------
       ABOUT              
