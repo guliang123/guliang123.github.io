@@ -1,0 +1,316 @@
+.nav-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-width: 1200px;
+}
+
+.nav-img img {
+    width: 100%;
+    height: auto;
+}
+
+.nav-box {
+    width: 1200px;
+    position: absolute;
+    left: 50%;
+    top: 32%;
+    margin-left: -600px;
+}
+
+.nav-tryout {
+    height: 40px;
+    width: 163px;
+}
+
+.nav-img-case {
+    width: 100%;
+    height: auto;
+    position: relative;
+    min-width: 1200px;
+}
+
+.nav-img-case img {
+    height: auto;
+    width: 100%;
+}
+
+
+
+/* 第一部分 */
+.first-content {
+    width: 1200px;
+}
+
+.content-item {
+    height: 298px;
+    width: 390px;
+    /* border: solid 0.1px red; */
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0px 0px 4px 4px;
+}
+
+.content-item:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer;
+    box-shadow: 0px 8px 12px 0px rgba(194, 194, 194, 0.3);
+}
+
+.item-top {
+    height: 62px;
+    width: 66px;
+}
+
+.item-intro {
+    width: 272px;
+    text-align: justify;
+    text-align-last: center;
+    color: #717376;
+}
+
+.item-more-active {
+    display: none;
+}
+
+
+/* 第二部分 */
+.sec-second {
+    width: 100%;
+    height: 488px;
+    margin-top: 40px;
+    background-image: url('../assets/index/index_bg_IDaaS\ service.png');
+    background-size: 100% 100%;
+}
+
+.sec-content {
+    width: 1200px;
+    height: 100%;
+    padding: 40px 0 50px 0;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.content-title-bottom {
+    color: #E7EAEF;
+    margin-top: 19px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+}
+
+.serve {
+    margin-top: 49px;
+}
+
+.serve-item {
+    width: 187px;
+    height: 281px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    padding: 30px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.serve-item:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer;
+    box-shadow: 0px 8px 12px 0px rgba(194, 194, 194, 0.3);
+}
+.serve-title{
+    margin-top: 20px;
+}
+
+
+.serve-img-active {
+    display: none;
+}
+
+.serve-intro {
+    width: 147px;
+    text-align: justify;
+    text-align-last: center;
+    margin-top: 29px;
+}
+
+.s-item-b {
+    width: 107px;
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+}
+
+.serve-more {
+    display: none;
+}
+
+
+/* 第三部分 */
+.sec-third {
+    margin-top: 60px;
+}
+
+.third-box {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.entIcon {
+    width: 100%;
+    height: 870px;
+    margin: 40px 0 40px 0;
+}
+
+.entIcon-item {
+    height: 80px;
+    width: 192px;
+}
+
+.third-more {
+    height: 38px;
+    width: 163px;
+}
+
+/* 第四部分 */
+.sec-fourth {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.honour {
+    background: rgba(242, 244, 246, 1);
+    width: 100%;
+    height: 202px;
+}
+
+.honour-icon {
+    width: 1200px;
+}
+
+.honour-icon-item {
+    height: 117px;
+}
+
+.honourIcon1 {
+    height: 76px;
+    width: 76px;
+    /* margin-bottom: 27px; */
+}
+
+.honourIcon2 {
+    height: 76px;
+    width: 76px;
+    /* margin-bottom: 34px; */
+}
+
+.honourIcon3 {
+    height: 76px;
+    width: 58px;
+    /* margin-bottom: 26px; */
+}
+
+.honourIcon4 {
+    height: 76px;
+    width: 76px;
+    /* margin-bottom: 26px; */
+    background-color: rgba(242, 244, 246, 1);
+}
+
+.honourIcon5 {
+    height: 76px;
+    width: 115px;
+    /* margin-bottom: 25px; */
+}
+
+.honour-font {
+    color: #717376;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+}
+
+.fourth-tryout {
+    height: 200px;
+    width: 100%;
+    background-image: url('../assets/index/index_bg_reg.png');
+    background-size: 100% 100%;
+}
+
+.fourth-button {
+    height: 40px;
+    width: 163px;
+}
+
+.solution {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.solution .solution-item {
+    width: 288px;
+    height: 384px;
+    width: 288px;
+    opacity: 0.8;
+    border-radius: 8px;
+    padding: 30px 18px 35px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+#more-1,
+#more-2,
+#more-3,
+#more-4 {
+    display: none;
+    position: absolute;
+    bottom: 36px;
+    width: 88px;
+    left: 100px;
+}
+
+.bg-nor {
+    background: rgba(223, 237, 250, 1);
+}
+
+.bg-hover1 {
+    background-image: url('../assets/index/solution/index_img_s1.png');
+    background-size: 100% 100%;
+    opacity: 1;
+}
+
+.bg-hover2 {
+    background-image: url('../assets/index/solution/index_img_s2.png');
+    background-size: 100% 100%;
+    opacity: 1;
+}
+
+.bg-hover3 {
+    background-image: url('../assets/index/solution/index_img_s3.png');
+    background-size: 100% 100%;
+    opacity: 1;
+}
+
+.bg-hover4 {
+    background-image: url('../assets/index/solution/index_img_s4.png');
+    background-size: 100% 100%;
+    opacity: 1;
+}
+
+.solution-item:hover {
+    /* cursor: pointer; */
+}
+
+.icon_adauth-hover,
+.icon_social-hover,
+.ding_apps-hover,
+.icon_idaas-hover {
+    display: none;
+}

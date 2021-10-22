@@ -1,0 +1,195 @@
+.scroll-header {
+    background: white;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, .24);
+    color: #272B33
+}
+
+.scroll-header .nav-item a {
+    color: #272B33!important;
+}
+
+.scroll-header .company-name {
+    color: #272B33
+}
+
+.scroll-header .user-login-btn {
+    color: #272B33
+}
+
+.scroll-header .nav-item a:hover {
+    color: #3565F0
+}
+
+.scroll-header .active-nav-item a {
+    color: #3565F0!important;
+}
+
+.scroll-header .login-left a {
+    color: #272B33
+}
+
+.scroll-header .login-left a:hover {
+    color: #3565F0
+}
+
+.open-icon,
+.open-icon-scroll {
+    margin-left: 4px;
+}
+
+.open-icon-scroll {
+    display: none;
+}
+
+.popper__arrow {
+    left: 9px;
+    position: absolute;
+    top: 37px;
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-bottom: 7px solid white;
+}
+
+.popper__arrow_box {
+    left: 8px;
+    position: absolute;
+    top: 35px;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-bottom: 8px solid #EAEAEA;
+    display: none;
+}
+
+.sec-menu-list {
+    position: relative;
+    height: 60px;
+    line-height: 60px;
+}
+
+.secMenu {
+    display: none;
+}
+
+.secMenuBox {
+    position: absolute;
+    background: white;
+    top: 50px;
+    left: -30px;
+    border-radius: 4px;
+    border: none
+}
+
+.secMenu .secMenuBox .sec-menu-link {
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    color: #717376!important;
+    font-size: 14px;
+    width: 270px;
+}
+
+.sec-menu-link img {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* 关于我们 */
+#about-us .popper__arrow {
+    left: 20px;
+}
+
+#about-us .popper__arrow_box {
+    left: 19px;
+}
+
+/* 产品 */
+#ids-navbar {
+    width: 305px;
+    height: 150px;
+}
+
+#ids-navbar ul:first-child {
+    display: inline-block;
+    width: 114px;
+    height: 110px;
+    margin-top: 20px;
+    margin-left: 24px;
+}
+
+#ids-navbar ul:nth-child(2) {
+    display: inline-block;
+    width: 98px;
+    height: 110px;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+/* 场景及方案 */
+#ss-navbar {
+    width: 460px;
+    height: 300px;
+}
+
+#ss-navbar .left-navbar {
+    width: 133px;
+    height: 210px;
+    margin-top: 20px;
+    margin-left: 24px;
+    float: left;
+}
+
+#ss-navbar .left-navbar p {
+    width: 133px;
+    height: 35px;
+    line-height: 25px;
+    color: #717376;
+    font-size: 12px;
+    border-bottom: 1px solid #EBEBEB;
+    margin-bottom: 10px;
+}
+#ss-navbar .left-navbar p a{
+    color: #717376!important;
+}
+.left-navbar p a:hover{
+  color: #3565F0!important;
+}
+
+#ss-navbar .right-navbar {
+    display: inline-block;
+    width: 218px;
+    height: 210px;
+    margin: 20px 24px 0 24px
+}
+
+#ss-navbar .right-navbar p {
+    width: 220px;
+    height: 35px;
+    line-height: 25px;
+    color: #717376;
+    font-size: 12px;
+    border-bottom: 1px solid #EBEBEB;
+    margin-bottom: 10px;
+}
+
+#ss-navbar .right-navbar p a{
+    color: #717376!important;
+}
+
+
+/* 关于我们 */
+#about-navbar {
+    width: 132px;
+    height: 113px;
+    left: -24px;
+}
+
+#about-navbar ul:first-child {
+    display: inline-block;
+    width: 84px;
+    height: 75px;
+    margin-top: 20px;
+    margin-left: 24px;
+    margin-right: 24px;
+}
