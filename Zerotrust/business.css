@@ -1,0 +1,470 @@
+.containerss{
+    width:100%;
+    background: #f8fcff;
+    font-family: "Noto SansCJK";
+}
+.example .exampleContent3 {
+    height: 900px;
+}
+
+.example .exampleContent5{
+    height: 1000px;
+}
+.example .exampleContent4{
+    height: 900px;
+}
+
+/* banner */
+.banner{
+    width:100%;
+    height:350px;
+    /*background: url(../images/business/banner.png) no-repeat;
+    background-size: 100% 100%;*/
+}
+.bannerContent{
+    width:1050px;
+    margin:0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+ .integration {
+/* margin-top: -30px; */
+}
+.bannerContent .title{
+   font-size: 43px;
+   color:#F4F6FA;
+   font-weight: bold;
+   display: block;
+    max-width: 810px;
+        text-align: center;
+    margin-left: -75px;
+}
+.bannerContent .font{
+width: 369px;
+    margin-left: 138px;
+    margin-top: 35px;
+}
+.bannerContent .icon{
+    position: absolute;
+    top:21px;
+    right:0;
+}
+/* 挑战 */
+
+.challenge {
+padding-bottom: 61px;
+background: #fff;
+}
+.challengeContent{
+    width:1000px;
+    margin:0 auto;
+    position: relative;
+}
+.challengeContentTitle{
+    font-size: 90px;
+    color:#F1F8FE;
+    font-weight: bold;
+    position: absolute;
+    top:73px;
+    left:50%;
+    margin-left:-224px;
+}
+.challengeContentFont{
+    font-size: 26px;
+    color:#2C2E31;
+    font-weight: bold;
+    display: block;
+    position:absolute;
+    top:116px;
+    left:50%;
+    margin-left:-260px;
+}
+.challengeBoxDiv{
+    padding-top:265px;
+}
+.challengeBox{
+    width:200px;
+    margin-right:190px;
+    display: inline-block;
+    vertical-align:top;
+}
+.challengeBoxs{
+    margin-right:0;
+}
+.challengeBoxName{
+    font-size: 20px;
+    color:#2C2E31;
+    font-weight: bold;
+    display: block;
+    margin:35px 0 25px 0;
+    text-align: center;
+}
+.challengeBoxContent{
+    font-size: 13px;
+    color:#2C2E31;
+    line-height: 32px;
+    opacity: 0.86;
+    width:100%;
+    margin:0 auto;
+    text-align: center;
+}
+.challengeBox .pic{
+    margin:0 auto;
+    display: block;
+}
+.challengeBoxDivs{
+    padding-top:0;
+    margin-top:68px;
+}
+/* AI智能身份认证 */
+.identity{
+   width:100%;
+   height:100%;
+   /*min-height:627px;*/
+   /*background: url(../images/business/AI.png) no-repeat;
+   background-size: 100% 100%;*/
+display: flex;
+    align-items: center;
+}
+.identityContent{
+    width:571px;
+    position: relative;
+    margin-left:22%;
+    margin-bottom: 93px;
+}
+.identityContent .what{
+    font-size: 100px;
+    color:#50B1F5;
+    font-weight: bold;
+    position: absolute;
+    top:56px;
+    left:50%;
+    margin-left:-160.5px;
+    display: block;
+}
+.whatTitle{
+    font-size: 26px;
+    color:#fff;
+    font-weight: bold;
+    display: block;
+    position: absolute;
+    top:107px;
+    left:50%;
+    margin-left:-133.5px;
+}
+
+.whatContent_1,.whatContent_2{
+    width:100%;
+    font-size: 14px;
+    color:#fff;
+    line-height: 36px;
+    margin:0 auto;
+    text-align: center;
+    padding-top:219px;
+    opacity: 0.86;
+    
+}
+.example {
+background: #f8fcff;
+}
+.whatContent_2{
+      padding-top: 0;
+    /* margin-top: 40px; */
+    margin-top: 21px;
+    height: 100px;
+    /* margin-bottom: 64px; */
+}
+/* 认证样例 */
+.exampleContent{
+    width:1150px;
+    height:960px;
+    margin:0 auto;
+    position: relative;
+}
+.exampleContentTitle{
+    font-size: 80px;
+    color:#e6f2ff;
+    font-weight: bold;
+    display: block;
+    position: absolute;
+    top:106px;
+    left:0;
+   z-index:1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.exampleContentName{
+    font-size: 26px;
+    color:#2C2E31;
+    font-weight: bold;
+    position: absolute;
+    top:138px;
+    left:50%;
+    margin-left:-60px;
+    z-index:1;
+}
+.exIntroduce{
+    width:100%;
+  box-shadow: 0px 1px 4px 0px rgba(53, 92, 163, 0.1);
+    border-radius:10px;
+    position: absolute;
+    border-top:none;
+    top:163px;
+    left:0;
+   background:#fff;
+}
+.exIntroduce2{
+    //height:900px;
+}
+.exIntroduce3{
+    /*height:927px;*/
+}
+/*.exampleContentInt p{
+ padding-bottom:39px;
+}*/
+.exampleContentInt{
+    font-size: 14px;
+    color:#2C2E31;
+    opacity: 0.86;
+    line-height: 36px;
+    padding-top:60px;
+   
+    width:1056px;
+    margin:0 auto;
+}
+.examplePic{
+    width:934px;
+    height:482px;
+    margin:0 auto 56px auto;
+    display: block;
+}
+ .understand{
+display:none;
+    width:165px;
+    height:74px;
+    margin:0 auto;
+    position: relative;
+}
+.understandBtn{
+    width:165px;
+    height:74px;
+    background: url(../../images/channel/business/bt.png) no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+.understandFont{
+    font-size: 13px;
+    color:#fff;
+    position: absolute;
+    top:20px;
+    left:52px;
+    cursor: pointer;
+}
+
+.architecture {
+margin-top:35px;
+}
+.architecture {
+margin-top:35px;
+}
+/* 方案架构 */
+.architecture .exampleContentTitle{
+   /* margin-left:-260.5px; */
+}
+.architecture .exampleContentName{
+   margin-left:-52px;
+}
+/* 快速集成 */
+.integration .exampleContentTitle{
+ /*  margin-left:-286px; */
+}
+/* bamboocloud */
+.safeEfficiency{
+    width:100%;
+    height:656px;
+    /*background: url(../images/business/bamboocloud.png) no-repeat;
+    background-size: 100% 100%;*/
+    margin-top:143px;
+}
+.safeEfficiencyContent{
+    width:1161px;
+    margin:0 auto;
+    position: relative;
+}
+.safeEfficiencyTitle{
+    font-size: 30px;
+    color:#fff;
+    font-weight: bold;
+    padding-top:327px;
+    display: block;
+}
+.safeEfficiencyMain{
+    position: absolute;
+    top:430px;
+    left:0;
+}
+.safeEfficiencyBox{
+    width:357px;
+    height:412px;
+    background: #fff;
+    box-shadow:0px 3px 14px 0px rgba(6,111,254,0.08);
+    display: inline-block;
+    border-radius:11px;
+    vertical-align: top;
+    margin-right:38px;
+    /*margin-right:40px;*/
+}
+.safeEfficiencyBoxs{
+    margin-right:0;
+}
+.safeEfficiencyBoxPic{
+    width:196px;
+    height:168px;
+    display: block;
+    margin:0px auto 0 auto;
+    padding-top:63px;
+}
+.safeEfficiencyBoxName{
+    font-size: 18px;
+    color: #2C2E31;
+    font-weight: bold;
+    display: block;
+    margin:33px 0 27px 0;
+    text-align: center;
+}
+.safeEfficiencyBoxInt{
+    font-size: 14px;
+    color:#131B23;
+    line-height: 30px;
+    opacity: 0.7;
+    margin:0 auto;
+    text-align: center;
+    width:247px;
+}
+/* 优势 */
+.advantage{
+    width:100%;
+  padding-bottom: 106px;
+    background: #fff;
+}
+.advantageContent{
+    width:1300px;
+    margin:0 auto;
+    position: relative;
+}
+.advantageContentTitle{
+    font-size: 100px;
+    color:#F0F8FE;
+    font-weight: bold;
+    display: block;
+    position: absolute;
+    top:277px;
+    left:50%;
+    margin-left:-324px;
+}
+.advantageContentName{
+    font-size: 26px;
+    color: #2C2E31;
+    font-weight: bold;
+    position: absolute;
+    top:324px;
+    left:50%;
+    margin-left:-52.5px;
+}
+.advantageBox{
+    width:203px;
+    display: inline-block;
+    margin-right:150px;
+}
+.advantageBoxs{
+    margin-right:0;
+}
+.advantageBoxPic{
+    margin:0 auto;
+    display: block;
+}
+.advantageBoxContent{
+    width:100%;
+    font-size: 13px;
+    line-height: 24px;
+    color:#131B23;
+    opacity: 0.7;
+    margin:29px auto 0 auto;
+    text-align: center;
+}
+.advantageBoxDiv{
+    padding-top:477px;
+display: flex;
+}
+.advantageBoxDivs{
+    padding-top:0;
+    margin-top:70px;
+}
+/* 客户 */
+.customers{
+    width:100%;
+    height:983px;
+    /*background: #F3FBFF;*/
+}
+.customersContent{
+    width:1152px;
+    margin:0 auto;
+    position: relative;
+}
+.customersContentTitle{
+    position: absolute;
+    font-size: 90px;
+    color:#E6F2FF;
+    font-weight: bold;
+    display: block;
+    top:100px;
+    left:50%;
+    margin-left:-261.5px;
+}
+.customersContentName{
+    font-size: 26px;
+    color:#2C2E31;
+    font-weight: bold;
+    position: absolute;
+    top:140px;
+    left:50%;
+    margin-left:-240px;
+}
+.customerBox{
+    padding-top:327px;
+}
+.customerBox .logo{
+    /*margin-right:67px;
+    width: 140px;*/
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    position:absolute;
+    margin:auto;
+    max-width:200px;
+}
+.customerBox .logos{
+    margin-right:0px;
+}
+.logoDiv{
+    width:258px;
+    height:108px;
+    background:#fff;
+    display:inline-block;
+    margin-right:35px;
+    position:relative;
+    top:0;
+    left:0;
+}
+.logoDivs{
+    margin-right:0;
+}
+.customerBoxs{
+    padding-top:0;
+    margin-top:29px;
+}
