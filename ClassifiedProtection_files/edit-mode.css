@@ -1,0 +1,268 @@
+body.pagemode-edit,
+body.pagemode-preview {
+    padding-top: 0 !important;   
+}
+
+body.pagemode-edit    .sf-com-header,
+body.pagemode-preview .sf-com-header {
+    position: relative !important;
+}
+
+body.pagemode-edit .viewable-in-edit-mode,
+xbody.pagemode-preview .viewable-in-edit-mode {
+    display: block!important;
+    margin: 0 auto!important;
+    max-width: 100%;
+}
+
+body.pagemode-edit .image-replacer,
+xbody.pagemode-preview .image-replacer {
+    display: none!important;
+}
+
+
+body.pagemode-edit .image-on-edit .image-replacer,
+xbody.pagemode-preview .image-on-edit .image-replacer {
+    display: none!important;
+}
+body.pagemode-edit .image-on-edit img,
+xbody.pagemode-preview .image-on-edit img {
+    display: block!important;
+    position: absolute!important;
+    left: 0!important;
+    right: 0!important;
+    bottom: 0!important;
+    top: 0!important;
+    margin: 0 auto!important;
+    height: 100%;
+    width: 100%;
+}
+body.pagemode-edit .image-on-edit > .content,
+xbody.pagemode-preview .image-on-edit > .content {
+    height: 100%;
+}
+
+
+
+body.pagemode-edit .image-on-edit::before,
+body.pagemode-edit .image-on-edit::after {
+    display: none!important;
+}
+xbody.pagemode-preview .image-on-edit::before,
+xbody.pagemode-preview .image-on-edit::after {
+    display: none!important;
+}
+body.pagemode-edit .image-on-edit .content::before,
+body.pagemode-edit .image-on-edit .content::after {
+    display: none!important;
+}
+xbody.pagemode-preview .image-on-edit .content::before,
+xbody.pagemode-preview .image-on-edit .content::after {
+    display: none!important;
+}
+
+
+/* Background images */
+body.pagemode-edit .background-on-edit,
+xbody.pagemode-preview .background-on-edit {
+    background-image: none!important;
+}
+body.pagemode-edit .background-on-edit .sf-block-background-image,
+xbody.pagemode-preview .background-on-edit .sf-block-background-image {
+    display: block!important;
+    position: absolute!important;
+    left: 0!important;
+    right: 0!important;
+    bottom: 0!important;
+    top: 0!important;
+    margin: 0 auto!important;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+body.pagemode-edit .background-on-edit .sf-block-background-image + div,
+xbody.pagemode-preview .background-on-edit .sf-block-background-image + div {
+    position: relative;
+    z-index: 20;
+}
+body.pagemode-edit .background-on-edit .sf-block-background-image + code + *,
+xbody.pagemode-preview .background-on-edit .sf-block-background-image + code + * {
+    position: relative;
+    z-index: 20;
+}
+body.pagemode-edit .background-on-edit .sf-title-block,
+xbody.pagemode-preview .background-on-edit .sf-title-block {
+    position: relative;
+    z-index: 20;
+}
+body.pagemode-edit .background-on-edit > .sf-container > .content,
+xbody.pagemode-preview .background-on-edit > .sf-container > .content {
+    position: static;
+}
+body.pagemode-edit .background-on-edit > .sf-container > .content  .row,
+xbody.pagemode-preview .background-on-edit > .sf-container > .content  .row {
+    position: relative;
+    z-index: 10;
+}
+body.pagemode-edit .background-on-edit > .sf-container > .content > *,
+xbody.pagemode-preview .background-on-edit > .sf-container > .content > * {
+    position: relative;
+    z-index: 10;
+}
+body.pagemode-edit .background-on-edit > .sf-container > .content > .left-content,
+xbody.pagemode-preview .background-on-edit > .sf-container > .content > .left-content {
+    position: static;
+}
+body.pagemode-edit .background-on-edit > .sf-container > .content > .sf-block-background-image,
+xbody.pagemode-preview .background-on-edit > .sf-container > .content > .sf-block-background-image {
+    z-index: 3!important;
+}
+
+
+
+
+body.pagemode-edit .sf-com-motional-image .image-replacer,
+xbody.pagemode-preview .sf-com-motional-image .image-replacer {
+    display: none !important;
+}
+
+body.pagemode-edit .sf-com-motional-image img,
+xbody.pagemode-preview .sf-com-motional-image img {
+    display: block !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: 0 !important;
+    margin: 0 auto !important;
+    height: 100%;
+    width: 100%;
+}
+
+
+body.pagemode-edit .sf-com-card-billboard .content:hover .sf-com-motional-image.effect-background::before,
+body.pagemode-edit .sf-com-card-billboard .content:focus .sf-com-motional-image.effect-background::before,
+body.pagemode-edit .sf-com-card-billboard .content:active .sf-com-motional-image.effect-background::before,
+xbody.pagemode-preview .sf-com-card-billboard .content:hover .sf-com-motional-image.effect-background::before,
+xbody.pagemode-preview .sf-com-card-billboard .content:focus .sf-com-motional-image.effect-background::before,
+xbody.pagemode-preview .sf-com-card-billboard .content:active .sf-com-motional-image.effect-background::before {
+    display: block!important;
+}
+
+
+
+
+/* Scene-card-image */
+body.pagemode-edit .sf-com-teaser-by-scene .by-scene-card .scene-card-image::before,
+xbody.pagemode-preview .sf-com-teaser-by-scene .by-scene-card .scene-card-image::before {
+    display: none;
+}
+
+
+/* mobile image */
+body.pagemode-edit .sf-com-product-query-form-type-3,
+xbody.pagemode-preview .sf-com-product-query-form-type-3{
+    position: relative;
+}
+/* tpn image */
+body.pagemode-edit .sf-com-teaser-product-news .tpn-card .tpn-content .tpn-hover .tpn-image,
+xbody.pagemode-preview .sf-com-teaser-product-news .tpn-card .tpn-content .tpn-hover .tpn-image {
+    background-image: none!important;
+}
+body.pagemode-edit .sf-com-teaser-product-news .tpn-card .tpn-content .tpn-hover .tpn-image img,
+xbody.pagemode-preview .sf-com-teaser-product-news .tpn-card .tpn-content .tpn-hover .tpn-image img {
+    display: block!important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+/* Company type */
+body.pagemode-edit .sf-com-teaser-company-type .row .company-type-card .poster .des,
+xbody.pagemode-preview .sf-com-teaser-company-type .row .company-type-card .poster .des {
+    background-color: transparent;
+    position: static;
+    margin: 0 auto -1em auto;
+}
+body.pagemode-edit .sf-com-teaser-company-type .row .company-type-card .poster .des img,
+xbody.pagemode-preview .sf-com-teaser-company-type .row .company-type-card .poster .des img {
+    height: auto!important;
+    position: static!important;
+}
+
+
+
+/* Map */
+body.pagemode-edit .sf-com-map-image .content .map-wrapper .map-image .location .coordinates, 
+body.pagemode-edit .sf-com-map-image .content .map-wrapper .map-image-static .location .coordinates, 
+xbody.pagemode-preview .sf-com-map-image .content .map-wrapper .map-image .location .coordinates, 
+xbody.pagemode-preview .sf-com-map-image .content .map-wrapper .map-image-static .location .coordinates {
+    display: inline-block;
+}
+
+
+/* Slick Tabs */
+body.pagemode-edit .sf-com-slick-tabs .tab-contents .slick-list .slick-track .slick-slide,
+xbody.pagemode-preview .sf-com-slick-tabs .tab-contents .slick-list .slick-track .slick-slide {
+    height: auto!important;
+}
+
+
+/* Slider center mode */
+body.pagemode-edit .sf-com-slider-center-mode.scm-type-2 .scm-list .list-item .image-info,
+xbody.pagemode-preview .sf-com-slider-center-mode.scm-type-2 .scm-list .list-item .image-info {
+    display: block!important;
+}
+
+body.pagemode-edit .sf-com-carousel-type-17 .scm-list .list-item .sf-com-product-card .content .card-body,
+xbody.pagemode-preview .sf-com-carousel-type-17 .scm-list .list-item .sf-com-product-card .content .card-body {
+    display: block!important;
+}
+
+/* Carousel */
+body.pagemode-edit .sf-com-push-view .content .view-list .list-item::before,
+xbody.pagemode-preview .sf-com-push-view .content .view-list .list-item::before {
+    display: none!important;
+}
+body.pagemode-edit .sf-com-push-view .content .view-list .list-item .ext-bg,
+xbody.pagemode-preview .sf-com-push-view .content .view-list .list-item .ext-bg {
+    background-image: none!important;
+}
+body.pagemode-edit .sf-com-push-view .content .view-list .list-item .background,
+xbody.pagemode-preview .sf-com-push-view .content .view-list .list-item .background {
+    display: block!important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: 0 !important;
+    margin: 0 auto !important;
+    height: 100%;
+    width: 100%;
+}
+
+
+/* Multiselect */
+body.pagemode-edit .sf-com-project-query-form form .form-group select.hide,
+xbody.pagemode-preview .sf-com-project-query-form form .form-group select.hide {
+    visibility: visible!important;
+    height: auto!important;
+}
+
+
+
+
+/* Test */
+xbody.pagemode-edit .background-on-edit .sf-block-background-image,
+xbody.pagemode-preview .background-on-edit .sf-block-background-image {
+    display: block!important;
+    position: absolute!important;
+    top: 0!important;
+    right: 0!important;
+    z-index: 12!important;
+    border: 2px dashed #FF1744;
+    width: 200px;
+    height: 150px;
+}

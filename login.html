@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+        .anticon {
+            display: inline-block;
+            color: inherit;
+            font-style: normal;
+            line-height: 0;
+            text-align: center;
+            text-transform: none;
+            vertical-align: -0.125em;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .anticon>* {
+            line-height: 1;
+        }
+        
+        .anticon svg {
+            display: inline-block;
+        }
+        
+        .anticon::before {
+            display: none;
+        }
+        
+        .anticon .anticon-icon {
+            display: block;
+        }
+        
+        .anticon[tabindex] {
+            cursor: pointer;
+        }
+        
+        .anticon-spin::before,
+        .anticon-spin {
+            display: inline-block;
+            -webkit-animation: loadingCircle 1s infinite linear;
+            animation: loadingCircle 1s infinite linear;
+        }
+        
+        @-webkit-keyframes loadingCircle {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes loadingCircle {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="manifest" href="./login_files/manifest.json">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+
+
+
+    <title>赛博特安登录</title>
+    <link href="./login_files/main.css" rel="stylesheet">
+    <style media="screen">
+        .antd-img-crop-modal .ant-modal-body {
+            padding-bottom: 16px;
+        }
+        
+        .antd-img-crop-modal .antd-img-crop-container {
+            position: relative;
+            width: 100%;
+            height: 40vh;
+            margin-bottom: 16px;
+        }
+        
+        .antd-img-crop-modal .antd-img-crop-control {
+            display: flex;
+            align-items: center;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .antd-img-crop-modal .antd-img-crop-control button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 34px;
+            height: 34px;
+            padding: 0;
+            font-style: normal;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+        }
+        
+        .antd-img-crop-modal .antd-img-crop-control button[disabled] {
+            cursor: default;
+        }
+        
+        .antd-img-crop-modal .antd-img-crop-control.zoom button {
+            font-size: 18px;
+        }
+        
+        .antd-img-crop-modal .antd-img-crop-control.rotate button {
+            font-size: 16px;
+        }
+        
+        .antd-img-crop-modal .antd-img-crop-control.rotate button:first-of-type {
+            transform: rotate(-20deg);
+        }
+        
+        .antd-img-crop-modal .antd-img-crop-control.rotate button:last-of-type {
+            transform: rotate(20deg);
+        }
+        
+        .antd-img-crop-modal .antd-img-crop-control .ant-slider {
+            flex: 1;
+            margin: 0 8px;
+        }
+    </style>
+    <link rel="icon" href="./login_files/logo200200.png">
+    <style>
+        /* 
+  在此编辑认证页面的 css 代码
+  如：
+  body {
+    background: #6699 !important;
+  } 
+  用于修改背景色
+*/
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <section class="ant-layout styles_layout__cpGAc authing-guard-layout">
+            <div class="react-joyride"></div>
+            <main class="ant-layout-content styles_container__24ljE __authing-container authing-login-main">
+                <div class="styles_container__28TSZ authing-guard-header-container">
+                    <div class="styles_logoLine__2P3pZ"><span class="ant-avatar ant-avatar-circle ant-avatar-image styles_logo__OEtnX __authing-app-logo" style="width: 35px; height: 35px; line-height: 35px; font-size: 18px;"><img src="./login_files/logo200200.png"></span>
+
+                    </div>
+                    <div class="styles_title__1K7lc authing-header-title">赛博特安</div><span class="authing-header-title-replace-zh-CN"></span></div>
+                <div class="styles_authing-tabs__2INW5">
+
+                </div>
+                <div class="styles_authing-tab-pane__17rec">
+                    <form class="ant-form ant-form-horizontal"><button type="submit" hidden=""></button>
+                        <div class="ant-row ant-form-item">
+                            <div class="ant-col ant-form-item-control">
+                                <div class="ant-form-item-control-input">
+                                    <div class="ant-form-item-control-input-content"><span class="ant-input-affix-wrapper ant-input-affix-wrapper-lg"><span class="ant-input-prefix"><span role="img" aria-label="user" class="anticon anticon-user" style="color: rgb(221, 221, 221);"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="user" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M858.5 763.6a374 374 0 00-80.6-119.5 375.63 375.63 0 00-119.5-80.6c-.4-.2-.8-.3-1.2-.5C719.5 518 760 444.7 760 362c0-137-111-248-248-248S264 225 264 362c0 82.7 40.5 156 102.8 201.1-.4.2-.8.3-1.2.5-44.8 18.9-85 46-119.5 80.6a375.63 375.63 0 00-80.6 119.5A371.7 371.7 0 00136 901.8a8 8 0 008 8.2h60c4.4 0 7.9-3.5 8-7.8 2-77.2 33-149.5 87.8-204.3 56.7-56.7 132-87.9 212.2-87.9s155.5 31.2 212.2 87.9C779 752.7 810 825 812 902.2c.1 4.4 3.6 7.8 8 7.8h60a8 8 0 008-8.2c-1-47.8-10.9-94.3-29.5-138.2zM512 534c-45.9 0-89.1-17.9-121.6-50.4S340 407.9 340 362c0-45.9 17.9-89.1 50.4-121.6S466.1 190 512 190s89.1 17.9 121.6 50.4S684 316.1 684 362c0 45.9-17.9 89.1-50.4 121.6S557.9 534 512 534z"></path></svg></span></span>
+                                        <input autocomplete="email,username,tel" placeholder="请输入用户名 / 手机号 / 邮箱" type="text" id="identity" class="ant-input ant-input-lg" value=""></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ant-row ant-form-item">
+                            <div class="ant-col ant-form-item-control">
+                                <div class="ant-form-item-control-input">
+                                    <div class="ant-form-item-control-input-content"><span class="ant-input-affix-wrapper ant-input-affix-wrapper-lg ant-input-password ant-input-password-large"><span class="ant-input-prefix"><span role="img" aria-label="lock" class="anticon anticon-lock" style="color: rgb(221, 221, 221);"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="lock" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M832 464h-68V240c0-70.7-57.3-128-128-128H388c-70.7 0-128 57.3-128 128v224h-68c-17.7 0-32 14.3-32 32v384c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V496c0-17.7-14.3-32-32-32zM332 240c0-30.9 25.1-56 56-56h248c30.9 0 56 25.1 56 56v224H332V240zm460 600H232V536h560v304zM484 701v53c0 4.4 3.6 8 8 8h40c4.4 0 8-3.6 8-8v-53a48.01 48.01 0 10-56 0z"></path></svg></span></span>
+                                        <input autocomplete="current-password" placeholder="请输入登录密码" action="click" id="password" type="password" class="ant-input ant-input-lg"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div><button data-novice-focus="7" data-novice-action="7" type="button" class="ant-btn ant-btn-primary ant-btn-lg ant-btn-block styles_registerBtn__37rJN authing-login-btn"><span>登 录</span></button>
+
+                <div style="margin-bottom: 26px;"></div>
+                <div style="flex: 1 1 0%;"></div>
+
+                <form action="" method="post" style="display: none;"><input type="text" name="token" readonly="" value=""><button type="submit"></button></form>
+
+            </main>
+            <footer class="styles_pageFooter__1Gi3w">
+                <div class="powered-by-4security styles_poweredBy4security">Powered by
+                    <a href="https://4security.cn/" target="_blank" rel="noopener noreferrer"><img width="56px" object-fit="contain" alt="Authing" src="./login_files/4security-logo-blue.svg"></a>
+                </div>
+                <div class="authing-footer-icp-record" style="display: none;"><a class="styles_footerLink__2d6Gh" href="https://beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank">苏ICP备2021049757号</a></div>
+
+        </section>
+    </div>
+    <script>
+        !(function(e) {
+            function r(r) {
+                for (
+                    var n, l, a = r[0], i = r[1], p = r[2], c = 0, s = []; c < a.length; c++
+                )
+                    (l = a[c]),
+                    Object.prototype.hasOwnProperty.call(o, l) &&
+                    o[l] &&
+                    s.push(o[l][0]),
+                    (o[l] = 0);
+                for (n in i)
+                    Object.prototype.hasOwnProperty.call(i, n) && (e[n] = i[n]);
+                for (f && f(r); s.length;) s.shift()();
+                return u.push.apply(u, p || []), t();
+            }
+
+            function t() {
+                for (var e, r = 0; r < u.length; r++) {
+                    for (var t = u[r], n = !0, a = 1; a < t.length; a++) {
+                        var i = t[a];
+                        0 !== o[i] && (n = !1);
+                    }
+                    n && (u.splice(r--, 1), (e = l((l.s = t[0]))));
+                }
+                return e;
+            }
+            var n = {},
+                o = {
+                    1: 0
+                },
+                u = [];
+
+            function l(r) {
+                if (n[r]) return n[r].exports;
+                var t = (n[r] = {
+                    i: r,
+                    l: !1,
+                    exports: {}
+                });
+                return e[r].call(t.exports, t, t.exports, l), (t.l = !0), t.exports;
+            }
+            (l.m = e),
+            (l.c = n),
+            (l.d = function(e, r, t) {
+                l.o(e, r) ||
+                    Object.defineProperty(e, r, {
+                        enumerable: !0,
+                        get: t
+                    });
+            }),
+            (l.r = function(e) {
+                'undefined' != typeof Symbol &&
+                    Symbol.toStringTag &&
+                    Object.defineProperty(e, Symbol.toStringTag, {
+                        value: 'Module'
+                    }),
+                    Object.defineProperty(e, '__esModule', {
+                        value: !0
+                    });
+            }),
+            (l.t = function(e, r) {
+                if ((1 & r && (e = l(e)), 8 & r)) return e;
+                if (4 & r && 'object' == typeof e && e && e.__esModule) return e;
+                var t = Object.create(null);
+                if (
+                    (l.r(t),
+                        Object.defineProperty(t, 'default', {
+                            enumerable: !0,
+                            value: e
+                        }),
+                        2 & r && 'string' != typeof e)
+                )
+                    for (var n in e) {
+                        l.d(
+                            t,
+                            n,
+                            (function(r) {
+                                return e[r];
+                            }).bind(null, n)
+                        );
+                    }
+                return t;
+            }),
+            (l.n = function(e) {
+                var r =
+                    e && e.__esModule ?
+
+                    function() {
+                        return e.default;
+                    } :
+                    function() {
+                        return e;
+                    };
+                return l.d(r, 'a', r), r;
+            }),
+            (l.o = function(e, r) {
+                return Object.prototype.hasOwnProperty.call(e, r);
+            }),
+            (l.p = '/');
+            var a = (this['webpackJsonpauthing-user-portal'] =
+                    this['webpackJsonpauthing-user-portal'] || []),
+                i = a.push.bind(a);
+            (a.push = r), (a = a.slice());
+            for (var p = 0; p < a.length; p++) r(a[p]);
+            var f = i;
+            t();
+        })([]);
+    </script>
+    <script>
+        // 兼容 IE11 crypto
+        window.crypto = window.crypto || window.msCrypto;
+    </script>
+
+
+
+</body>
+
+</html>

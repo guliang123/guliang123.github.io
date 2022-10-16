@@ -1,4 +1,3 @@
-
   @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400');
 
   body {
@@ -14,7 +13,7 @@
   -----------------------------------------*/
 
   h1,h2,h3,h4,h5,h6 {
-    font-weight: 300;
+    font-weight: 100;
     line-height: normal;
   }
 
@@ -23,7 +22,7 @@
   }
 
   h2 {
-    color: #353535;
+    color: #FFFFFF;
     font-size: 2em;
   }
 
@@ -87,10 +86,10 @@
   }
 
   .overlay {
-    background: #536976;  /* fallback for old browsers */
+    background: #292E49;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #292E49, #536976);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #292E49, #536976); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    opacity: 0.9;
+    background: #0; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    opacity: 0.5;
     position: absolute;
     top: 0;
     right: 0;
@@ -318,10 +317,10 @@
     min-height: 100vh;
     position: relative;
     padding-top: 12em;
-    text-align: center;
+    text-align: left;
   }
 
-  #home h1 {
+  #home h2 {
     color: #ffffff;
     margin-top: 10px;
     margin-bottom: 40px;
@@ -329,6 +328,7 @@
 
   .home-info {
     margin-top: 7em;
+    color: #781E20;
   }
 
   .home-info h3 {
@@ -872,3 +872,37 @@
       height: 65vh;
     }
   }
+
+
+
+.welcome {
+	margin-left: 30px;
+	
+}
+
+
+
+.welcome h3 {
+    color: #781012
+	
+}
+
+.home h3 {color: aliceblue
+	
+}
+
+
+  /*---------------------------------------
+     new added by guliang 我们的优势            
+  -----------------------------------------*/
+
+.index_07{background: #f3f5f5;padding: 55px 0 220px 0;}
+.index_list {
+	display:inline
+}
+
+.fadeInUp {
+	display:inline;
+	float:left;
+		
+}

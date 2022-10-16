@@ -1,762 +1,801 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
 
-     <title>赛博特安科技有限公司</title>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-     <meta name="description" content="">
-     <meta name="keywords" content="">
-     <meta name="team" content="">
-     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-     <link rel="icon" href="images/favicon.png">
-     <link rel="stylesheet" href="css/bootstrap.min.css">
-     <link rel="stylesheet" href="css/owl.carousel.css">
-     <link rel="stylesheet" href="css/owl.theme.default.min.css">
-     <link rel="stylesheet" href="css/font-awesome.min.css">
-     <link rel="stylesheet" href="css/common.css">
-     <link rel="stylesheet" href="css/index.css">
-     <link rel="stylesheet" href="css/navbar.css">
-     <!-- MAIN CSS -->
-     <link rel="stylesheet" href="css/tooplate-style.css">
- <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?4adb345fa72fd3d8d433c48c3e815f77";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+    <meta name="keywords" content="4security，零信任，信息安全，大数据安全，数字化转型安全，IT系统安全，IAM，SDP，MS,红蓝对抗，等保方案，数字化转型安全，赛博特安">
+    <meta name="description" content="4security">
+    <title>4security</title>
+    <link rel="Shortcut Icon" type="image/x-icon" href="/images/favicon.png">
+    <link rel="stylesheet" type="text/css" href="./index/reset.css">
+    <link rel="stylesheet" href="./index/iconfont.css">
+    <link rel="stylesheet" href="./index/arrow.css">
+    <link rel="stylesheet" type="text/css" href="./index/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="./index/style.css">
+    <link rel="stylesheet" href="./index/animate.css">
+    <script type="text/javascript" src="./index/jquery.min.js"></script>
+    <script type="text/javascript" src="./index/jquery.SuperSlide.2.1.3.js"></script>
+    <script type="text/javascript" src="./index/html5shiv.js"></script>
+    <script type="text/javascript" src="./index/swiper.min.js"></script>
+    <!-- 数字递增 -->
+    <script type="text/javascript" src="./index/jquery.waypoints.min.js"></script>
+    <script type="text/javascript" src="./index/jquery.countup.min.js"></script>
+    <!-- /数字递增 -->
 
-<meta name="baidu-site-verification" content="code-HxUU2kYW3n" />
+    <link rel="stylesheet" type="text/css" href="./index/css">
 </head>
 
-<body>
+<body class="loading">
+    <div class="container_box">
+        <header>
+            <input id="hamburger" class="hamburger" type="checkbox">
+            <label for="hamburger" class="menu"><i></i></label>
+            <div class="menu_bg"></div>
+            <div class="header_con flex_box center_box">
+                <a class="logo" href="https://4security.cn"><img src="./index/4seclogo.svg" alt=""></a>
+                <a class="user_icon" target="_blank" href="https://4security.cn/login.html">
+                    <i class="iconfont iconpersonal"></i>
+                </a>
+            </div>
+            <script language="javascript">
+    var browser={  
+        versions:function(){   
+            var u = navigator.userAgent, app = navigator.appVersion;   
+            return {//移动终端浏览器版本信息   
+                trident: u.indexOf('Trident') > -1, //IE内核  
+                presto: u.indexOf('Presto') > -1, //opera内核  
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核  
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核  
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端  
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端  
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器  
+                iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器  
+                iPad: u.indexOf('iPad') > -1, //是否iPad  
+                isIE: u.indexOf('compatible') > -1 && u.indexOf('MSIE') > -1 && !isOpera,  //判断是否IE浏览器  
+                isEdge: u.indexOf('Edge') > -1, //判断是否IE的Edge浏览器
+                isChrome: u.indexOf('Chrome') > -1 && u.indexOf('Safari') > -1, //判断Chrome浏览器
+                webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部  
+            };  
+        }(),  
+        language:(navigator.browserLanguage || navigator.language).toLowerCase()  
+    }   
 
-     <!-- PRE LOADER -->
-      <section class="preloader">
-          <div class="spinner">
+    if(!browser.versions.mobile && !browser.versions.ios && !browser.versions.android &&   
+        !browser.versions.iPhone && !browser.versions.iPad){        
+        window.location = "./ZeroTrust.html";      
+    }  
+</script>
+            <nav>
+                <ul>
+                    <li class="active">
+                        <a href="https://4security.cn/">首页</a>
+                        <i class="iconfont_jiantou jiantou-enter"></i>
+                    </li>
 
-               <span class="spinner-rotate"></span>
-
-          </div>
-     </section>
-
-
-     <!-- MENU -->
-     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
-          <div class="container">
-
-               <div class="navbar-header">
-            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                    </button>
-                   
-                    <!-- lOGO TEXT HERE -->
-		      
-                    <a href="index.html" class="navbar-brand">赛博特安</a>
-               </div>
-
-               <!-- MENU LINKS -->
-               <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                         <li><a href="#home" class="smoothScroll">首页</a></li>
-                         <li><a href="#feature" class="smoothScroll">安全产品</a></li>
-                         <li><a href="#service" class="smoothScroll">安全服务</a></li>
-                          <li><a href="/ZeroTrust.html" class="smoothScroll">零信任网络架构</a></li>
-                          <li><a href="#pricing" class="smoothScroll">解决方案</a></li>
-                         <li><a href="#" class="smoothScroll">数字化转型</a></li>
-          
+                    <li class="">
+                        <a href="https://4security.cn/">关于零信任解决方案</a>
+                        <i class="iconfont_jiantou jiantou-enter"></i>
+                    </li>
+                    <li class="">
+                        <a href="https://4security.cn/">客户</a>
+                        <i class="iconfont_jiantou jiantou-enter"></i>
+                    </li>
+                    <li class="has_subnav">
+                        <a href="https://4security.cn/">解决方案</a>
+                        <div class="subnav">
 
 
+                            <dl>
+                                <dt><a href="javascript:;">业务解决方案</a></dt>
+                                <dd>
+                                    <ol>
+                                        <li><a href="https://4security.cn/">IAM统一身份管理</a></li>
+                                        <li><a href="https://4security.cn/">SDP安全网关</a></li>
+                                        <li>
+                                            <a href="https://4security.cn/"></a>
+                                        </li>
+                                        <li><a href="https://4security.cn/">智能权限识别</a></li>
+                                        <li><a href="https://4security.cn/">零信任</a></li>
+                                    </ol>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="javascript:;">行业解决方案</a></dt>
+                                <dd>
+                                    <ol>
+                                        <li><a href="https://4security.cn/">金融</a></li>
+                                        <li><a href="https://4security.cn/">地产</a></li>
+                                        <li><a href="https://4security.cn/">智慧政务</a></li>
+                                        <li><a href="https://4security.cn/">交通</a></li>
+                                        <li><a href="https://4security.cn/">制造</a></li>
+                                    </ol>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <ol>
+                                    </ol>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <ol>
+                                    </ol>
+                                </dd>
+                            </dl>
+
+                        </div> <i class="iconfont_jiantou jiantou-enter"></i>
+                    </li>
+                    <li class="has_subnav">
+                        <a href="https://4security.cn/">产品与服务</a>
+                        <div class="subnav">
+
+
+                            <dl>
+
+                            </dl>
+                            <dl>
+
+                            </dl>
+                            <dl>
+
+                            </dl>
+                            <dl>
+
+                            </dl>
+                            <dl>
+                                <dt><a href="javascript:;">基础安全产品线</a></dt>
+
+                                <dd>
+                                    <ol>
+                                        <li><a href="https://4security.cn/">BIM</a></li>
+                                        <li><a href="https://4security.cn/">BAM </a></li>
+                                        <li><a href="https://4security.cn/">BPC</a></li>
+                                        <li><a href="https://4security.cn/">RDS</a></li>
+                                    </ol>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="javascript:;">增强安全产品线</a></dt>
+
+                                <dd>
+                                    <ol>
+                                        <li><a href="https://4security.cn/">APIG</a></li>
+                                        <li><a href="https://4security.cn/">BMSM</a></li>
+                                        <li><a href="https://4security.cn/">NSCG</a></li>
+                                        <li><a href="https://4security.cn/">ELOGIN</a></li>
+                                        <li><a href="https://4security.cn/">2FA</a></li>
+                                    </ol>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="javascript:;">云端安全产品</a></dt>
+
+                                <dd>
+                                    <ol>
+                                        <li><a href="https://4security.cn/" target="_blank">IDaaS</a></li>
+                                    </ol>
+                                </dd>
+                            </dl>
+                            <dl>
+
+                            </dl>
+                        </div> <i class="iconfont_jiantou jiantou-enter"></i>
+                    </li>
+                    <li class="">
+                        <a href="https://4security.cn/">动态</a>
+                        <i class="iconfont_jiantou jiantou-enter"></i>
+                    </li>
+                    <li class="">
+                        <a href="https://4security.cn/">资源中心</a>
+                        <i class="iconfont_jiantou jiantou-enter"></i>
+                    </li>
+                    <li class="">
+                        <a href="https://4security.cn/">生态圈</a>
+                        <i class="iconfont_jiantou jiantou-enter"></i>
+                    </li>
+                    <li class="has_subnav">
+                        <a href="https://4security.cn/">了解赛博特安</a>
+                        <div class="subnav">
+
+                            <dl>
+                                <dd>
+                                    <ol>
+                                        <li><a href="https://4security.cn/">关于赛博特安</a></li>
+                                        <li><a href="https://4security.cn/">企业文化</a></li>
+                                        <li><a href="https://4security.cn/">加入我们</a></li>
+                                        <li><a href="https://work.weixin.qq.com/kfid/kfc962c4237e9e3eeb7">联系我们</a></li>
+                                    </ol>
+                                </dd>
+                            </dl>
+
+                        </div> <i class="iconfont_jiantou jiantou-enter"></i>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="header_height"></div>
+
+        <main>
+            <!-- banner -->
+            <section class="banner_box home_banner">
+                <div class="banner_bg"><canvas width="1920" style="display: block; background: black;" height="700"></canvas></div>
+                <div class="banner_wrap center_box">
+                    <div class="banner_tit">
+                        <div id="ci-particles">
+                            <canvas id="canvas" width="375" height="812"></canvas>
+                            <h6 id="headline">赛博特安</h6>
+                        </div>
+                    </div>
+                    <div class="banner_txt wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">零信任安全<br> 护卫数字化转型
+                    </div>
+                    <div class="cir_more wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                        <a class="cir_a flex_box" href="https://4security.cn/"><i class="iconfont iconjiantou-you"></i></a>
+                    </div>
+                </div>
+            </section>
+            <script type="text/javascript" src="./index/jparticle.jquery.min.js"></script>
+            <!-- 不要忘记改路径 -->
+            <script type="text/javascript" src="./index/iam_word.js"></script>
+            <!-- 不要忘记改路径 -->
+            <script>
+                $(function() {
+                    $(".home_banner .banner_bg").jParticle({
+                        color: "#fff"
+                    });
+                });
+            </script>
+            <!-- banner -->
+
+            <!-- 关于-->
+            <section class="iam_box pd_tb100">
+                <div class="center_box">
+                    <span class="iam_icon">信息安全</span>
+                    <h2 class="zytit_h2 mg_t20">对任何企业来说都是至关重要的</h2>
+                    <div class="iam_txt article_w mg_t30">
+                        <p>赛博特安与您携手构建零信任安全的数字化创新架构。</p>
+                    </div>
+                    <div class="zy_btn blue_bor flex_box mg_t80">
+                        <a class="zy_a flex_box" href="https://work.weixin.qq.com/kfid/kfc962c4237e9e3eeb7">
+                            <span>了解赛博特安</span>
+                            <i class="iconfont iconjiantou-you"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- /关于 -->
+
+            <!-- 产品提供 -->
+            <section class="iampro_box pd_tb80">
+                <div class="center_box">
+                    <h2 class="zytit_h2 mg_b40">赛博特安可以提供</h2>
+                    <div class="iampro_con flex_box">
+                        <ul>
+
+                            <li class="flex_box">
+                                <i class="iconfont iconfuxuankuangxuanzhong"></i>
+                                <span class="wow" style="visibility: hidden; animation-name: none;">零信任综合解决方案</span>
+                            </li>
+                            <li class="flex_box">
+                                <i class="iconfont iconfuxuankuangxuanzhong"></i>
+                                <span class="wow" style="visibility: hidden; animation-name: none;">IAM解决方案</span>
+                            </li>
+                            <li class="flex_box">
+                                <i class="iconfont iconfuxuankuangxuanzhong"></i>
+                                <span class="wow" style="visibility: hidden; animation-name: none;">SDP解决方案</span>
+                            </li>
+                            <li class="flex_box">
+                                <i class="iconfont iconfuxuankuangxuanzhong"></i>
+                                <span class="wow" style="visibility: hidden; animation-name: none;">MS微隔离解决方案</span>
+                            </li>
+                            <li class="flex_box">
+                                <i class="iconfont iconfuxuankuangxuanzhong"></i>
+                                <span class="wow" style="visibility: hidden; animation-name: none;">API网关解决方案</span>
+                            </li>
+                            <li class="flex_box">
+                                <i class="iconfont iconfuxuankuangxuanzhong"></i>
+                                <span class="wow" style="visibility: hidden; animation-name: none;">综合日志解决方案</span>
+                            </li>
+                            <li class="flex_box">
+                                <i class="iconfont iconfuxuankuangxuanzhong"></i>
+                                <span class="wow" style="visibility: hidden; animation-name: none;">红蓝对抗系统</span>
+                            </li>
+                            <li class="flex_box">
+                                <i class="iconfont iconfuxuankuangxuanzhong"></i>
+                                <span class="wow" style="visibility: hidden; animation-name: none;">信息安全软件</span>
+                            </li>
+                            <li class="flex_box">
+                                <i class="iconfont iconfuxuankuangxuanzhong"></i>
+                                <span class="wow" style="visibility: hidden; animation-name: none;">信息安全硬件</span>
+                            </li>
+                            <li class="flex_box">
+                                <i class="iconfont iconfuxuankuangxuanzhong"></i>
+                                <span class="wow" style="visibility: hidden; animation-name: none;">信息安全评估</span>
+                            </li>
+                            <li class="flex_box">
+                                <i class="iconfont iconfuxuankuangxuanzhong"></i>
+                                <span class="wow" style="visibility: hidden; animation-name: none;">等保综合方案</span>
+                            </li>
+                            <li class="flex_box">
+                                <i class="iconfont iconfuxuankuangxuanzhong"></i>
+                                <span class="wow" style="visibility: hidden; animation-name: none;">大数据安全方案</span>
+                            </li>
+                            <li class="last_one flex_box"><i class="iconfont iconfuxuankuangxuanzhong"></i><span>······</span></li>
+                        </ul>
+                    </div>
+                    <div class="zy_btn white_bg flex_box mg_t80">
+                        <a class="zy_a flex_box" href="https://work.weixin.qq.com/kfid/kfc962c4237e9e3eeb7">
+                            <span>全栈产品线</span>
+                            <i class="iconfont iconjiantou-you"></i>
+                        </a>
+                    </div>
+                </div>
+                <span class="iampro_el iampro_l_el wow" style="visibility: hidden; animation-name: none;"><img src="./index/iampro_l_el.png" alt=""></span>
+                <span class="iampro_el iampro_r_el wow" style="visibility: hidden; animation-name: none;"><img src="./index/iampro_r_el.png" alt=""></span>
+            </section>
+            <!-- /产品提供 -->
+
+            <!-- 解决方案 -->
+            <section class="solu_box pd_tb80">
+                <div class="center_box">
+                    <div class="zy_tit pd_b40">
+                        <i class="zy_cir flex_box mg_b20"></i>
+                        <div class="zy_con pd_tb10">
+                            <span class="zytit_en mg_b20">&lt;&nbsp;&nbsp;solution&nbsp;&nbsp;&gt;</span>
+                            <h2 class="zytit_h2">
+                                <p>提供涵盖<br>全用户场景的安全解决方案</p>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="solu_con">
+                        <ul>
+
+                            <li class="wow fadeInUp" style="visibility: hidden; animation-name: none;">
+                                <a class="pd_60" href="https://4security.cn/">
+                                    <div class="solu_exp flex_box mg_b50">
+                                        <span>B2E</span>
+                                        <i></i>
+                                        <span>面向企业</span>
+                                    </div>
+                                    <span class="solu_img flex_box mg_b60"><img src="./index/20210524162182240894.png" alt="企业应用日益增多,建设成本居高不下"></span>
+                                    <h3 class="solu_tit mg_b20">企业应用日益增多,建设成本居高不下</h3>
+                                    <div class="solu_w article_w">如何保证应用互联互通、有效管理？ 如何提高用户体验、全面管控？</div>
+                                    <div class="zy_btn blue_bg flex_box mg_t50">
+                                        <span class="zy_a flex_box">
+												<span>获取解决方案</span>
+                                        <i class="iconfont iconjiantou-you"></i>
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="wow fadeInUp" style="visibility: hidden; animation-name: none;">
+                                <a class="pd_60" href="https://4security.cn/">
+                                    <div class="solu_exp flex_box mg_b50">
+                                        <span>B2B</span>
+                                        <i></i>
+                                        <span>面向合作伙伴</span>
+                                    </div>
+                                    <span class="solu_img flex_box mg_b60"><img src="./index/20210524162183510459.png" alt="供应商，经销商，合作伙伴业务协作频繁"></span>
+                                    <h3 class="solu_tit mg_b20">供应商，经销商，合作伙伴业务协作频繁</h3>
+                                    <div class="solu_w article_w">如何为合作伙伴提供更好的应用体验，高效、安全、可靠的保证业务顺利运转？</div>
+                                    <div class="zy_btn blue_bg flex_box mg_t50">
+                                        <span class="zy_a flex_box">
+												<span>获取解决方案</span>
+                                        <i class="iconfont iconjiantou-you"></i>
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="wow fadeInUp" style="visibility: hidden; animation-name: none;">
+                                <a class="pd_60" href="https://4security.cn/">
+                                    <div class="solu_exp flex_box mg_b50">
+                                        <span>B2C</span>
+                                        <i></i>
+                                        <span>面向C端用户</span>
+                                    </div>
+                                    <span class="solu_img flex_box mg_b60"><img src="./index/20210524162183515712.png" alt="用户注册流程分散复杂 用户信息分散无法沉淀价值"></span>
+                                    <h3 class="solu_tit mg_b20">用户注册流程分散复杂 用户信息分散无法沉淀价值</h3>
+                                    <div class="solu_w article_w">如何打通来自不同社交渠道的身份数据，形成数字身份画像及对客户深入的洞察力，高效赋能业务运营？</div>
+                                    <div class="zy_btn blue_bg flex_box mg_t50">
+                                        <span class="zy_a flex_box">
+												<span>获取解决方案</span>
+                                        <i class="iconfont iconjiantou-you"></i>
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- /解决方案 -->
+
+            <!-- 平台荣誉 -->
+
+            <!-- /平台荣誉 -->
+
+            <!-- 核心竞争力 -->
+            <section class="core_box pd_tb80">
+                <div class="center_box">
+                    <div class="zy_tit pd_b40">
+                        <span class="zytit_en mg_b20">&lt;&nbsp;&nbsp;core competence&nbsp;&nbsp;&gt;</span>
+                        <h2 class="zytit_h2">赛博特安核心竞争力</h2>
+                        <div class="zy_w article_w mg_t30">
+                            <p>赛博特安专注于零信任以及云应用安全领域，是国内一家安全代码研发，拥有完全自主可控的技术的科技企业。通过严格的产品、技术、研发管理等多项指标体系测试。</p>
+                        </div>
+                    </div>
+                    <div class="core_con">
+                        <ul>
+
+                            <li class="wow" style="visibility: hidden; animation-name: none;">
+                                <div class="core_ss flex_box pd_tb80">
+                                    <span class="core_icon flex_box"><i class="iconfont iconweb__zhuanye"></i></span>
+                                    <div class="core_txt">
+                                        <h3>专业+专注</h3>
+                                        <div class="core_w article_w mg_t20">
+                                            <p>赛博特安专注零信任概念在中国落地、培育市场、专注深耕的国产厂商，因为专注所以专业。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="wow" style="visibility: hidden; animation-name: none;">
+                                <div class="core_ss flex_box pd_tb80">
+                                    <span class="core_icon flex_box"><i class="iconfont iconkexuejishu-"></i></span>
+                                    <div class="core_txt">
+                                        <h3>技术领先</h3>
+                                        <div class="core_w article_w mg_t20">
+                                            <p>自主研发、安全可控，懂业务场景、有丰富经验。核心零信任产品，已应用在多行业、跨业务场景的大中小客户，实践验证平台产品的易用性、兼容性、扩展性、可靠性。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="wow" style="visibility: hidden; animation-name: none;">
+                                <div class="core_ss flex_box pd_tb80">
+                                    <span class="core_icon flex_box"><i class="iconfont iconfengfuduoyangdechanpin"></i></span>
+                                    <div class="core_txt">
+                                        <h3>产品线丰富</h3>
+                                        <div class="core_w article_w mg_t20">
+                                            <p>从线下、移动端、互联网、云端系列零信任相关产品线，产品线全，覆盖场景广，综合技术实力强 。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="wow" style="visibility: hidden; animation-name: none;">
+                                <div class="core_ss flex_box pd_tb80">
+                                    <span class="core_icon flex_box"><i class="iconfont iconiconkh1"></i></span>
+                                    <div class="core_txt">
+                                        <h3>团队优秀</h3>
+                                        <div class="core_w article_w mg_t20">
+                                            <p>核心团队优势互补、凝聚力强，零信任专业技术人才，提供优质的本地化服务。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="wow" style="visibility: hidden; animation-name: none;">
+                                <div class="core_ss flex_box pd_tb80">
+                                    <span class="core_icon flex_box"><i class="iconfont iconfenxiaohetong"></i></span>
+                                    <div class="core_txt">
+                                        <h3>本地化+远程服务</h3>
+                                        <div class="core_w article_w mg_t20">
+                                            <p>项目管理经验丰富，本地化+“远程技术服务交付中心”模式，有效打破地域服务资源限制，为客户提供更高效、丰富的服务资源，提高项目交付效率。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="wow" style="visibility: hidden; animation-name: none;">
+                                <div class="core_ss flex_box pd_tb80">
+                                    <span class="core_icon flex_box"><i class="iconfont iconhetong"></i></span>
+                                    <div class="core_txt">
+                                        <h3>战略合作</h3>
+                                        <div class="core_w article_w mg_t20">
+                                            <p>开展全业务渠道，全安全厂商合作，客观中立，只基于给客户最好的安全服务理念进行安全厂商及产品合作选型。<br>在全国重点城市，布局合作伙伴，创立共赢格局，提高客户响应速度。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- /核心竞争力 -->
+
+            <!-- 资讯 -->
+            <section class="news_box pd_tb80">
+                <div class="center_box">
+                    <div class="zy_tit pd_b60">
+                        <i class="zy_cir flex_box mg_b20"></i>
+                        <span class="zytit_en mg_b10">&lt;&nbsp;&nbsp;news&nbsp;&nbsp;&gt;</span>
+                        <h2 class="zytit_h2">赛博特安资讯</h2>
+                        <i class="zy_line"></i>
+                    </div>
+                    <div class="news_con">
+                        <ul>
+
+                            <li class="wow fadeInUp" style="visibility: hidden; animation-name: none;">
+                                <a href="https://4security.cn/">
+                                    <span class="news_img"><img src="./index/20210816162910437542.png" alt="助力数字转型高效融合，实现一网通办"></span>
+                                    <div class="news_txt mg_t40">
+                                        <span>2021-08-16</span>
+                                        <h3>助力数字转型高效融合，实现一网通办</h3>
+                                    </div>
+                                    <div class="cir_more mg_t30">
+                                        <span class="cir_a flex_box"><i class="iconfont iconjiantou-you"></i></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="wow fadeInUp" style="visibility: hidden; animation-name: none;">
+                                <a href="https://4security.cn/">
+                                    <span class="news_img"><img src="./index/20210816162910402741.png" alt="构筑零信任实践场景"></span>
+                                    <div class="news_txt mg_t40">
+                                        <span>2021-08-16</span>
+                                        <h3>构筑零信任实践场景</h3>
+                                    </div>
+                                    <div class="cir_more mg_t30">
+                                        <span class="cir_a flex_box"><i class="iconfont iconjiantou-you"></i></span>
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="zy_btn white_bg flex_box mg_t60">
+                    <a class="zy_a flex_box" href="https://work.weixin.qq.com/kfid/kfc962c4237e9e3eeb7">
+                        <span>更多资讯</span>
+                        <i class="iconfont iconjiantou-you"></i>
+                    </a>
+                </div>
+            </section>
+            <!-- /资讯 -->
+
+            <!-- 生态圈 -->
+            <section class="ecos_box pd_t80 pd_b50">
+                <div class="center_box">
+                    <h2 class="zytit_h2 mg_b50">生态圈</h2>
+                    <div class="ecos_con">
+                        <span class="ecos_img">
+								<img src="./index/ecos_img.jpg" alt="生态圈">
+								<div class="ecos_icons"><span class="ecos_icon flex_box"><i class="iconfont iconbofang"></i></span></div>
+                    </span>
+                    <div class="ecos_w article_w mg_t40">
+                        <p>安全管理平台已集成N+企业常用应用<br>您的企业很可能也正在使用他们</p>
+                    </div>
+                </div>
+                <div class="ecos_more mg_t50">
+                    <a href="https://work.weixin.qq.com/kfid/kfc962c4237e9e3eeb7">点击查看都有哪些应用</a>
+                </div>
+                <div class="cir_more blue_more mg_t50">
+                    <a class="cir_a flex_box" href="https://work.weixin.qq.com/kfid/kfc962c4237e9e3eeb7"><i class="iconfont iconjiantou-you"></i></a>
+                </div>
+    </div>
+    </section>
+    <!-- /生态圈 -->
+
+    <!-- 视频弹出 -->
+    <div class="pop_mask"></div>
+    <div class="pop_box pop_video">
+        <span class="pop_close"><img src="./index/close_icon.svg" alt=""></span>
+        <div class="pop_con">
+            <!-- <iframe class="video_iframe" id="v_iframe" src="" frameborder="0" height="300px" width="100%" allowfullscreen ></iframe> -->
+        </div>
+    </div>
+    <script>
+        $(".ecos_box .ecos_con").click(function() {
+            $(".pop_mask").fadeIn();
+            $(".pop_video").fadeIn();
+
+            $(".pop_video .pop_con").append("<iframe class='video_iframe' id='v_iframe' src='https://player.youku.com/embed/' frameborder='0' height='300px' width='100%' allowfullscreen ></iframe>");
+        })
+        $(".pop_video .pop_close").click(function() {
+            $(".pop_mask").hide();
+            $(".pop_video").hide();
+            // $('#v_iframe').attr('src','');
+            $('#v_iframe').remove();
+        })
+    </script>
+    <!-- /视频弹出 -->
+
+    <!-- IDaaS -->
+    <section class="idaas_box pd_t40 pd_b80">
+        <div class="center_box">
+            <a class="idaas_con" href="https://4security.cn/index">
+                <span class="idaas_img"><img src="./index/idaas_img.jpg" alt="IDaaS"></span>
+                <div class="idaas_pos flex_box">
+                    <div class="idaas_wrap">
+                        <div class="idaas_w wow fadeInUp" style="visibility: hidden; animation-name: none;">
+                            <span>赛博特安</span>
+                            <i>捍卫数字创新价值</i>
+                        </div>
+                        <div class="zy_btn green_bg flex_box mg_t60 wow fadeInUp" style="visibility: hidden; animation-name: none;">
+                            <span class="zy_a flex_box">
+											<span>马上试用</span>
+                            <i class="iconfont iconjiantou-you"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+    <!-- /IDaaS -->
+
+    </main>
+
+    <footer class="footer_box pd_tb80">
+        <div class="center_box">
+            <div class="footer_s1 flex_box mg_b60">
+                <div class="footer_l">
+                    <a class="footer_logo" href="https://4security.cn/"><img src="./index/4seclogo.svg" alt="4security"></a>
+                    <div class="footer_info mg_t30">
+                        <ul>
+                            <li class="flex_box">
+                                <i class="iconfont icondianhua"></i>
+                                <div class="footer_txt flex_box">
+                                    <span class="footer_name">电话：</span>
+                                    <div class="footer_w">19852879665</div>
+                                </div>
+                            </li>
+                            <li class="flex_box">
+                                <i class="iconfont iconyouxiang"></i>
+                                <div class="footer_txt flex_box">
+                                    <span class="footer_name">邮箱：</span>
+                                    <div class="footer_w">market@4security.cn</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer_r">
+                    <div class="footer_qr">
+                        <span><img src="./index/4sec-qr107.png" alt="微信扫码"></span>
+                        <p class="mg_t20">扫一扫，一键关注</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_s2 flex_box mg_b40">
+                <div class="footer_tit flex_box">
+                    <h3>资源中心</h3>
+                </div>
+                <div class="footer_list">
+                    <ul>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc962c4237e9e3eeb7">关于零信任安全</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc962c4237e9e3eeb7">零信任资料库</a></li>
                     </ul>
-                    <!--ul class="nav navbar-nav navbar-right">
-                         <!--li><a href="#">Say Hi To Me</a></li-->
-                         <!--li><a href="#" class="fa fa-qq"></a></li-->
-                         <!--li><a href="#" class="fa fa-weibo" aria-hidden="true"></a></li-->
-                         <!--li><a href="#" class="fa fa-weixin"></a></li-->
-                    </ul-->
-               </div>
-
-          </div>
-     </section>
-
-
-     <!-- FEATURE -->
-     <section id="home" data-stellar-background-ratio="0.5">
- 
-
-          <div class="overlay"></div>
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-offset-3 col-md-12  col-sm-3">         
-                         <div class="home-info">
-                              <h1>赛博特安欢迎您！</h1>
-                             
-                        
-                         </div>
-                    </div>
-
-               </div>
-          </div>
-        
-
-
-     </section>
-
-
-     <!-- FEATURE -->
-     <section id="feature" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h1>安全产品</h1>
-                              <hr>
-                         </div>
-                        
-                    </div>
-             
-                    <div class="col-md-6 col-sm-6">
-                         <ul class="nav nav-tabs" role="tablist">
-                              <li class="active"><a href="#tab01" aria-controls="tab01" role="tab" data-toggle="tab">安全检测</a></li>
-
-                              <li><a href="#tab02" aria-controls="tab02" role="tab" data-toggle="tab">安全防护</a></li>
-
-                              <li><a href="#tab03" aria-controls="tab03" role="tab" data-toggle="tab">安全管理</a></li>
-                         </ul>
-
-                         <div class="tab-content">
-                              <div class="tab-pane active" id="tab01" role="tabpanel">
-                                   <div class="tab-pane-item">
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">Web应用弱点扫描器</a></li>
-                                        </ul>
-                                       
-                               
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">数据库漏洞扫描系统</a></li>
-                                        </ul>
-                                        
-                               
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">远程信息安全评估系统</a></li>
-                                        </ul>
-                                        
-                               
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">互联网数据中心安全检查工具</a></li>
-                                        </ul>
-                                      
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">信息安全等级保护检查工具箱</a></li>
-                                        </ul>
-                                        
-                                       
-
-                                   </div>
-                                  
-                              </div>
-
-
-                              <div class="tab-pane" id="tab02" role="tabpanel">
-                                   <div class="tab-pane-item">
-                                       
-                               
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">Web应用防火墙（WAF）</a></li>
-                                        </ul>
-                                        
-                               
-                                      
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">网站卫士(网站防篡改)</a></li>
-                                        </ul>
-                                    
-                                     
-                                   
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">数据库审计与风险控制系统</a></li>
-                                        </ul>
-                                      
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">入侵检测防护系统</a></li>
-                                        </ul>
-                                      
-                                        
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">综合日志审计平台</a></li>
-                                        </ul>
-                                       
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">全流量深度威胁检测平台（DPI）</a></li>
-                                        </ul>
-                                       
-                                        
-                                   </div>
-                              </div>
-
-                              <div class="tab-pane" id="tab03" role="tabpanel">
-                                   <div class="tab-pane-item">
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">零信任管理中心（Zero Trust）</a></li>
-                                        </ul>
-                                        
-                               
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">安全运维管理中心（SOC）</a></li>
-                                        </ul>
-                                       
-                               
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">等保运维管理中心（CPC）</a></li>
-                                        </ul>
-                                      
-                               
-                                        
-                                   
-                                       
-
-                                   </div>
-                         </div>
-
-                    </div>
-
-                    
-
-               </div>
-          </div>
-      </div>
-     </section>
-          
-          <!-- security service  -->
-     <section id="service" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h1>安全服务</h1>
-                              <hr>
-                         </div>
-                        
-                    </div>
-             
-                    <div class="col-md-6 col-sm-6">
-                         <ul class="nav nav-tabs" role="tablist">
-                              <li class="active"><a href="#tab04" aria-controls="tab04" role="tab" data-toggle="tab">安全运营</a></li>
-
-                              <li><a href="#tab05" aria-controls="tab05" role="tab" data-toggle="tab">红蓝对抗</a></li>
-
-                              <li><a href="#tab06" aria-controls="tab06" role="tab" data-toggle="tab">零信任</a></li>
-                         </ul>
-
-                         <div class="tab-content">
-                              <div class="tab-pane active" id="tab04" role="tabpanel">
-                                   <div class="tab-pane-item">
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">应急响应&线索溯源</a></li>
-                                        </ul>
-                                       
-                               
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">渗透测试</a></li>
-                                        </ul>
-                                        
-                               
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">日常加固监控扫描</a></li>
-                                        </ul>
-                                        
-                                  <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">重大活动保障</a></li>
-                                        </ul>
-                                       
-
-                                   </div>
-                                  
-                              </div>
-
-
-                              <div class="tab-pane" id="tab05" role="tabpanel">
-                                   <div class="tab-pane-item">
-                                       
-                               
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">漏洞利用攻击平台</a></li>
-                                        </ul>
-                                        
-                               
-                                      
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">态势感知及安全反制平台</a></li>
-                                        </ul>
-                                    
-                                     
-                                   
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">蜜罐欺骗平台</a></li>
-                                        </ul>
-                                      
-                                
-                                        
-                                   </div>
-                              </div>
-
-                              <div class="tab-pane" id="tab06" role="tabpanel">
-                                   <div class="tab-pane-item">
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">SDP(软件定义边界)解决方案</a></li>
-                                        </ul>
-                                        
-                               
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">IAM(增强的身份管理)解决方案</a></li>
-                                        </ul>
-                                       
-                               
-                                        <ul>
-                                             <li class="_mce_tagged_br"><a href="http://" rel="external"
-                                                       target="_blank">MSG(微隔离)解决方案</a></li>
-                                        </ul>
-                                      
-                                                                     
-
-                                   </div>
-                         </div>
-
-                    </div>
-
-                    
-
-               </div>
-          </div>
-		 </div>
-     </section>
-
-
-
-     <!-- ABOUT -->
-     <section id="about" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-12     col-sm-6">             
-                         <div class="section-title">
-                              <h1>核心团队</h1>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="team-thumb">
-                              <img src="images/team-image1.jpg" class="img-responsive" alt="Andrew Orange">
-                              <div class="team-info team-thumb-up">
-                                   <h2>Johnson</h2>
-                                   <small>Art Director</small>
-                                   <p>前后端设计</p>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="team-thumb">
-                              <div class="team-info team-thumb-down">
-                                   <h2>Tom</h2>
-                                   <small>Senior Manager</small>
-                                   <p>项目经理</p>
-                              </div>
-                              <img src="images/team-image2.jpg" class="img-responsive" alt="Catherine Soft">
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="team-thumb">
-                              <img src="images/team-image3.jpg" class="img-responsive" alt="Jack Wilson">
-                              <div class="team-info team-thumb-up">
-                                   <h2>Steven </h2>
-                                   <small>CEO / Founder</small>
-                                   <p>CEO，创始人</p>
-                              </div>
-                         </div>
-                    </div>
-                    
-               </div>
-          </div>
-     </section>
-
-
-     <!-- TESTIMONIAL -->
-     <section id="testimonial" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-6  col-sm-6">          
-                         <div class="testimonial-image"></div>
-                    </div>
-
-                    <div class="col-md-6 col-sm-6">
-                         <div class="testimonial-info">
-
-                              <div class="section-title">
-                                   <h1>我的客户</h1>
-                              </div>
-
-                              <div class="owl-carousel owl-theme">
-                                   <div class="item">
-                                        <h3>某公司SEO</h3>
-                                        <div class="testimonial-item">
-                                             <img src="images/tst-image1.jpg" class="img-responsive" alt="Michael">
-                                             <h4>张SEO</h4>
-                                             <p>安全专业,针对我们业务特点定制了针对的安全匹配产品和服务，解决了我方的安全焦虑，提升了安全交付品质</p>
-                                        </div>
-                                   </div>
-
-                                   <div class="item">
-                                        <h3>刘主任</h3>
-                                        <div class="testimonial-item">
-                                             <img src="images/tst-image2.jpg" class="img-responsive" alt="Sofia">
-                                             <h4>Sofia</h4>
-                                             <p>专业的安全厂商，提升了我们单位的整体安全防护水平</p>
-                                        </div>
-                                   </div>
-
-                                   <div class="item">
-                                        <h3>李CEO</h3>
-                                        <div class="testimonial-item">
-                                             <img src="images/tst-image3.jpg" class="img-responsive" alt="Monica">
-                                             <h4>Monica</h4>
-                                            <p>值得信赖，在预算有限的情况下，根据实际对象的价值针对性的指定安全方案</p>
-                                        </div>
-                                   </div>
-                              </div>
-
-                         </div>
-                    </div>
-
-               </div>
-          </div>
-     </section>
-
-
-     <!-- PRICING -->
-     <section id="pricing" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-							 <h1>解决方案</h1>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                         <div class="pricing-thumb">
-                              <div class="pricing-title">
-                                   <h2>信息安全服务</h2>
-                              </div>
-                              <div class="pricing-info">
-                                   <p>安全渗透</p>
-
-
-                              </div>
-                              <div class="pricing-bottom">
-                                   <span class="pricing-dollar">*元</span>
-                                   <a href="#" class="section-btn pricing-btn">获取更多信息</a>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                         <div class="pricing-thumb">
-                              <div class="pricing-title">
-                                   <h2>IT系统架构设计</h2>
-                              </div>
-                              <div class="pricing-info">
-                                   <p>高可用、高性能架构</p>
-
-                              </div>
-                              <div class="pricing-bottom">
-                                   <span class="pricing-dollar">*元</span>
-                                   <a href="#" class="section-btn pricing-btn">获取更多信息</a>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                         <div class="pricing-thumb">
-                              <div class="pricing-title">
-                                   <h2>IT系统综合诊断分析</h2>
-                              </div>
-                              <div class="pricing-info">
-                                   <p>故障诊断分析</p>
-
-                              </div>
-                              <div class="pricing-bottom">
-                                   <span class="pricing-dollar">*元</span>
-                                   <a href="#" class="section-btn pricing-btn">获取更多信息</a>
-                              </div>
-                         </div>
-                    </div>
-
-               </div>
-          </div>
-     </section>
-
-<!-- 云身份管理部分 -->
-    <section class="cloud-sec-mg" data-stellar-background-ratio="0.5">
-         <p><h2><b>支持混合云身份安全认证服务</b></h2></p>
-	  <p><h2><b>(零信任IAM解决方案 )</b></h2></p>
-         <hr>
-         <div class="cloud-test1 ">
-                <div class="col-md-2 col-sm-3" data-url="./products/user.html">
-                    <img src="images/index_icon_ids-nor.png" alt="统一身份管理图标" class="serve-img">
-                    <img src="images/index_icon_ids-hover.png" alt="统一身份管理图标" class="serve-img-active">
-                    <div class="serve-title ft-20 ft-base-b">统一身份管理</div>
-                    <div class="serve-intro ft-12 ft-base-b line-h-24">实现在一个平台对人员信息、组织信息、应用信息、账号信息的高效统一管理</div>
-                    <div class="flex-j-a s-item-b">
-                        <a href="https://4security.cn" class="serve-more" id="test">
-                            <div class="ft-12 ft-blue inl-b">了解详情</div>
-                            <img src="images/index_icon_more_hover.png" alt="统一身份管理详情" class="inl-b mg-l-5">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-3" data-url="./products/auth.html">
-                    <img src="images/index_icon_auth-nor.png" alt="统一身份认证图标" class="serve-img">
-                    <div class="serve-title ft-20 ft-base-b">统一身份认证</div>
-                    <div class="serve-intro ft-12 ft-base-b line-h-24">支持各种生物特征认证，支持微信/微博/钉钉等社交认证快速装配使用</div>
-                    <div class="s-item-b">
-                        <img src="images/index_icon_auth-hover.png" alt="统一身份认证图标" class="serve-img-active">
-                        <a href="https://4security.cn" class="serve-more mg-l-20" id="test1">
-                            <div class="ft-12 ft-blue inl-b">了解详情</div>
-                            <img src="images/index_icon_more_hover.png" alt="统一身份认证详情" class="inl-b mg-l-5">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-3" data-url="./products/sso.html">
-                    <img src="images/index_icon_sso-nor.png" alt="单点登录SSO图标" class="serve-img">
-                    <div class="serve-title ft-20 ft-base-b">单点登录SSO</div>
-                    <div class="serve-intro ft-12 ft-base-b line-h-24">一套用户名密码访问<br>所有应用</div>
-                    <div class="s-item-b">
-                        <img src="images/index_icon_sso-hover.png" alt="单点登录SSO图标" class="serve-img-active">
-                        <a href="https://4security.cn" class="serve-more mg-l-20" id="test2">
-                            <div class="ft-12 ft-blue inl-b">了解详情</div>
-                            <img src="images/index_icon_more_hover.png" alt="单点登录SSO详情" class="inl-b mg-l-5">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-3" data-url="./products/risk.html">
-                    <img src="images/index_icon_risk-nor.png" alt="智能风控图标" class="serve-img">
-                    <div class="serve-title ft-20 ft-base-b">智能风控</div>
-                    <div class="serve-intro ft-12 ft-base-b line-h-24">通过AI技术，智能风险识别，保护访问安全</div>
-
-                    <div class="s-item-b">
-                        <img src="images/index_icon_risk-hove.png" alt="智能风控图标" class="serve-img-active">
-                        <a href="https://4security.cn" class="serve-more mg-l-20" id="test3">
-                            <div class="ft-12 ft-blue inl-b">了解详情</div>
-                            <img src="images/index_icon_more_hover.png" alt="智能风控详情" class="inl-b mg-l-5">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-3" data-url="./products/audit.html">
-                    <img src="images/index_icon_audit-nor.png" alt="合规审计图标" class="serve-img">
-                    <div class="serve-title ft-20 ft-base-b">合规审计</div>
-                    <div class="serve-intro ft-12 ft-base-b line-h-24">满足GDPR，隐私保护等法律法规要求</div>
-
-                    <div class="s-item-b">
-                        <img src="images/index_icon_audit-hover.png" alt="合规审计图标" class="serve-img-active">
-                        <a href="https://4security.cn" class="serve-more mg-l-20" id="test4">
-                            <div class="ft-12 ft-blue inl-b">了解详情</div>
-                            <img src="images/index_icon_more_hover.png" alt="合规审计详情" class="inl-b mg-l-5">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-3" data-url="./products/bigdata.html">
-                    <img src="images/index_icon_bigdata-nor.png" alt="身份大数据图标" class="serve-img">
-                    <div class="serve-title ft-20 ft-base-b">身份大数据</div>
-                    <div class="serve-intro ft-12 ft-base-b line-h-24">通过大数据技术，为企业数据进行分析，帮助营销</div>
-
-                    <div class="s-item-b">
-                        <img src="images/index_icon_bigdata-hover.png" alt="身份大数据图标" class="serve-img-active">
-                        <a href="https://4security.cn" class="serve-more mg-l-20" id="test5">
-                            <div class="ft-12 ft-blue inl-b">了解详情</div>
-                            <img src="images/index_icon_more_hover.png" alt="身份大数据详情" class="inl-b mg-l-5">
-                        </a>
-                    </div>
                 </div>
             </div>
-       
-    </section>
-		  <!-- 解决方案部分 -->
-    <section class="solution flex-col flex-j-a">
-      
-        <div class="flex flex-s-b mg-t-40" style="width: 1200px;">
-            <div class="solution-item bg-nor item-1 block-url" data-url="./ss/solutions/adauth.html">
-                <img src="images/index_icon_adauth.png" alt="应用基于本地AD/LDAP等认证图标" class="icon_adauth-nor">
-                <img src="images/index_icon_adauth-hover.png" alt="应用基于本地AD/LDAP等认证图标" class="icon_adauth-hover">
-                <div>
-                    <div class="ft-18 ft-base-b mg-t-40 font-style-1">应用基于本地AD/LDAP等认证</div>
-                    <div class="ft-14 ft-base-b mg-t-30 font-style-1 txt-j" style="line-height: 22px;width: 252px;">
-                        在制造型、日化、快消等行业类企业中，为大量的代理商提供了相应的代理商类应用。如何让代理商可以通过本地AD等用户名密码体系来访问上游厂商的系统？
-                    </div>
-                </div>
-                <a href="https://4security.cn" id="more-1">
-                    <div class="flex-j-a mg-t-40">
-                        <div class="ft-12 inl-b ft-base-w">了解详情</div>
-                        <img src="images/w-more.png" alt="应用基于本地AD/LDAP等认证详情" class="inl-b mg-l-5">
-                    </div>
-                </a>
+            <div class="footer_s3 footer_nav mg_b60">
+                <ul>
+                    <li>
+                        <div class="footer_tit flex_box">
+                            <span>快速链接</span>
+                            <i class="iconfont_jiantou jiantou-enter"></i>
+                        </div>
+                        <div class="footer_list">
+                            <ol>
+                                <li>
+                                    <a class="flex_box" href="https://work.weixin.qq.com/kfid/kfc962c4237e9e3eeb7">
+                                        <i class="iconfont_jiantou jiantou-forward"></i>
+                                        <span>了解赛博特安</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="flex_box" href="https://work.weixin.qq.com/kfid/kfc962c4237e9e3eeb7">
+                                        <i class="iconfont_jiantou jiantou-forward"></i>
+                                        <span>加入我们</span>
+                                    </a>
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="footer_tit flex_box">
+                            <span>行业解决方案</span>
+                            <i class="iconfont_jiantou jiantou-enter"></i>
+                        </div>
+                        <div class="footer_list">
+                            <ol>
+                                <li>
+                                    <a class="flex_box" href="https://4security.cn/">
+                                        <i class="iconfont_jiantou jiantou-forward"></i>
+                                        <span>金融</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="flex_box" href="https://4security.cn/">
+                                        <i class="iconfont_jiantou jiantou-forward"></i>
+                                        <span>地产</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="flex_box" href="https://4security.cn/">
+                                        <i class="iconfont_jiantou jiantou-forward"></i>
+                                        <span>智慧政务</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="flex_box" href="https://4security.cn/">
+                                        <i class="iconfont_jiantou jiantou-forward"></i>
+                                        <span>交通</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="flex_box" href="https://4security.cn/">
+                                        <i class="iconfont_jiantou jiantou-forward"></i>
+                                        <span>制造</span>
+                                    </a>
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="footer_tit flex_box">
+                            <span>赛博特安产品</span>
+                            <i class="iconfont_jiantou jiantou-enter"></i>
+                        </div>
+                        <div class="footer_list">
+                            <ol>
+
+                                <li>
+                                    <a class="flex_box" href="https://4security.cn/">
+                                        <i class="iconfont_jiantou jiantou-forward"></i>
+                                        <span>基础安全产品线</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="flex_box" href="https://4security.cn/">
+                                        <i class="iconfont_jiantou jiantou-forward"></i>
+                                        <span>增强安全产品线</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="flex_box" href="https://4security.cn/" target="_blank">
+                                        <i class="iconfont_jiantou jiantou-forward"></i>
+                                        <span>云端安全产品</span>
+                                    </a>
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="footer_tit flex_box">
+                            <span>联系我们</span>
+                            <i class="iconfont_jiantou jiantou-enter"></i>
+                        </div>
+                        <div class="footer_list">
+                            <ol>
+
+                                <li>
+                                    <a class="flex_box" href="https://4security.cn/">
+                                        <i class="iconfont_jiantou jiantou-forward"></i>
+                                        <span>总部</span>
+                                    </a>
+                                </li>
+
+
+                            </ol>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div class="solution-item bg-nor item-2 block-url" data-url="./ss/solutions/social.html">
-                <img src="images/index_icon_social.png" alt="应用基于钉钉/微信等快速认证图标" class="icon_social-nor">
-                <img src="images/index_icon_social-hover.png" alt="应用基于钉钉/微信等快速认证图标" class="icon_social-hover">
-                <div class="ft-18 ft-base-b mg-t-40 font-style-2">应用基于钉钉/微信等快速认证</div>
-                <div class="ft-14 ft-base-b mg-t-30 font-style-2 txt-j" style="line-height: 22px;width: 252px;">
-                    随着钉钉、企业微信等工作协同应用的普遍使用，企业用户越来越希望能够通过它们快捷登录到各种工作应用中。
-                </div>
-                <a href="https://4security.cn" id="more-2">
-                    <div class="flex-j-a mg-t-40">
-                        <div class="ft-12 inl-b ft-base-w">了解详情</div>
-                        <img src="images/w-more.png" alt="应用基于钉钉/微信等快速认证详情" class="inl-b mg-l-5">
-                    </div>
-                </a>
-            </div>
-            <div class="solution-item bg-nor item-3 block-url" data-url="./ss/solutions/ding_apps.html">
-                <img src="images/index__ding_apps.png" alt="通过钉钉/WeLink访问企业应用图标" class="ding_apps-nor">
-                <img src="images/index__ding_apps-hover.png" alt="通过钉钉/WeLink访问企业应用图标" class="ding_apps-hover">
-                <div class="ft-18 ft-base-b mg-t-40 font-style-3">通过钉钉/WeLink访问企业应用</div>
-                <div class="ft-14 ft-base-b mg-t-30 font-style-3 txt-j" style="line-height: 22px;width: 252px;">
-                    随着企业信息化的需求不断提升，越来越多的应用被使用及访问，企业越发迫切的希望能够让应用整合在一起，业务能够协同。如何让两者有效结合起来？如何能让企业用户能够在钉钉上来使用及访问企业自身的业务应用？
-                </div>
-                <a href="https://4security.cn" id="more-3">
-                    <div class="flex-j-a mg-t-40">
-                        <div class="ft-12 inl-b ft-base-w">了解详情</div>
-                        <img src="./竹云-IDaaS-身份云-身份认证-单点登录-微信登录-面向企业-面向开发者_files/w-more.png" alt="通过钉钉/WeLink访问企业应用详情" class="inl-b mg-l-5">
-                    </div>
-                </a>
-            </div>
-            <div class="solution-item bg-nor item-4 block-url" data-url="./ss/solutions/idaas_iam.html">
-                <img src="images/index_icon_idaas_iam.png" alt="线上IDaaS+线下IAM融合图标" class="icon_idaas-nor">
-                <img src="images/index_idaas_iam-hover.png" alt="&gt;线上IDaaS+线下IAM融合图标" class="icon_idaas-hover">
-                <div class="ft-18 ft-base-b mg-t-40 font-style-4">线上IDaaS+线下IAM融合</div>
-                <div class="ft-14 ft-base-b mg-t-30 font-style-4 txt-j" style="line-height: 22px;width: 252px;">
-                    随着企业信息化整合的过程，越来越多的企业通过各种方式对传统应用域进行了业务整合，通过各种机制建立了相应的IAM治理体系。 出于运营成本及运维投入考虑，企业也在越来越多的开始使用SaaS化应用（例如Salesforce，office365，workday，销售易等）来适配业务发展。
-                </div>
-                <a href="https://4security.cn" id="more-4">
-                    <div class="flex-j-a mg-t-40">
-                        <div class="ft-12 inl-b ft-base-w">了解详情</div>
-                        <img src="images/w-more.png" alt="&gt;线上IDaaS+线下IAM融合详情" class="inl-b mg-l-5">
-                    </div>
-                </a>
+            <div class="footer_s4 footer_cpr">
+                <span>©2021</span>
+                <i class="footer_beian">备案号：<a href="https://4security.cn/" target="_blank">苏ICP备2021049757号</a></i>
+
             </div>
         </div>
-        <a href="https://4security.cn">
-            <div class="third-more ft-14 ft-base-w button-blue flex-j-a mg-t-40">查看更多解决方案</div>
-        </a>
-    </section>
-<section class="sec-fourth">
-        <div class="honour flex-j-a">
-            <div class="honour-icon flex-j-a flex-s-b">
-                <div class="honour-icon-item flex-col flex-j-a flex-s-b">
-                    <img src="images/index_logo_ISO.png" alt="ISO9001认证" class="honourIcon1">
-                    <div class="ft-14 honour-font">ISO9001认证</div>
-                </div>
-                <div class="honour-icon-item flex-col flex-j-a flex-s-b">
-                    <img src="images/index_logo_ISO.png" alt="ISO27001认证" class="honourIcon2">
-                    <div class="ft-14 honour-font">ISO27001认证</div>
-                </div>
-                <div class="honour-icon-item flex-col flex-j-a flex-s-b">
-                    <img src="images/index_logo_DJCP.png" alt="等保三级" class="honourIcon3">
-                    <div class="ft-14 honour-font">等保三级</div>
-                </div>
-                <div class="honour-icon-item flex-col flex-j-a flex-s-b">
-                    <img src="images/cmmi.png" alt="CMMI Level-3" class="honourIcon4">
-                    <div class="ft-14 honour-font">CMMI Level-3</div>
-                </div>
-                <div class="honour-icon-item flex-col flex-j-a flex-s-b">
-                    <img src="images/index_logo_zhuzuoq.png" alt="计算机软件著作权图标" class="honourIcon5">
-                    <div class="ft-14 honour-font">30+项计算机软件著作权</div>
-                </div>
-                <div class="honour-icon-item flex-col flex-j-a flex-s-b">
-                    <img src="images/1023.png" alt="国家专利图标" class="honourIcon5">
-                    <div class="ft-14 honour-font">20+项国家专利</div>
-                </div>
-            </div>
-        </div>
-        <div class="flex-j-a flex-col fourth-tryout">
-            <div class="flex-j-a flex-col" style="width: 1200px;height: 100%;">
-                <div class="ft-30 ft-base-b">现在，就让业务连接起来，为数字身份安全赋能</div>
-                <a href="https://4security.cn">
-                    <div class="mg-t-30 ft-16 ft-base-w button-blue flex-j-a fourth-button">申请试用</div>
-                </a>
-            </div>
-        </div>
-    </section>
+    </footer>
 
-	  
-
-     <!-- FOOTER -->
-     <footer id="footer" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
-
-                    <div class="copyright-text col-md-12 col-sm-12">
-			        <div class="col-md-12 col-sm-12">
-                              <ul class="social-icon">
-                                   <li><a href="#" class="fa fa-qq" aria-hidden="true"></a></li>
-                                   <li><a href="#" class="fa fa-weibo" aria-hidden="true"></a></li>
-                                   <li><a href="#" class="fa fa-weixin"></a></li>
-
-                              </ul>
-                         </div>
-			    <hr>
-                         <div class="col-md-12 col-sm-12">
-                              <p>Copyright &copy; 2021 南京赛博特安科技有限公司 </p>
-                         </div>
-
-                     
-                    </div>
-
-               </div>
-          </div>
-     </footer>
-
-
-     <!-- SCRIPTS -->
-     <script src="js/jquery.js"></script>
-     <script src="js/bootstrap.min.js"></script>
-     <script src="js/jquery.stellar.min.js"></script>
-     <script src="js/owl.carousel.min.js"></script>
-     <script src="js/smoothscroll.js"></script>
-     <script src="js/custom.js"></script>
+    </div>
+    <!-- /container_box -->
+    <script type="text/javascript" src="./index/wow.js"></script>
+    <script type="text/javascript" src="./index/common.js"></script>
 
 </body>
 
