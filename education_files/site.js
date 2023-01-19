@@ -2980,24 +2980,24 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
                         prevButton: prevBtn
                     }), _i12 = 0; _i12 < controls.length; _i12++) controls[_i12].addEventListener("click", tabsControl)
                 }(tabs[_i11]);
-            navToggler.addEventListener("click", toggleMobileMenu),
-                main.addEventListener("click", mainClick),
-                $(".custom-select").each(Selectize),
-                document.documentElement.clientWidth < 767 && ($(".mobile-custom-select").each(Selectize), statsSlider &&
-                    function () {
-                        var slides = statsSlider.getElementsByClassName("stats-item");
-                        $(statsSlider).wrap('<div class="swiper-container slider"></div>'),
-                            $(statsSlider).after('<div class="swiper-button-prev"></div>'),
-                            $(statsSlider).after('<div class="swiper-button-next"></div>'),
-                            statsSlider.classList.add("swiper-wrapper");
-                        for (var _i15 = 0; _i15 < slides.length; _i15++) slides[_i15].classList.add("swiper-slide");
-                        new Swiper(statsSlider.parentNode, {
-                            autoplay: 5e3,
-                            prevButton: ".swiper-button-prev",
-                            nextButton: ".swiper-button-next"
-                        })
-                    }())
-        }(jQuery),
+   //         navToggler.addEventListener("click", toggleMobileMenu),
+   //             main.addEventListener("click", mainClick),
+   //             $(".custom-select").each(Selectize),
+   //             document.documentElement.clientWidth < 767 && ($(".mobile-custom-select").each(Selectize), statsSlider &&
+   //                 function () {
+   //                     var slides = statsSlider.getElementsByClassName("stats-item");
+   //                     $(statsSlider).wrap('<div class="swiper-container slider"></div>'),
+   //                         $(statsSlider).after('<div class="swiper-button-prev"></div>'),
+   //                         $(statsSlider).after('<div class="swiper-button-next"></div>'),
+   //                         statsSlider.classList.add("swiper-wrapper");
+   //                     for (var _i15 = 0; _i15 < slides.length; _i15++) slides[_i15].classList.add("swiper-slide");
+   //                     new Swiper(statsSlider.parentNode, {
+   //                         autoplay: 5e3,
+   //                         prevButton: ".swiper-button-prev",
+   //                         nextButton: ".swiper-button-next"
+   //                     })
+   //                 }())
+   //     }(jQuery),
         function () {
             var isWebkit = navigator.userAgent.toLowerCase().indexOf("webkit") > -1,
                 isOpera = navigator.userAgent.toLowerCase().indexOf("opera") > -1,
