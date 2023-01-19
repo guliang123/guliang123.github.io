@@ -2998,16 +2998,16 @@ var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator 
    //                     })
    //                 }())
    //     }(jQuery),
-        function () {
-            var isWebkit = navigator.userAgent.toLowerCase().indexOf("webkit") > -1,
-                isOpera = navigator.userAgent.toLowerCase().indexOf("opera") > -1,
-                isIe = navigator.userAgent.toLowerCase().indexOf("msie") > -1; (isWebkit || isOpera || isIe) && document.getElementById && window.addEventListener && window.addEventListener("hashchange",
-                    function () {
-                        var element, id = location.hash.substring(1);
-                        /^[A-z0-9_-]+$/.test(id) && (element = document.getElementById(id)) && (/^(?:a|select|input|button|textarea)$/i.test(element.tagName) || (element.tabIndex = -1), element.focus())
-                    },
-                    !1)
-        }(),
+   //     function () {
+   //         var isWebkit = navigator.userAgent.toLowerCase().indexOf("webkit") > -1,
+   //             isOpera = navigator.userAgent.toLowerCase().indexOf("opera") > -1,
+   //             isIe = navigator.userAgent.toLowerCase().indexOf("msie") > -1; (isWebkit || isOpera || isIe) && document.getElementById && window.addEventListener && window.addEventListener("hashchange",
+   //                 function () {
+   //                     var element, id = location.hash.substring(1);
+   //                     /^[A-z0-9_-]+$/.test(id) && (element = document.getElementById(id)) && (/^(?:a|select|input|button|textarea)$/i.test(element.tagName) || (element.tabIndex = -1), element.focus())
+   //                 },
+   //                 !1)
+   //     }(),
         window.wdsWindowReady = {},
         function (window, $, app) {
             app.init = function () {
