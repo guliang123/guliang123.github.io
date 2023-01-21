@@ -892,7 +892,7 @@ header nav ul>li .subnav dl dd li.active a:before{
 	background:linear-gradient(to bottom,#1f8ccd,#1f71cd);
 	position:relative;
 }
-.iampro_box:before{
+/*.iampro_box:before{
 	content:"";
 	position:absolute;
 	width:100%;
@@ -900,7 +900,7 @@ header nav ul>li .subnav dl dd li.active a:before{
 	top:0;
 	left:0;
 	background:url(../img/iampro_mask_bg.png);
-}
+}*/
 .iampro_box .center_box{
 	position:relative;
 	z-index:5;
@@ -1354,11 +1354,11 @@ header nav ul>li .subnav dl dd li.active a:before{
 	font-weight:bold;
 }
 
-/* 竹云资讯 */
+/*  
 .news_box{
 	background:url(../img/news_bg.jpg) no-repeat center center;
 	background-size:cover;
-}
+}*/
 .news_box .center_box{
 	background:#fff;
 	padding:.6rem .4rem;
@@ -1603,10 +1603,10 @@ header nav ul>li .subnav dl dd li.active a:before{
 }
 
 /* 页脚 */
-.footer_box{
+/*.footer_box{
 	background:url(../img/footer_bg.png) #1b1b1b no-repeat center center;
 	background-size:cover;
-}
+}*/
 .footer_box .footer_s1{
 	-webkit-justify-content:space-between;
 	justify-content:space-between;
@@ -4469,9 +4469,9 @@ header nav ul>li .subnav dl dd li.active a:before{
     background:linear-gradient(to bottom,#1f8ccd,#1f71cd);
 	overflow:hidden;
 }
-.ipser_tran .ipser_bg{
+/*.ipser_tran .ipser_bg{
 	background:url(../img/iampro_mask_bg.png);
-}
+}*/
 .ipser_tran .ipser_con ul li{
 	-webkit-justify-content:space-between;
 	justify-content:space-between;
