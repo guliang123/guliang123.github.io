@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://www.zpedu.com/zt/ctf/ -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>CTF信息安全竞赛实战演练</title>
+<meta name="keywords" content="CTF,CTF比赛,CTF网络安全大赛,CTF竞赛">
+<meta name="description" content="赛博特安提供CTF信息安全竞赛实战演练培训课程，想了解CTF是什么意思、CTF竞赛模式、CTF比赛应该具备的技能、CTF含金量、如何备战及团队问题解决、CTF竞赛对个人的提升、授课内容等CTF网络安全大赛的内容，欢迎联系：198-5287-9665">
+<link type="text/css" rel="stylesheet" href="./ctf_files/style.css">
+<link type="text/css" rel="stylesheet" href="./ctf_files/public.css">
+<style type="text/css">
+            .agl-hover {
+                outline: 2px solid rgba(244,67,54,0.99) !important;
+                background-color: rgba(244,67,54,0.2) !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+            }
+            .agl-highlight-current {
+                outline: 2px solid rgba(255,87,34,0.99) !important;
+                background-color: rgba(255,87,34,0.4) !important;
+            }
+            .agl-highlight-similar {
+                outline: 2px dashed rgba(255,87,34,0.99) !important;
+                background-color: rgba(255,87,34,0.4) !important;
+            }
+            .agl-highlight-group {
+                outline: 4px double rgba(255,87,34,0.99) !important;
+                background-color: rgba(255,87,34,0.4) !important;
+            }
+            .agl-cover-current {
+                
+                position: absolute !important;
+                top: 0;
+                left: 0;
+                z-index: 9 !important;
+        
+                outline: 2px solid rgba(33,33,33,0.99) !important;
+                background-color: rgba(33,33,33,0.6) !important;
+            }
+            .agl-cover-similar {
+                
+                position: absolute !important;
+                top: 0;
+                left: 0;
+                z-index: 9 !important;
+        
+                outline: 2px dashed rgba(33,33,33,0.99) !important;
+                background-color: rgba(33,33,33,0.6) !important;
+            }
+            .agl-cover-group {
+                
+                position: absolute !important;
+                top: 0;
+                left: 0;
+                z-index: 9 !important;
+        
+                outline: 4px double rgba(33,33,33,0.99) !important;
+                background-color: rgba(33,33,33,0.6) !important;
+            }
+            .agl-cover-focus {
+                outline: 3px solid rgba(255,165,0,0.99) !important;
+                background-color: rgba(255,165,0,0.4) !important;
+            }
+        </style><script type="text/javascript" async="" src="./ctf_files/fcagl.js"></script><!--script src="./ctf_files/push.js"></script--><!--script src="./ctf_files/hm.js"></script--><script type="text/javascript" src="./ctf_files/jquery-1.9.1.min.js"></script>
+<!--script type="text/javascript" src="./ctf_files/public.js"></script-->
+<script type="text/javascript">
+function browserRedirect() {
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+         var url = window.location.href;
+		 url = url.replace("www","m");
+		 window.location.href = url;
+    }
+}
+browserRedirect();
+$(function(){
+	$(".kctab li").each(function(index){
+        $(this).hover(function() {
+        	if(!$(this).hasClass("select")){
+	            $(this).addClass('select').siblings().removeClass('select');
+	            $(".kclist li").stop().fadeOut(0);
+	            $(".kclist li").eq(index).fadeIn(600);
+	        }
+        });
+    })
+})
+</script>
+<!--script type="text/javascript" src="./ctf_files/niuniucapture.js"></script--><!--script type="text/javascript" src="./ctf_files/qrCode" id="id_jsonp_1674342632217_9264024614584514"></script--></head>
+<body>
+<div class="wrap">
+
+	<div class="bnr" title="CTF信息安全竞赛实战演练"></div>
+	
+
+	<div class="blk moshi">
+		<h2 class="tit">CTF竞赛模式有哪些？</h2>
+		<ul>
+			<li>
+				<img src="./ctf_files/moshi1.png" alt="参赛队伍在单位时间内以解题数量多少来衡量成绩，题目主要包含逆向、漏洞挖掘与利用、Web渗透、密码、取证、隐写、安全编程等内容。">
+				参赛队伍在单位时间内以解题数量多少来衡量成绩，题目主要包含逆向、漏洞挖掘与利用、Web渗透、密码、取证、隐写、安全编程等内容。
+			</li>
+			<li>
+				<img src="./ctf_files/moshi2.png" alt="参赛队伍通过挖掘网络服务漏洞并攻击对手获得分数，同时通过修复自身服务漏洞，限制对手得分。">
+				参赛队伍通过挖掘网络服务漏洞并攻击对手获得分数，同时通过修复自身服务漏洞，限制对手得分。
+			</li>
+			<li>
+				<img src="./ctf_files/moshi3.png" alt="参赛队伍通过解题可以获取一些初始分数，然后通过攻防对抗进行得分增减的零和游戏，最终以得分高低分出胜负。">
+				参赛队伍通过解题可以获取一些初始分数，然后通过攻防对抗进行得分增减的零和游戏，最终以得分高低分出胜负。
+			</li>
+		</ul>
+	</div>
+	
+	<div class="jineng">
+		<div class="blk">
+			<h2 class="tit">参加CTF竞赛应该具备哪些技能？</h2>
+			<ul>
+				<li>CTF以团队为竞赛单位，要求队员间技术互补，且至少精通一种竞赛题型</li>
+				<li><div>01</div><p>WEB渗透测试</p></li>
+				<li><div>02</div><p>CRYPTO密码学</p></li>
+				<li><div>03</div><p>PWN二进制漏洞利用</p></li>
+				<li><div>04</div><p>REVERSE逆向工程</p></li>
+				<li><div>05</div><p>MISC杂项流量分析</p></li>
+			</ul>
+		</div>
+
+	</div>
+	
+	<div class="tixing">
+		<div class="blk">
+			<h2 class="tit">CTF竞赛题型有哪些？</h2>
+			<ul>
+				<li>
+					<div class="item1">基础知识</div>
+					<p>竞赛基础知识，以综合解决方案的形式来体现知识内容，涉及数据库基础，网络安全基础、操作系统基础等。</p>
+				</li>
+				<li>
+					<div class="item2">MISC</div>
+					<p>安全杂项，题目涉及流量分析、电子取证、人肉搜索、数据分析、大数据统计等等，覆盖面比较广。</p>
+				</li>
+				<li>
+					<div class="item1">PPC</div>
+					<p>源代码，题目涉及到程序编写、编程算法实现。算法的逆向编写，批量处理等。</p>
+				</li>
+				<li>
+					<div class="item2">CRYPTO</div>
+					<p>密码学，题目考察各种加解密技术，包括古典加密技术、现代加解密技术甚至出题者自创加密技术。</p>
+				</li>
+				<li>
+					<div class="item2">PWN</div>
+					<p>在黑客中代表攻破，取得权限，CTF比赛中代表着溢出类题目，其中常见类型溢出漏洞有栈溢出，堆溢出。</p>
+				</li>
+				<li>
+					<div class="item1">REVERSE</div>
+					<p>逆向工程，涉及到软件逆向、破解技术等，要求有较强的反汇编、反编译扎实功底。</p>
+				</li>
+				<li>
+					<div class="item2">WEB</div>
+					<p>WEB是CTF夺旗竞赛中主要题型，涉及到常见的Web漏洞，诸如注入、XSS、文件包含、代码执行、上传等漏洞。</p>
+				</li>
+				<li>
+					<div class="item1">STEGA</div>
+					<p>隐写术，题目的Flag会隐藏到图片、音频、视频等各类数据载体中供参赛选手获取。</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="nan">
+		<div class="blk">
+			<h2 class="tit">都说CTF竞赛含金量高 究竟难在哪儿？</h2>
+			<ul>
+				<li>
+					<div>01</div>
+					<p>CTF竞赛题目综合性强<br>题型涉及范围广</p>
+				</li>
+				<li>
+					<div>02</div>
+					<p>CTF竞赛题目灵活性强<br>解题思路不唯一</p>
+				</li>
+				<li>
+					<div>03</div>
+					<p>CTF竞赛题目复杂度高<br>出题者标榜技术</p>
+				</li>
+				<li>
+					<div>04</div>
+					<p>CTF竞赛题目随意性强<br>偏题怪题很常见</p>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	
+	
+	<div class="beizhan blk">
+		<h2 class="tit">CTF竞赛想拿高分 该如何备战？</h2>
+		<ul>
+			<li>
+				<img src="./ctf_files/beizhan1.png" alt="提升短板 磨炼杀招">
+				<h4>提升短板 磨炼杀招</h4>
+				<p>CTF竞赛题型分成5个模块，要求队员至少精通一类模块技术。队伍不能有明显技术短板，根据以往经验坐拥PWN大神，对战得分普遍较高。</p>
+				<div class="tips">
+					<span>赛博提示</span>
+					<em>培训课程实战模块完整覆盖，讲师乃PWN大神一枚。</em>
+				</div>
+			</li>
+			<li>
+				<img src="./ctf_files/beizhan2.png" alt="以赛代练 快速学习">
+				<h4>以赛代练 快速学习</h4>
+				<p>CTF竞赛以实战为导向，需要在日常实战训练中，不断总结和积累，不论是对技术，还是临场应变能力都有极大帮助，特别是对快速学习能力提升效果最为显著。</p>
+				<div class="tips">
+					<span>赛博提示</span>
+					<em>无论模拟资源还是对战训练，资源多的不要不要的！</em>
+				</div>
+			</li>
+			<li>
+				<img src="./ctf_files/beizhan3.png" alt="吸取经验 学习思路">
+				<h4>吸取经验 学习思路</h4>
+				<p>CTF竞赛经过多年的沉淀，有一些解题思路和攻防赛的对抗技巧是可以借鉴的。不仅能极大提升解题赛效率，同时在对战阶段培养学员发散性的解题思路。</p>
+				<div class="tips">
+					<span>赛博提示</span>
+					<em>讲师经验丰富，我们看重First Blood。</em>
+				</div>
+			</li>
+			<li>
+				<img src="./ctf_files/beizhan4.png" alt="多做多练 举一反三">
+				<h4>多做多练 举一反三</h4>
+				<p>刷过几套题之后，你会发现有些知识点的题目，都有着一些共性。对知识点能扩展的方向做到了然于胸。</p>
+				<div class="tips">
+					<span>赛博提示</span>
+					<em>不仅有题库，数量还很多，题型很靠谱。</em>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	
+	<div class="wenti">
+		<div class="blk">
+			<h2 class="tit">你的CTF团队是否存在这些问题？</h2>
+			<ul>
+				<li>
+					<img src="./ctf_files/wenti1.png" alt="团队技术落后">
+					<h4>团队技术落后</h4>
+					<p>队员对于目前主流攻防技术整体不掌握，或在部分技术中处于弱势。</p>
+				</li>
+				<li>
+					<img src="./ctf_files/wenti2.png" alt="队伍技术能力中庸">
+					<h4>队伍技术能力中庸</h4>
+					<p>队员技术基础不错，没有明显短板，但缺乏摧城拔寨的手段。</p>
+				</li>
+				<li>
+					<img src="./ctf_files/wenti3.png" alt="临场应变能力差">
+					<h4>临场应变能力差</h4>
+					<p>缺乏对新知识快速学习能力，理论付诸实践转化能力差。</p>
+				</li>
+				<li>
+					<img src="./ctf_files/wenti4.png" alt="解题思路闭塞">
+					<h4>解题思路闭塞</h4>
+					<p>遇到复杂题目或生题时，解题思路呆板，缺乏发散理性的推导能力。</p>
+				</li>
+				<li>
+					<img src="./ctf_files/wenti5.png" alt="解题赛成绩差">
+					<h4>解题赛成绩差</h4>
+					<p>知识广度不足，题型变化了解不够，不掌握答题技巧。</p>
+				</li>
+				<li>
+					<img src="./ctf_files/wenti6.png" alt="攻防赛成绩差">
+					<h4>攻防赛成绩差</h4>
+					<p>攻击缺乏有效的渗透手段，防御没有针对性。</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="qiyewenti">
+		<div class="blk">
+			<h2 class="tit">参与CTF竞赛能解决企业哪些根本的问题？</h2>
+			<ul>
+				<li>
+					<h4>01. 产品研发迭代缺乏新技术支撑</h4>
+					<p class="item1">利用实战、比赛中经验，研究数据分析，设计AI算法，以及网络安全防御产品。</p>
+				</li>
+				<li>
+					<h4>02. 安全团队技术能力不成熟</h4>
+					<p class="item2">任何企业都存在未被掌控的安全风险点，只有通过实战不断提升团队技术能力，才能提高漏洞发现门槛。</p>
+				</li>
+				<li>
+					<h4>03. 网络安全风险意识薄弱</h4>
+					<p class="item3">没有意识到一些行为操作，将给企业带来网络安全风险。只有更多的接触网络攻击手段，才能提高防范意识，不留可乘之机，更有效的保护自己。</p>
+				</li>
+				<li>
+					<h4>04. 资金压力大没钱做推广</h4>
+					<p class="item2">团队刚成立，论技术有，谈理想也有。踌躇满志做产品，唯独囊中羞涩，没钱推广企业经营步履维艰。</p>
+				</li>
+				<li>
+					<h4>05. 洽谈业务时没有过硬技术背书</h4>
+					<p class="item1">在国内，安全类技能认证普遍存在“一英里宽一英尺深”情况下，过硬的CTF成绩绝对是优质背书。 </p>
+				</li>
+				<li>
+					<h4>06. 没有渠道接触优秀安全技术人才</h4>
+					<p class="item3">企业通过以往渠道获得优秀安全技术人才，无异于撞大运。并没有稳定可靠的途径。</p>
+				</li>
+				<li>
+					<h4>07. 对招聘安全技术人员工作能力不了解</h4>
+					<p class="item1">简历呈现完美，面试对答如流，实际工作能力堪忧。</p>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	
+	<div class="geren">
+		<div class="blk">
+			<h2 class="tit">CTF竞赛对个人提升有多大？</h2>
+			<ul>
+				<li>
+					<h4>提升快速学习能力</h4>
+					<img src="./ctf_files/geren1.png" alt="提升快速学习能力">
+					<p>CTF竞赛试题范围广且灵活多变，需要学员在比赛过程中去学习和实践。对于知识理解速度和理解能力有着极高挑战。</p>
+				</li>
+				<li>
+					<h4>提升技术认知水平</h4>
+					<img src="./ctf_files/geren2.png" alt="提升技术认知水平">
+					<p>CTF竞赛试题难度大复杂程度高，需要从原理上去理解。这对于个人安全技术能力体系的丰富完善有着极大的帮助。</p>
+				</li>
+				<li>
+					<h4>提升逻辑思考能力</h4>
+					<img src="./ctf_files/geren3.png" alt="提升逻辑思考能力">
+					<p>CTF竞赛不仅节奏快，而且比赛内容复杂程度高。对于知识技术运用极其综合。要求选手时刻保持清晰的判断和高效的分析能力。</p>
+				</li>
+				<li>
+					<h4>提升实战解决能力</h4>
+					<img src="./ctf_files/geren4.png" alt="提升实战解决能力">
+					<p>CTF竞赛其本质是通过一系列技术手段应用，和实际工作中对于网络安全技术发展的思路完全吻合，而技术强度和难度更胜一筹。</p>
+				</li>
+				<li>
+					<h4>提供进阶TOP级企业敲门砖</h4>
+					<img src="./ctf_files/geren5.png" alt="提供进阶TOP级企业敲门砖">
+					<p>CTF竞赛是国内顶尖互联网企业，吸纳优质网络安全人才的重要手段。</p>
+				</li>
+				<li>
+					<h4>提供企业级项目经验技术积累</h4>
+					<img src="./ctf_files/geren6.png" alt="提供企业级项目经验技术积累">
+					<p>CTF竞赛内容源于实战但高于工作日程接触，对于重大项目中的网络安全技术实施，    有着极高的借鉴价值。</p>
+				</li>
+			</ul>
+		</div>
+
+	</div>	
+
+	<div class="kc">
+		<div class="blk">
+			<h2 class="tit">关于CTF竞赛授课内容</h2>
+			<ul class="kctab">
+				<li class="select">01</li>
+				<li class="">02</li>
+				<li class="">03</li>
+				<li class="">04</li>
+				<li class="">05</li>
+				<li class="">06</li>
+			</ul>
+			<ul class="kclist">
+				<li style="display: block;">
+					<h3><strong>CTF入门</strong></h3>
+					<p>1.CTF概念和入门<br>
+2.国内外安全攻防比赛现状<br>
+3.攻防比赛方式和题型介绍<br>
+4.安全培训基础环境介绍和配置搭建<br>
+5.实训期间所需工具包和资料分发<br>
+6.操作系统命令和数据库基础<br>
+7.PHP和python程序入门<br>
+8.数据库基础入门和SQL语言简述<br>
+9.网络安全攻防渗透基础知识（搜集、定点、攻击等）<br>
+10.Linux安全基础（基本命令、系统管理、反弹shell等）<br>
+11.Windows安全基础（DOS/PS基本命令、用户权限、AD、网络协议等）</p>
+				</li>
+				<li style="display: none; opacity: 1;">
+					<h3><strong>数据隐写</strong></h3>
+					<p>1.数据隐写基础和工具分发<br>
+2.隐写比赛模式和题型分析<br>
+3.隐写专项练习：图片隐写、视频隐写、音频隐写、网络协议隐藏、pdf隐写、压缩文件隐写等</p>
+					<h3><strong>MISC杂项</strong></h3>
+					<p>1.常见MISC杂项题目分析<br>
+2.网络流量协议分析基础<br>
+3.Wireshark工具实操<br>
+4.系统日志分析思路<br>
+5.社会工程学概念<br>
+6.其他技术点探讨</p>
+				</li>
+				<li style="display: none;">
+					<h3><strong>密码编码</strong></h3>
+					<p>1.常见比赛密码学题型分析<br>
+2.密码编码工具介绍和分发<br>
+3.密码学理论基础（凯撒、栅栏、莫斯等）<br>
+4.古典密码学题型分析<br>
+5.编码解码基础入门<br>
+6.常见编码解码题型分析</p>
+					<h3><strong>密码学进阶</strong></h3>
+					<p>1.现代密码学入门<br>
+2.算法加解密原理<br>
+3.题型分析和关键代码学习<br>
+4.其他算法介绍</p>
+					<h3><strong>综合训练</strong></h3>
+					<p>1.隐写技术复习<br>
+2.密码学复习<br>
+3.题目答疑解惑<br>
+4.杂项题目实操</p>
+				</li>
+				<li style="display: none;">
+					<h3><strong>WEB基础</strong></h3>
+					<p>1.Web漏洞基础和工具介绍<br>
+2.WEB爆破和burp实操<br>
+3.任意文件下载和信息泄露<br>
+4.文件上传和文件解析漏洞分析<br>
+5.XSS跨站攻击（反射、存储、DOM）靶场实操<br>
+6.命令执行原理和OS命令强化<br>
+7.代码执行和PHP代码强化<br>
+8.XXE原理分析和赛题解析</p>
+					<h3><strong>SQLI提高</strong></h3>
+					<p>SQL注入基础（原理、工具、SQLMAP等）
+SQL注入进阶（报错、盲注、联合、宽字节、二阶注入、二次编码等注入）</p>
+					<h3><strong>WEB强化</strong></h3>
+					<p>1.PHP反序列化题型分析<br>
+2.SSRF原理和题型分析<br>
+3.弱类型技术原理<br>
+4.变量覆盖和条件竞争<br>
+5.文件包含强化（伪协议、结合上传、结合XSS等）<br>
+6.SSTI模板注入分析（flask等框架介绍）</p>
+					<h3><strong>代码审计</strong></h3>
+					<p>1.python安全编程与代码审计<br>
+2.PHP安全编程与代码审计<br>
+3.Java、JSP安全编程与代码审计<br>
+4.代码审计工具和真题分析</p>
+					<h3><strong>实操练习</strong></h3>
+					<p>典型题目实操练习和指导</p>
+				</li>
+				<li style="display: none; opacity: 1;">
+					<h3><strong>逆向工程</strong></h3>
+					<p>1.逆向工程入门<br>
+2.汇编语言基础和关键语句详解<br>
+3.PE格式介绍和X86/X64平台原理<br>
+4.静态分析和动态调试工具介绍<br>
+5.代码和数据结构分析<br>
+6.逆向题目技术点分析和题型介绍<br>
+7.Android基础和逆向题型<br>
+8.逆向题目实操和技能强化<br>
+9.【PWN入门和题型概述】（酌情）</p>
+				</li>
+				<li style="display: none;">
+					<h3><strong>CTF模拟训练</strong></h3>
+					<p>个人夺旗战和AWD攻防混战（0.5天）</p>
+					<h3><strong>CTF解题赛</strong></h3>
+					<p>（提供赛题和比赛平台，1.5天）</p>
+				</li>
+			</ul>
+		</div>
+	
+	</div>
+	
+
+</div>
+
+<div id="elzx">
+    <div id="zxbtn" data-agl-cvt="32">
+    </div><div id="top" style="display: none;"></div>
+</div>
+
+<!--script type="text/javascript" charset="UTF-8" src="./ctf_files/90262.js"></script><style>.vstText{font-family:SimSun!important;font-size:12px;color:#FFFFFF!important;} .svcText{font-family:SimSun!important;font-size:12px;color:#000000!important;}</style><div id="jesong_panel" class=""></div><div id="airBubblesUl" class=""></div><div id="jesong_chat_min_horizontal" class="jesong_chat_min_sc" style="background-color: rgb(48, 151, 239); border-color: rgb(48, 151, 239); display: none;"></div><div id="jesong_chat_min" class="jesong_chat_min_sc jesong-container-mini-badge" style="background-color: rgb(48, 151, 239); display: none; border-color: rgb(48, 151, 239);"><div class="jesong-badge-warning" id="jesong_unread" style="display: none;">0</div><div id="jesong_badge_msg" class="jesong-badge-msg"><div class="jesong-badge-msg-close" id="jesong_badge_msg_close"></div><div class="jesong-badge-msg-content"><div class="jesong-badge-msg-content-text" id="jesong_badge_msg_content_text"></div></div><div class="jesong-badge-msg-subscript"></div></div><div class="jesong-badge-brand"><img src="./ctf_files/f8331e3b72f04511936245ce136e20c6.png" alt=""></div><div class="jesong-badge-con" id="jesong_chat_min_text">在线客服</div><span class="jesong-badge-icon"></span></div><div id="jesong_pop_msg" class="" style="display: none;"></div><link rel="stylesheet" type="text/css" charset="utf-8" href="./ctf_files/webcall.css"><link rel="stylesheet" type="text/css" charset="utf-8" href="./ctf_files/force.css"><script type="text/javascript" defer="" charset="utf-8" src="./ctf_files/main.js"></script-->
+
+
