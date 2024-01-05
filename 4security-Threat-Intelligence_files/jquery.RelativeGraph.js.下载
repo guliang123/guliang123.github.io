@@ -1,0 +1,553 @@
+;
+(function($) {
+	var RelativeGraph = function(ele, opt) {
+		this.$element = ele,
+			this.defulats = {
+				nodeList: [], //Nodes in the array
+				correlate: [], //Correlation array
+				width: 800, //Width of the graph
+				height: 400, //Graph height
+				node_cir_r: 5, //Node circle radius
+				node_cir_color: "#000", //Node round color
+				line_width: 2, //Line width
+				line_color: "#000", //Line color
+				line_opacity: 0.3, //Line of transparency
+				font_x: 0, //Text node relatively transverse offset distance
+				font_y: -10, //Text node relatively longitudinal offset distance
+				font_color: "#000", //The font color
+				font_size: 10, //The font size
+				font_weight: "bold", //Font roughness
+				option_cir_r: 10, //Operating radius of node
+				option_cir_color: "#000", //Operation node color
+				option_cir_x: 15, //The relative operation node lateral offset distance
+				option_cir_y: 20, //The relative operation node longitudinal offset distance
+				hover_color: "#f00", //The mouse on the color of the object
+				hover_opacity: 0.5 //The transparency of the mouse on the object
+			},
+			this.options = $.extend({}, this.defulats, opt);
+	};
+
+	RelativeGraph.prototype = {
+		drawGraph: function() {
+			var nodeList = this.options.nodeList,
+				correlate = this.options.correlate,
+				width = this.options.width,
+				height = this.options.height,
+				node_cir_r = this.options.node_cir_r,
+				node_cir_color = this.options.node_cir_color,
+				line_width = this.options.line_width,
+				line_color = this.options.line_color,
+				line_opacity = this.options.line_opacity,
+				font_x = this.options.font_x,
+				font_y = this.options.font_y,
+				font_weight = this.options.font_weight,
+				font_size = this.options.font_size,
+				font_color = this.options.font_color,
+				option_cir_r = this.options.option_cir_r,
+				option_cir_color = this.options.option_cir_color,
+				option_cir_x = this.options.option_cir_x,
+				option_cir_y = this.options.option_cir_y;
+
+			$(document.createElementNS("http://www.w3.org/2000/svg", "svg")).attr({
+				'id': "diagramSvg",
+				width: width,
+				height: height,
+			}).css({
+				'-moz-user-select': '-moz-none',
+				'-moz-user-select': 'none',
+				'-o-user-select': 'none',
+				'-khtml-user-select': 'none',
+				'-webkit-user-select': 'none',
+				'-ms-user-select': 'none',
+				'user-select': 'none'
+			}).appendTo($("#" + this.$element.attr("id")));
+			$("#" + this.$element.attr("id")).css({"padding-left":   width / (nodeList.length + 1) / 2.5});
+			var $svg = $("#diagramSvg");
+
+			for(var i = 0; i < nodeList.length; i++) {
+				if(i == 0) {
+					var nodeLen = nodeList[i].length,
+						num = 0,
+						len = 0,
+						$f = 0,
+						$e = 0,
+						cx1, cx2, cy1, cy2;
+
+					for(var j = 0; j < nodeLen; j++) {
+						num += parseInt(nodeList[i][j].length);
+					};
+
+					for(var e = 0; e < nodeList[0].length; e++) {
+						for(var f = 0; f < nodeList[0][e].length; f++) {
+
+							if(f == 0) {
+
+								comDrawGraph("g", {
+									"id": "g_1_" + (e + 1),
+									"class": "g_hover"
+								}, $svg);
+
+								comDrawGraph("circle", {
+									r: node_cir_r,
+									cx: width * i / (nodeList.length + 1) + 2 * node_cir_r,
+									cy: height * (2 * len + 1) / (num * 2),
+									fill: node_cir_color,
+									"class": "cir_ele"
+								}, "#g_1_" + (e + 1));
+
+								comDrawGraph("text", {
+									x: width * i / (nodeList.length + 1) + font_x,
+									y: height * (2 * len + 1) / (num * 2) + font_y,
+									"fontWeight": font_weight,
+									"fontSize": font_size,
+									fill: font_color
+								}, "#g_1_" + (e + 1), nodeList[i][e][f]);
+
+								if(nodeList[0][e].length > 1) {
+									comDrawGraph("g", {
+										id: "g_" + e,
+										"class": "g",
+										cursor: "pointer"
+									}, $svg);
+
+									comDrawGraph("circle", {
+										r: option_cir_r,
+										cx: width * i / (nodeList.length + 1) + 2 * node_cir_r + option_cir_x,
+										cy: height * (2 * len + 1) / (num * 2) + option_cir_y,
+										fill: option_cir_color,
+									}, "#g_" + e);
+									comDrawGraph("line", {
+										x1: width * i / (nodeList.length + 1) + 2 * node_cir_r + option_cir_x - 7,
+										y1: height * (2 * len + 1) / (num * 2) + option_cir_y,
+										x2: width * i / (nodeList.length + 1) + 2 * node_cir_r + option_cir_x + 7,
+										y2: height * (2 * len + 1) / (num * 2) + option_cir_y,
+										style: "stroke:#fff;stroke-width:2;"
+									}, "#g_" + e);
+
+									comDrawGraph("line", {
+										x1: width * i / (nodeList.length + 1) + +2 * node_cir_r + option_cir_x,
+										y1: height * (2 * len + 1) / (num * 2) + option_cir_y - 7,
+										x2: width * i / (nodeList.length + 1) + +2 * node_cir_r + option_cir_x,
+										y2: height * (2 * len + 1) / (num * 2) + option_cir_y + 7,
+										"dataShow": 0,
+										"class": "line_hide",
+										style: "stroke:#fff;stroke-width:2;display:none;"
+									}, "#g_" + e);
+								}
+
+								cx1 = width * i / (nodeList.length + 1) + 2 * node_cir_r;
+								cy1 = height * (2 * len + 1) / (num * 2);
+								$e = e + 1;
+							} else {
+								if(f == 1) {
+									comDrawGraph("g", {
+										id: "gg_" + e,
+										"class": "gg"
+									}, $svg);
+								}
+
+								$f++
+
+								comDrawGraph("g", {
+									id: "g_2_" + $f,
+									"class": "g_hover"
+								}, "#gg_" + e);
+
+								comDrawGraph("circle", {
+									r: node_cir_r,
+									cx: width * (i + 1) / (nodeList.length + 1) + 2 * node_cir_r,
+									cy: height * (2 * len + 1) / (num * 2),
+									fill: node_cir_color,
+									"class": "cir_ele"
+								}, "#g_2_" + $f);
+
+								$(document.createElementNS("http://www.w3.org/2000/svg", "text"))
+									.attr({
+										x: width * (i + 1) / (nodeList.length + 1) + font_x,
+										y: height * (2 * len + 1) / (num * 2) + font_y,
+										"font-weight": font_weight,
+										"font-size": font_size,
+										fill: font_color
+									}).text(nodeList[i][e][f]).appendTo("#g_2_" + $f);
+
+								cx2 = width * (i + 1) / (nodeList.length + 1) + 2 * node_cir_r;
+								cy2 = height * (2 * len + 1) / (num * 2);
+
+								comDrawGraph("path", {
+									d: "M" + cx1 + " " + cy1 + " " + cx1 + " " + cy2 + " L" + cx2 + " " + cy2,
+									fill: "none",
+									"strokeWidth": line_width,
+									"dataFrom": "1_" + $e,
+									"dataTo": "2_" + $f,
+									stroke: line_color,
+									opacity: line_opacity
+								}, "#gg_" + e);
+							}
+							len++;
+						};
+
+					};
+
+				} else {
+					$.each(nodeList[i], function(k, ele) {
+
+						comDrawGraph("g", {
+							id: "g_" + (i + 2) + "_" + (k + 1),
+							"class": "g_hover"
+						}, $svg);
+
+						comDrawGraph("circle", {
+							r: node_cir_r,
+							cx: width * (i + 1) / (nodeList.length + 1) + 2 * node_cir_r,
+							cy: height * (2 * k + 1) / ((nodeList[i].length) * 2),
+							fill: node_cir_color,
+							"class": "cir_ele"
+						}, "#g_" + (i + 2) + "_" + (k + 1));
+
+						comDrawGraph("text", {
+							x: width * (i + 1) / (nodeList.length + 1) + font_x,
+							y: height * (2 * k + 1) / ((nodeList[i].length) * 2) + font_y,
+							"fontWeight": font_weight,
+							"fontSize": font_size,
+							fill: font_color
+						}, "#g_" + (i + 2) + "_" + (k + 1), ele);
+					});
+				};
+
+			};
+
+			for(var i = 0; i < correlate.length; i++) {
+
+				var x1 = parseFloat($("#g_" + correlate[i][0] + " .cir_ele").attr("cx")) + node_cir_r,
+					y1 = parseFloat($("#g_" + correlate[i][0] + " .cir_ele").attr("cy")),
+					x2 = parseFloat($("#g_" + correlate[i][1] + " .cir_ele").attr("cx")) - node_cir_r,
+					y2 = parseFloat($("#g_" + correlate[i][1] + " .cir_ele").attr("cy")),
+					x = x2 - x1,
+					path = "M" + x1 + " " + y1 + " C" + (x1 + x * 0.4) + " " + y1 + " " + (x2 - x * 0.4) + " " + y2 + " " + x2 + " " + y2;
+
+				comDrawGraph("path", {
+					d: path,
+					"strokeWidth": 2,
+					stroke: line_color,
+					"dataFrom": correlate[i][0],
+					"dataTo": correlate[i][1],
+					opacity: line_opacity
+				}, $svg);
+
+			};
+
+			function comDrawGraph(graph, data, parentContainer, txt) {
+
+				if(graph == "g") {
+					$(document.createElementNS("http://www.w3.org/2000/svg", "g")).attr({
+						id: data.id,
+						class: data.class,
+						cursor: data.cursor
+					}).appendTo(parentContainer);
+				} else if(graph == "circle") {
+					$(document.createElementNS("http://www.w3.org/2000/svg", "circle"))
+						.attr({
+							r: data.r,
+							cx: data.cx,
+							cy: data.cy,
+							fill: data.fill,
+							"class": data.class,
+						}).appendTo(parentContainer);
+				} else if(graph == "text") {
+					$(document.createElementNS("http://www.w3.org/2000/svg", "text"))
+						.attr({
+							x: data.x,
+							y: data.y,
+							"font-weight": data.fontWeight,
+							"font-size": data.fontSize,
+							fill: data.fill
+						}).text(txt).appendTo(parentContainer);
+				} else if(graph == "line") {
+					$(document.createElementNS("http://www.w3.org/2000/svg", "line"))
+						.attr({
+							x1: data.x1,
+							y1: data.y1,
+							x2: data.x2,
+							y2: data.y2,
+							"data-show": data.dataShow,
+							"class": data.class,
+							style: data.style
+						}).appendTo(parentContainer);
+				} else if(graph == "path") {
+					$(document.createElementNS("http://www.w3.org/2000/svg", "path"))
+						.attr({
+							d: data.d,
+							fill: "none",
+							"stroke-width": data.strokeWidth,
+							stroke: data.stroke,
+							"data-from": data.dataFrom,
+							"data-to": data.dataTo,
+							opacity: data.opacity
+						}).appendTo(parentContainer);
+				}
+
+			};
+
+		},
+		bingingClick: function() {
+			$("#diagramSvg .g").on("click", function() {
+
+				var $this = $(this),
+					$arr = new Array(),
+					$arrTo = new Array(),
+					$arr1 = new Array(),
+					$arrTo1 = new Array(),
+					$arr2 = new Array(),
+					$arrTo2 = new Array(),
+					$arr3 = new Array(),
+					$arrTo3 = new Array();
+
+				if($this.find(".line_hide").data("show") == 0) {
+
+					comFirOptionGraph($this, $arr, $arrTo);
+					$arrTo = $arrTo.uniques();
+					comOptionGraph($this, $arr, $arrTo, $arr1, $arrTo1);
+					$arrTo1 = $arrTo1.uniques();
+					comOptionGraph($this, $arr1, $arrTo1, $arr2, $arrTo2);
+					$arrTo2 = $arrTo2.uniques();
+					comOptionGraph($this, $arr2, $arrTo2, $arr3, $arrTo3);
+
+				} else {
+
+					comFirOptionGraph($this, $arr, $arrTo);
+					$arrTo = $arrTo.uniques();
+					comOptionGraph($this, $arr, $arrTo, $arr1, $arrTo1);
+					$arrTo1 = $arrTo1.uniques();
+					comOptionGraph($this, $arr1, $arrTo1, $arr2, $arrTo2);
+					$arrTo2 = $arrTo2.uniques();
+					comOptionGraph($this, $arr2, $arrTo2, $arr3, $arrTo3);
+
+				};
+			});
+
+			function comFirOptionGraph($this, arr, arrTo) {
+				if($this.find(".line_hide").data("show") == 0) {
+					$this.find(".line_hide").show().data("show", "1");
+					$this.next().children().stop().fadeOut();
+				} else {
+					$this.find(".line_hide").hide().data("show", "0");
+					$this.next().children().stop().fadeIn();
+				}
+
+				var $g = $this.next().find("g");
+
+				for(var i = 0; i < $g.length; i++) {
+					var $str = $g.eq(i).attr("id").slice(-3);
+					var $pathFrom = $("path[data-from='" + $str + "']");
+
+					arr.push($str);
+					if($this.find(".line_hide").data("show") == 0) {
+						$pathFrom.stop().fadeIn();
+					} else {
+						$pathFrom.stop().fadeOut();
+					}
+					for(var k = 0; k < $pathFrom.length; k++) {
+						var $toStr = $pathFrom.eq(k).data("to");
+						arrTo.push($toStr);
+					};
+
+				};
+			};
+
+			function comOptionGraph($this, arr, arrTo, arrNext, arrToNext) {
+				for(var i = 0; i < arrTo.length; i++) {
+					var j = 0;
+					var $to = $("path[data-to='" + arrTo[i] + "']");
+
+					for(var k = 0; k < $to.length; k++) {
+						if($("#g_" + $to.eq(k).data("from")).css("display") == "none") {
+							j--;
+						};
+						if($.inArray($to.eq(k).data("from"), arr) < 0) {
+							j++;
+						};
+					};
+					if(j <= 0) {
+						var $pathFrom = $("path[data-from='" + arrTo[i] + "']");
+
+						if($this.find(".line_hide").data("show") == 0) {
+
+							$("#g_" + arrTo[i]).stop().fadeIn();
+							$pathFrom.stop().fadeIn();
+						} else {
+							$("#g_" + arrTo[i]).stop().fadeOut();
+							$pathFrom.stop().fadeOut();
+						}
+
+						arrNext.push(arrTo[i]);
+
+						for(var k = 0; k < $pathFrom.length; k++) {
+							var $toStr = $pathFrom.eq(k).data("to");
+							arrToNext.push($toStr);
+						};
+
+					} else {
+						j = 0;
+					};
+
+				};
+			};
+			Array.prototype.uniques = function() {
+				var res = [];
+				var json = {};
+				for(var i = 0; i < this.length; i++) {
+					if(!json[this[i]]) {
+						res.push(this[i]);
+						json[this[i]] = 1;
+					};
+				};
+				return res;
+			};
+		},
+		bingingHover: function() {
+			var nodeList = this.options.nodeList,
+				node_cir_color = this.options.node_cir_color,
+				line_opacity = this.options.line_opacity,
+				line_color = this.options.line_color,
+				font_color = this.options.font_color,
+				hover_color = this.options.hover_color,
+				hover_opacity = this.options.hover_opacity;
+
+			$("#diagramSvg .g_hover,#diagramSvg path").hover(changeColor, recoverColor);
+
+			function changeColor() {
+
+				var $this = $(this);
+				if($this.attr("class") == "g_hover") {
+					var $str = $this.attr("id").slice(-3);
+					recursiveSearch($str, $str, nodeList.length);
+				} else {
+					var $from = $this.data("from").slice(-3);
+					var $to = $this.data("to").slice(-3);
+					$this.attr({
+						stroke: hover_color,
+						cursor: "pointer"
+					});
+					recursiveSearch($to, $from, nodeList.length);
+				}
+
+			};
+
+			function recoverColor() {
+				$("path").attr({
+					stroke: line_color,
+					opacity: line_opacity
+				});
+				$(".cir_ele").attr({
+					fill: node_cir_color,
+				});
+				$("text").attr({
+					fill: font_color,
+				});
+			};
+
+			function lookAhead(current) {
+				var a = 0;
+				var index = current.slice(0, 1);
+				var y = new Array;
+
+				y.push(current);
+				var t = y;
+				var len = y.length;
+				while(a < index + 1) {
+
+					for(var b = 0; b < len; b++) {
+						for(var c = 0; c < $("path[data-to='" + y[b] + "']").length; c++) {
+							t.push($("path[data-to='" + y[b] + "']").eq(c).data("from"));
+						}
+					};
+					a++;
+					t = t.uniques();
+					y = t;
+					len = t.length;
+				};
+
+				return t;
+
+			};
+
+			function lookBehind(current, total) {
+				var a = 0;
+				var index = current.slice(0, 1);
+				var y = new Array;
+				y.push(current);
+				var t = y;
+				var len = y.length;
+				while(a < total - index + 2) {
+
+					for(var b = 0; b < len; b++) {
+						for(var c = 0; c < $("path[data-from='" + y[b] + "']").length; c++) {
+							t.push($("path[data-from='" + y[b] + "']").eq(c).data("to"));
+						}
+					};
+					a++;
+					t = t.uniques();
+					y = t;
+					len = t.length;
+				};
+
+				return t;
+
+			};
+
+			function recursiveSearch(curFrom, curTo, total) {
+				var $from = lookBehind(curFrom, total);
+				var $to = lookAhead(curTo);
+
+				for(var i = 0; i < $to.length; i++) {
+					$("#diagramSvg path[data-to='" + $to[i] + "']").attr({
+						stroke: hover_color,
+						opacity: hover_opacity,
+						cursor: "pointer"
+					});
+					$("#g_" + $to[i]).find(".cir_ele").attr({
+						fill: hover_color,
+						cursor: "pointer"
+					});
+					$("#g_" + $to[i]).find("text").attr({
+						fill: hover_color,
+						cursor: "pointer"
+					});
+				};
+
+				for(var i = 0; i < $from.length; i++) {
+					$("#diagramSvg path[data-from='" + $from[i] + "']").attr({
+						stroke: hover_color,
+					});
+					$("#g_" + $from[i]).find(".cir_ele").attr({
+						fill: hover_color,
+						cursor: "pointer"
+					});
+					$("#g_" + $from[i]).find("text").attr({
+						fill: hover_color,
+						cursor: "pointer"
+					});
+				};
+			};
+			Array.prototype.uniques = function() {
+				var res = [];
+				var json = {};
+				for(var i = 0; i < this.length; i++) {
+					if(!json[this[i]]) {
+						res.push(this[i]);
+						json[this[i]] = 1;
+					};
+				};
+				return res;
+			};
+		}
+	};
+	$.fn.RelativeGraph = function(options) {
+		var relativeGraph = new RelativeGraph(this, options);
+		relativeGraph.drawGraph();
+		relativeGraph.bingingClick();
+		relativeGraph.bingingHover();
+		return;
+	};
+
+})(jQuery)

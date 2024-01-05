@@ -1,0 +1,2380 @@
+if (localStorage.getItem("menuIsclose") == 'true') {
+	$(".navigate").css({
+		width: "auto"
+	})
+	$(".content").css({
+		"margin-left": "60px"
+	})
+}
+/***********1.Method the global namespace Start**********/
+var TianJiPartner = TianJiPartner || {};
+TianJiPartner.Common = TianJiPartner.Common || {};
+/*==========1.Method the global namespace End==========*/
+
+/***********2.Public page to load**********/
+var isLogin;
+$.ajax({
+	url: "Share/_Header.jsp",
+	// url: "Share/_Header.html",
+	type: "post",
+	contentType: "application/html;charset=utf-8",
+	dataType: "html",
+	async: false,
+	success: function(data) {
+		var $header = $(".header");
+		$header.html(data);
+		isLogin=$("#isLogin").val()==1?true:false;
+		isLogin ? $("#user").show() : $("#unUser").show();
+		if(!isLogin){
+			$("#intelDetailsSubCount").hide();
+			$("#intelDetailsDownload").hide();
+			$("#iocExport").hide();
+		} else {
+			$("#intelDetailsSubCount").hide();
+			$("#intelDetailsDownload").hide();
+			$.ajax({
+				url: "Json/isCardBuyUser.json",
+				success:function (response) {
+					if (response.is_v == 1) {
+						$("#intelDetailsSubCount").show();
+						$("#intelDetailsDownload").show();
+					}
+				}
+			})
+		}
+	},
+	error: function(xhr, status) {}
+});
+
+$.ajax({
+	url: "Share/_Navigate.jsp",
+	// url: "Share/_Navigate.html",
+	type: "post",
+	contentType: "application/html;charset=utf-8",
+	dataType: "html",
+	success: function(data) {
+		var $navigate = $(".navigate");
+		$navigate.css({
+			width:"auto"
+		})
+		$navigate.html(data);
+			if (localStorage.getItem("menuIsclose") == 'true') {
+				$(".navigate").find(".menu").addClass("hide_menu").css({
+					width: 60
+				});
+				$(".content").css({
+					marginLeft: 60
+				});
+				if (window.setfixedWidth) {
+					setfixedWidth();//AllFilterIntel.html页面的结果导航宽度设定
+				}
+			}
+		if(isLogin){
+			$("#menuIntelCreate").show();
+			$("#menuVerifIntel").show();
+			$("#menuSubscr a").attr("href",$("#menuSubscr a").data("href"));
+			$("#menuConfig a").attr("href",$("#menuConfig a").data("href"));
+			$("#brandProAdminMonitoring a").attr("href",$("#brandProAdminMonitoring a").data("href"));
+			$("#brandProAdminCloses a").attr("href",$("#brandProAdminCloses a").data("href"));
+			$("#brandProMonitoring a").attr("href",$("#brandProMonitoring a").data("href"));
+			$("#brandProCloses a").attr("href",$("#brandProCloses a").data("href"));
+			$("#threatOrganization a").attr("href",$("#threatOrganization a").data("href"));
+			$("#malware a").attr("href",$("#malware a").data("href"));
+			$("#tool a").attr("href",$("#tool a").data("href"));
+			$("#aggressive a").attr("href",$("#aggressive a").data("href"));
+		}else{
+			
+			$("#menuIntelCreate").hide();
+			$("#menuVerifIntel").hide();
+			$("#menuSubscr a").attr("href","javascript:void(0)");
+			$("#menuConfig a").attr("href","javascript:void(0)");
+			$("#brandProAdminMonitoring a").attr("href","javascript:void(0)");
+			$("#brandProAdminCloses a").attr("href","javascript:void(0)");
+			$("#brandProMonitoring a").attr("href","javascript:void(0)");
+			$("#brandProCloses a").attr("href","javascript:void(0)");
+			$("#threatOrganization a").attr("href","javascript:void(0)");
+			$("#malware a").attr("href","javascript:void(0)");
+			$("#tool a").attr("href","javascript:void(0)");
+			$("#aggressive a").attr("href","javascript:void(0)");
+			$("#menuSubscr,#menuConfig,#brandProAdminMonitoring,#brandProAdminCloses,#brandProMonitoring,#brandProCloses,#threatOrganization,#malware,#tool,#aggressive").on("click",function(){
+				$(".login").slideDown();
+			});
+		}
+		var $menuBtn = $navigate.find(".menu .menu_btn");
+		$menuBtn.on("click", TianJiPartner.Common.menuOptions);
+	},
+	error: function(xhr, status) {}
+});
+
+$.ajax({
+	url: "Json/messageNewCount.json",
+	type: "post",
+	dataType: 'json',
+	method: 'post',
+	success: function(data) {
+		$("#messageNotice").text("(" + data.count + ")");
+	},
+	error: function(xhr, status) {}
+});
+
+$("#user span").unbind("click").on("click", function(event) {
+
+	$("#user ul li").stop().slideToggle(300);
+	event.stopPropagation(); //阻止事件向上冒泡
+	$(document).one("click", function() {
+		$("#user ul li").stop().slideUp(300);
+	});
+});
+
+//Switch the verification code
+$(".jcaptcha_btn").click(function() {
+	$(this).attr("src", 'jcaptcha.jpg?' + new Date().getTime());
+});
+
+$(".content_det").css({
+	minHeight: $(window).height() - 108
+});
+$(window).resize(function() {
+	$(".content_det").css({
+		minHeight: $(window).height() - 108
+	});
+});
+
+TianJiPartner.Common.menuOptions = function() {
+	if($(this).parents(".menu").width() == 60) {
+		localStorage.setItem("menuIsclose", "false")
+		$(this).parents(".menu").animate({
+			width: 145
+		}, function() {
+			$(this).removeClass("hide_menu");
+		});
+		$(".content").animate({
+			marginLeft: 145
+		},function () {
+			if (window.setfixedWidth) {
+				setfixedWidth();//AllFilterIntel.html页面的结果导航宽度设定
+			}
+		});
+	} else {
+		localStorage.setItem("menuIsclose", "true")
+		$(this).parents(".menu").addClass("hide_menu").animate({
+			width: 60
+		});
+		$(".content").animate({
+			marginLeft: 60
+		},function () {
+			if (window.setfixedWidth) {
+				setfixedWidth();//AllFilterIntel.html页面的结果导航宽度设定
+			}
+		});
+	};
+};
+/*==========2.Public page to load==========*/
+
+/***********3.Common function Start**********/
+
+//3.1 Intercept fixed length string
+String.prototype.strlen = function() {
+	var str = this,
+		len = 0;
+	for(var i = 0; i < str.length; i++) {
+		var c = str.charCodeAt(i);
+		if((c >= 0x0001 && c <= 0x007e) || (0xff60 <= c && c <= 0xff9f)) {
+			len++;
+		} else {
+			len += 2;
+		};
+	};
+	return len;
+};
+String.prototype.sublen = function(n) {
+	var str = this,
+		len = str.strlen(),
+		k = 0,
+		result;
+	if(n >= len) {
+		return str;
+	};
+	for(var i = 0; i < str.length; i++) {
+		var c = str.charCodeAt(i);
+		if((c >= 0x0001 && c <= 0x007e) || (0xff60 <= c && c <= 0xff9f)) {
+			k++;
+		} else {
+			k += 2;
+		};
+		if(k >= n) {
+			result = str.substr(0, i + 1);
+			result = result + "...";
+			break;
+		};
+	};
+	return result;
+};
+
+//3.2 Get and set the value of td
+TianJiPartner.Common.Table = function() {};
+TianJiPartner.Common.Table.prototype.getTdTxet = function(trId, tdSub) {
+	var tdTxet = $("#" + trId).find("td").eq(tdSub).text();
+	return tdTxet;
+};
+TianJiPartner.Common.Table.prototype.setTdTxet = function(trId, tdSub, tdText) {
+	$(trId).find("td").eq(tdSub).text(tdText);
+};
+
+//3.3 Get the value of isFormEle or notFormEle
+TianJiPartner.Common.GetVal = function() {};
+
+TianJiPartner.Common.GetVal.prototype.isFormEle = function(currentItemObj) {
+	return $(currentItemObj).val();
+};
+
+TianJiPartner.Common.GetVal.prototype.notFormEle = function(currentItemObj) {
+	return $(currentItemObj).text();
+};
+
+//3.4 Set the value of isFormEle or notFormEle
+TianJiPartner.Common.SetVal = function() {};
+
+TianJiPartner.Common.SetVal.prototype.isFormEle = function(currentItemObj, itemValue) {
+	$(currentItemObj).val(itemValue);
+};
+
+TianJiPartner.Common.SetVal.prototype.notFormEle = function(currentItemObj, itemValue) {
+	$(currentItemObj).text(itemValue);
+};
+//3.5 Set bindJson the value of isFormEle or notFormEle
+TianJiPartner.Common.BindJson = function() {};
+
+TianJiPartner.Common.BindJson.prototype.isFormEle = function(moduleId, currentItemObj, itemValue) {
+	$("#" + moduleId).find(currentItemObj).text(itemValue);
+};
+
+TianJiPartner.Common.BindJson.prototype.notFormEle = function(moduleId, currentItemObj, itemValue) {
+	$("#" + moduleId).find(currentItemObj).val(itemValue);
+};
+
+TianJiPartner.Common.anchorScroll = function(obj) {
+    var anchor = $(obj).offset().top;
+    if(anchor-$(window).scrollTop()-120<0){
+    	setTimeout(function () { window.scroll(0, anchor - 120)},1);
+    }
+}
+
+TianJiPartner.Common.attackStr = function(type, brand, product ,version) {
+	
+	if(type=="操作系统"){
+		type="o";
+	}else if(type=="应用软件"){
+		type="a";
+	}else if(type=="通用硬件"){
+		type="h";
+	}
+	var str = 'cpe:/' + type.substring(0, 1) + ':' + brand + ':' + product + ':' + version;
+	return str;
+};
+//3.6 Update the data the public methods of failure
+$('<div class="dialog" id="backResult" title="错误信息"><div class="dialog_content"><div class="dialog_tip"><div class="icon-warning" style="margin-top:10px;"></div><div class="ui_tip" style="width:175px;"><P style="line-height: 25px;padding-top: 15px;"></P></div></div></div></div>').appendTo(".content");
+$('<div class="dialog"  id="errorMsg" title="错误信息"><div class="dialog_info"></div></div>').appendTo(".content");
+
+TianJiPartner.Common.updateDataFailure = function(jsonData) {
+
+	$("#backResult").dialog({
+		dialogClass: "errorTip",
+		modal: true,
+		resizable: false,
+		width: 350,
+		height: "auto",
+		close: function() {
+			if(1 == jsonData.result || 1 == jsonData.result.result){
+				$(this).dialog("close");
+			}else{
+				location.href = "IntelHome.html";
+			}
+		},
+		autoOpen: false,
+		buttons: {
+			"确定": function() {
+				// return;
+				if(1 == jsonData.result || 1 == jsonData.result.result){
+					$(this).dialog("close");
+				}else{
+					location.href = "IntelHome.html";
+				}
+			}
+		}
+	});
+
+	if(1 == jsonData.result) {
+		$("#backResult").dialog("open").find(".dialog_tip p").text(jsonData.msg);
+	} else if(-1 == jsonData.result.result){
+		$("#backResult").dialog("open").find(".dialog_tip p").text(jsonData.result.msg);
+	} else if(1 == jsonData.result.result){
+		$("#backResult").dialog("open").find(".dialog_tip p").text(jsonData.result.msg);
+	} else if(-1 == jsonData.result) {
+		$("#backResult").dialog("open").find(".dialog_tip p").text(jsonData.msg);
+	} else if(-4 == jsonData.result) {
+		$("#backResult").dialog("open").find(".dialog_tip p").text(jsonData.msg);
+	}
+};
+/*==========3.Common function End==========*/
+
+/***********4.Global dialog box callback function Start**********/
+
+TianJiPartner.Common.showMsg = function(msg, title) {
+	$("#errorMsg .dialog_info").html(msg);
+	$("#errorMsg").dialog("open");
+	if(title != undefined) {
+		$("#errorMsg").parent(".ui-dialog").find(".ui-dialog-title").text(title);
+	};
+};
+/*==========4.Global dialog box callback function End==========*/
+
+/***********5.The data of each interval three place commas Start**********/
+
+TianJiPartner.Common.number = function(num) {
+	if(String(num).length <= 3) {
+		return String(num);
+	} else {
+		return TianJiPartner.Common.number(String(num).substr(0, String(num).length - 3)) + ',' + String(num).substr(String(num).length - 3);
+	};
+};
+/*==========5.The data of each interval three place commas End==========*/
+
+/***********6.For a link address input parameters Start**********/
+
+TianJiPartner.Common.getUrlParam = function(param) {
+	var reg = new RegExp("(^|&)" + param + "=([^&]*)(&|$)");
+	var r = window.location.search.substr(1).match(reg);
+
+	if(r != null) return unescape(decodeURI(r[2]));
+	return null;
+};
+/*==========6.For a link address input parameters End==========*/
+
+/***********7.Click the anchor, page position location Start**********/
+// itemClass--The class name of the target hyperlinks; pageMarginTop--The distance at the top of the page
+TianJiPartner.Common.anchorPosition = function(itemClass, pageMarginTop) {
+	$('.' + itemClass + '[href*=#]').click(function() {
+		if(location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+			var $target = $(this.hash);
+			$target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+			if($target.length) {
+				var targetOffset = $target.offset().top;
+				$('html,body').animate({
+						scrollTop: targetOffset - pageMarginTop
+					},
+					500);
+				return false;
+			}
+		}
+	});
+};
+
+/*==========7.Click the anchor, page position location End==========*/
+
+/***********8.Required cannot be empty Start**********/
+TianJiPartner.Common.required = function(dialogId, tipText, itemArr) {
+
+	var $item = $("#" + dialogId);
+	var $textContainer = $item.siblings(".ui-dialog-buttonpane");
+	var nullNum = 0;
+
+	if($textContainer.children().length == 1) {
+		var $validate = '<div class="ui_validate"></div>';
+		$textContainer.prepend($validate);
+		$textContainer.find(".ui_validate").html(tipText);
+	};
+
+	$.each(itemArr, function(i, ele) {
+		if($.trim(ele).length == 0) {
+			nullNum++;
+		};
+	});
+
+	if(nullNum > 0) {
+		$textContainer.find(".ui_validate").css({
+			"display": "block"
+		});
+		return false;
+	} else {
+		$textContainer.find(".ui_validate").css({
+			"display": "none"
+		});
+		$item.dialog("close");
+		return true;
+	};
+
+};
+/*==========8.Required cannot be empty End==========*/
+
+TianJiPartner.Common.helpfulHints = function(itemId) {
+	$("#helpfulHints").dialog({
+		modal: true,
+		resizable: false,
+		width: 450,
+		height: "auto",
+		autoOpen: false,
+		close: function() {
+			$(this).dialog("close");
+		},
+		buttons: {
+			"确认": function() {
+				window.open($("#" + itemId).data("href"));
+				$(this).dialog("close");
+			},
+			"取消": function() {
+				$(this).dialog("close");
+			},
+		}
+	}).dialog("open");
+};
+
+TianJiPartner.Common.numSwitchStr = function(isOpen, arrs) {
+	var detailIsOpen = arrs[isOpen];
+	return detailIsOpen;
+};
+
+/***********xxx.Get the current date, year, month, days, hours and minutes Start**********/
+TianJiPartner.Common.getNowDate = function() {
+	var date = new Date();
+	var seperator1 = "-";
+	var seperator2 = ":";
+	var month = date.getMonth() + 1;
+	var strDate = date.getDate();
+	var strHover = date.getHours();
+	var strMin = date.getMinutes();
+	var strSec = date.getSeconds();
+	if(month >= 1 && month <= 9) {
+		month = "0" + month;
+	};
+	if(strDate >= 0 && strDate <= 9) {
+		strDate = "0" + strDate;
+	};
+	if(strHover >= 0 && strHover <= 9) {
+		strHover = "0" + strHover;
+	};
+	if(strMin >= 0 && strMin <= 9) {
+		strMin = "0" + strMin;
+	};
+
+	var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate + " " + strHover + seperator2 + strMin;
+	return currentdate;
+};
+/*==========xxx.Get the current date, year, month, days, hours and minutes End==========*/
+
+/************xxx.Upload files Start*********/
+
+/*===========xxx.Upload files End==========*/
+TianJiPartner.Common.getFileName = function(path) {
+	var pos1 = path.lastIndexOf('/');
+	var pos2 = path.lastIndexOf('\\');
+	var pos = Math.max(pos1, pos2);
+	if(pos < 0) {
+		return path;
+	} else {
+		return path.substring(pos + 1);
+	}
+};
+
+TianJiPartner.Common.uploadFile = function(fileItemId, fileNameBoxClass) {
+
+	$('#' + fileItemId).trigger('click');
+
+	$('#' + fileItemId).change(function() {
+		var str = $(this).val();
+		var fileName = TianJiPartner.Common.getFileName(str);
+		$('.' + fileNameBoxClass).val(fileName);
+	});
+};
+/***********xxx.Back to top Start**********/
+TianJiPartner.Common.gotoTop = function(min_height) {
+	$("#goTop").click(
+		function() {
+			$('html,body').animate({
+				scrollTop: 0
+			}, 300);
+		}).hover(
+		function() {
+			$(this).css({
+				opacity: 1
+			});
+		},
+		function() {
+			$(this).css({
+				opacity: 0.5
+			});
+		});
+	min_height ? min_height = min_height : min_height = 500;
+	$(window).scroll(function() {
+		var s = $(window).scrollTop();
+		if(s > min_height) {
+			$("#goTop").fadeIn(100);
+		} else {
+			$("#goTop").fadeOut(200);
+		};
+	});
+};
+TianJiPartner.Common.gotoTop(200);
+/*==========xxx.Back to top End==========*/
+TianJiPartner.Common.loginStatus = function() {
+	$(".login").stop().slideToggle();
+};
+$(".user_login").on("click", TianJiPartner.Common.loginStatus);
+
+/***********xxx.Validation method Start**********/
+function IValid() {
+	this.query;
+
+	this.domainPattern = /^(?=^.{3,255}$)(www\.)?[a-zA-Z0-9][\_\-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][\_\-a-zA-Z0-9]{0,62})+$/;
+	//this.domainPattern = XRegExp('^(?=^.{3,255}$)(http(s)?:\/\/)?(www\.)?[a-zA-Z0-9\\pL][\_\-a-zA-Z0-9\\pL]{0,62}(\.[a-zA-Z0-9\\pL][\_\-a-zA-Z0-9\\pL]{0,62})+$');
+	this.ftpPattern = /^ftp:\/\/[\s\S]+/;
+	this.urlPattern = /^(http|ftp|https|ldap|ws|tcp|tps|udp|wss):\/\/[@:\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#\(\[\]]*[\w\-\@?^=%&amp;/~\+#\[\]])$/;
+	this.ipPattern = /^((?:(?:25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))\.){3}(?:25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d))))$/;
+	this.md5Pattern = /^[a-fA-F0-9]{16}$|^[a-fA-F0-9]{32}$/;
+	this.emailPattern = /^[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?$/;
+	this.SHA1Pattern = /^[A-Fa-f0-9]{40}$/;
+	this.SHA256Pattern = /^[A-Fa-f0-9]{64}$/;
+	this.htmlPattern = /((\/%3C)|<)((\/%2F)|\/\/)*[a-z0-9\/%"+]+((\/%3E)|>)/;
+
+	this.TYPE_DOMAIN = 1;
+	this.TYPE_URL = 2;
+	this.TYPE_IP = 3;
+	this.TYPE_MD5 = 4;
+	this.TYPE_EMAIL = 5;
+	this.TYPE_STRING = 8;
+
+	this.TYPE_SHA1 = 6;
+	this.TYPE_SHA256 = 7;
+	this.mapper = {};
+	this.mapper[this.TYPE_IP] = ["IPV4", "IPV6", 3];
+	this.mapper[this.TYPE_DOMAIN] = ["DOMAIN", 1];
+	this.mapper[this.TYPE_MD5] = ["MD5", 4];
+	this.mapper[this.TYPE_SHA1] = ["SHA1", 6];
+	this.mapper[this.TYPE_SHA256] = ["SHA256", 7];
+	this.mapper[this.TYPE_URL] = ["URL", 2];
+	this.mapper[this.TYPE_EMAIL] = ["EMAIL", 5];
+	this.mapper[this.TYPE_STRING] = ["String", 8];
+
+	this.suffixArray = [];
+
+	this.suffixArray.push("gq");
+	this.suffixArray.push("uz");
+	this.suffixArray.push("onion");
+	this.suffixArray.push("im");
+	this.suffixArray.push("gg");
+	this.suffixArray.push("mu");
+	this.suffixArray.push("xn--p1ai");
+	this.suffixArray.push("mk");
+	this.suffixArray.push("gdn");
+	this.suffixArray.push("ps");
+	this.suffixArray.push("rs");
+	this.suffixArray.push("bit");
+	this.suffixArray.push("aero");
+	this.suffixArray.push("asia");
+	this.suffixArray.push("biz");
+	this.suffixArray.push("cc");
+	this.suffixArray.push("cd");
+	this.suffixArray.push("club");
+	this.suffixArray.push("cn");
+	this.suffixArray.push("co");
+	this.suffixArray.push("com");
+	this.suffixArray.push("coop");
+	this.suffixArray.push("edu");
+	this.suffixArray.push("gov");
+	this.suffixArray.push("idv");
+	this.suffixArray.push("info");
+	this.suffixArray.push("int");
+	this.suffixArray.push("mil");
+	this.suffixArray.push("mobi");
+	this.suffixArray.push("museum");
+	this.suffixArray.push("name");
+	this.suffixArray.push("net");
+	this.suffixArray.push("org");
+	this.suffixArray.push("pro");
+	this.suffixArray.push("pub");
+	this.suffixArray.push("red");
+	this.suffixArray.push("ren");
+	this.suffixArray.push("site");
+	this.suffixArray.push("tel");
+	this.suffixArray.push("top");
+	this.suffixArray.push("travel");
+	this.suffixArray.push("tv");
+	this.suffixArray.push("wang");
+	this.suffixArray.push("win");
+	this.suffixArray.push("xin");
+	this.suffixArray.push("xxx");
+	this.suffixArray.push("xyz");
+
+	this.suffixArray.push("ad");
+	this.suffixArray.push("ae");
+	this.suffixArray.push("af");
+	this.suffixArray.push("ag");
+	this.suffixArray.push("ai");
+	this.suffixArray.push("al");
+	this.suffixArray.push("am");
+	this.suffixArray.push("an");
+	this.suffixArray.push("ao");
+	this.suffixArray.push("aq");
+	this.suffixArray.push("ar");
+	this.suffixArray.push("as");
+	this.suffixArray.push("at");
+	this.suffixArray.push("au");
+	this.suffixArray.push("aw");
+	this.suffixArray.push("az");
+	this.suffixArray.push("ba");
+	this.suffixArray.push("bb");
+	this.suffixArray.push("bd");
+	this.suffixArray.push("be");
+	this.suffixArray.push("bf");
+	this.suffixArray.push("bg");
+	this.suffixArray.push("bh");
+	this.suffixArray.push("bi");
+	this.suffixArray.push("bj");
+	this.suffixArray.push("bm");
+	this.suffixArray.push("bn");
+	this.suffixArray.push("bo");
+	this.suffixArray.push("br");
+	this.suffixArray.push("bs");
+	this.suffixArray.push("bt");
+	this.suffixArray.push("bv");
+	this.suffixArray.push("bw");
+	this.suffixArray.push("by");
+	this.suffixArray.push("bz");
+	this.suffixArray.push("ca");
+	this.suffixArray.push("cc");
+	this.suffixArray.push("cf");
+	this.suffixArray.push("cg");
+	this.suffixArray.push("ch");
+	this.suffixArray.push("ci");
+	this.suffixArray.push("ck");
+	this.suffixArray.push("cl");
+	this.suffixArray.push("cm");
+	this.suffixArray.push("co");
+	this.suffixArray.push("cq");
+	this.suffixArray.push("cr");
+	this.suffixArray.push("cu");
+	this.suffixArray.push("cv");
+	this.suffixArray.push("cx");
+	this.suffixArray.push("cy");
+	this.suffixArray.push("cz");
+	this.suffixArray.push("de");
+	this.suffixArray.push("dj");
+	this.suffixArray.push("dk");
+	this.suffixArray.push("dm");
+	this.suffixArray.push("do");
+	this.suffixArray.push("dz");
+	this.suffixArray.push("ec");
+	this.suffixArray.push("ee");
+	this.suffixArray.push("eg");
+	this.suffixArray.push("eh");
+	this.suffixArray.push("es");
+	this.suffixArray.push("et");
+	this.suffixArray.push("eu");
+	this.suffixArray.push("ev");
+	this.suffixArray.push("fi");
+	this.suffixArray.push("fj");
+	this.suffixArray.push("fk");
+	this.suffixArray.push("fm");
+	this.suffixArray.push("fo");
+	this.suffixArray.push("fr");
+	this.suffixArray.push("ga");
+	this.suffixArray.push("gb");
+	this.suffixArray.push("gd");
+	this.suffixArray.push("ge");
+	this.suffixArray.push("gf");
+	this.suffixArray.push("gh");
+	this.suffixArray.push("gi");
+	this.suffixArray.push("gl");
+	this.suffixArray.push("gm");
+	this.suffixArray.push("gn");
+	this.suffixArray.push("gp");
+	this.suffixArray.push("gr");
+	this.suffixArray.push("gs");
+	this.suffixArray.push("gt");
+	this.suffixArray.push("gu");
+	this.suffixArray.push("gw");
+	this.suffixArray.push("gy");
+	this.suffixArray.push("hk");
+	this.suffixArray.push("hm");
+	this.suffixArray.push("hn");
+	this.suffixArray.push("hr");
+	this.suffixArray.push("ht");
+	this.suffixArray.push("hu");
+	this.suffixArray.push("id");
+	this.suffixArray.push("ie");
+	this.suffixArray.push("il");
+	this.suffixArray.push("in");
+	this.suffixArray.push("io");
+	this.suffixArray.push("iq");
+	this.suffixArray.push("ir");
+	this.suffixArray.push("is");
+	this.suffixArray.push("it");
+	this.suffixArray.push("jm");
+	this.suffixArray.push("jo");
+	this.suffixArray.push("jp");
+	this.suffixArray.push("ke");
+	this.suffixArray.push("kg");
+	this.suffixArray.push("kh");
+	this.suffixArray.push("ki");
+	this.suffixArray.push("km");
+	this.suffixArray.push("kn");
+	this.suffixArray.push("kp");
+	this.suffixArray.push("kr");
+	this.suffixArray.push("kw");
+	this.suffixArray.push("ky");
+	this.suffixArray.push("kz");
+	this.suffixArray.push("la");
+	this.suffixArray.push("lb");
+	this.suffixArray.push("lc");
+	this.suffixArray.push("li");
+	this.suffixArray.push("lk");
+	this.suffixArray.push("lr");
+	this.suffixArray.push("ls");
+	this.suffixArray.push("lt");
+	this.suffixArray.push("lu");
+	this.suffixArray.push("lv");
+	this.suffixArray.push("ly");
+	this.suffixArray.push("ma");
+	this.suffixArray.push("mc");
+	this.suffixArray.push("me");
+	this.suffixArray.push("md");
+	this.suffixArray.push("mg");
+	this.suffixArray.push("mh");
+	this.suffixArray.push("ml");
+	this.suffixArray.push("mm");
+	this.suffixArray.push("mn");
+	this.suffixArray.push("mo");
+	this.suffixArray.push("mp");
+	this.suffixArray.push("mq");
+	this.suffixArray.push("mr");
+	this.suffixArray.push("ms");
+	this.suffixArray.push("mt");
+	this.suffixArray.push("mv");
+	this.suffixArray.push("mw");
+	this.suffixArray.push("mx");
+	this.suffixArray.push("my");
+	this.suffixArray.push("mz");
+	this.suffixArray.push("na");
+	this.suffixArray.push("nc");
+	this.suffixArray.push("ne");
+	this.suffixArray.push("nf");
+	this.suffixArray.push("ng");
+	this.suffixArray.push("ni");
+	this.suffixArray.push("nl");
+	this.suffixArray.push("no");
+	this.suffixArray.push("np");
+	this.suffixArray.push("nr");
+	this.suffixArray.push("nt");
+	this.suffixArray.push("nu");
+	this.suffixArray.push("nz");
+	this.suffixArray.push("om");
+	this.suffixArray.push("pa");
+	this.suffixArray.push("pe");
+	this.suffixArray.push("pf");
+	this.suffixArray.push("pg");
+	this.suffixArray.push("ph");
+	this.suffixArray.push("pk");
+	this.suffixArray.push("pl");
+	this.suffixArray.push("pm");
+	this.suffixArray.push("pn");
+	this.suffixArray.push("pr");
+	this.suffixArray.push("pt");
+	this.suffixArray.push("pw");
+	this.suffixArray.push("py");
+	this.suffixArray.push("qa");
+	this.suffixArray.push("re");
+	this.suffixArray.push("ro");
+	this.suffixArray.push("ru");
+	this.suffixArray.push("rw");
+	this.suffixArray.push("sa");
+	this.suffixArray.push("sb");
+	this.suffixArray.push("sc");
+	this.suffixArray.push("sd");
+	this.suffixArray.push("se");
+	this.suffixArray.push("sg");
+	this.suffixArray.push("sh");
+	this.suffixArray.push("si");
+	this.suffixArray.push("sj");
+	this.suffixArray.push("sk");
+	this.suffixArray.push("sl");
+	this.suffixArray.push("sm");
+	this.suffixArray.push("sn");
+	this.suffixArray.push("so");
+	this.suffixArray.push("sr");
+	this.suffixArray.push("st");
+	this.suffixArray.push("su");
+	this.suffixArray.push("sy");
+	this.suffixArray.push("sz");
+	this.suffixArray.push("tc");
+	this.suffixArray.push("td");
+	this.suffixArray.push("tf");
+	this.suffixArray.push("tg");
+	this.suffixArray.push("th");
+	this.suffixArray.push("tj");
+	this.suffixArray.push("tk");
+	this.suffixArray.push("tl");
+	this.suffixArray.push("tm");
+	this.suffixArray.push("tn");
+	this.suffixArray.push("to");
+	this.suffixArray.push("tp");
+	this.suffixArray.push("tr");
+	this.suffixArray.push("tt");
+	this.suffixArray.push("tw");
+	this.suffixArray.push("tz");
+	this.suffixArray.push("ua");
+	this.suffixArray.push("ug");
+	this.suffixArray.push("uk");
+	this.suffixArray.push("us");
+	this.suffixArray.push("uy");
+	this.suffixArray.push("va");
+	this.suffixArray.push("vc");
+	this.suffixArray.push("ve");
+	this.suffixArray.push("vg");
+	this.suffixArray.push("vn");
+	this.suffixArray.push("vu");
+	this.suffixArray.push("wf");
+	this.suffixArray.push("ws");
+	this.suffixArray.push("ye");
+	this.suffixArray.push("yu");
+	this.suffixArray.push("za");
+	this.suffixArray.push("zm");
+	this.suffixArray.push("zr");
+	this.suffixArray.push("zw");
+
+	this.suffixArray.push("com");
+	this.suffixArray.push("net");
+	this.suffixArray.push("org");
+	this.suffixArray.push("xyz");
+	this.suffixArray.push("info");
+	this.suffixArray.push("top");
+	this.suffixArray.push("biz");
+	this.suffixArray.push("win");
+	this.suffixArray.push("wang");
+	this.suffixArray.push("club");
+	this.suffixArray.push("mobi");
+	this.suffixArray.push("site");
+	this.suffixArray.push("bid");
+	this.suffixArray.push("online");
+	this.suffixArray.push("vip");
+	this.suffixArray.push("pro");
+	this.suffixArray.push("ren");
+	this.suffixArray.push("red");
+	this.suffixArray.push("link");
+	this.suffixArray.push("loan");
+	this.suffixArray.push("tech");
+	this.suffixArray.push("science");
+	this.suffixArray.push("space");
+	this.suffixArray.push("website");
+	this.suffixArray.push("trade");
+	this.suffixArray.push("racing");
+	this.suffixArray.push("date");
+	this.suffixArray.push("xin");
+	this.suffixArray.push("click");
+	this.suffixArray.push("kim");
+	this.suffixArray.push("cat");
+	this.suffixArray.push("xxx");
+	this.suffixArray.push("shop");
+	this.suffixArray.push("download");
+	this.suffixArray.push("cloud");
+	this.suffixArray.push("work");
+	this.suffixArray.push("store");
+	this.suffixArray.push("news");
+	this.suffixArray.push("lol");
+	this.suffixArray.push("nyc");
+	this.suffixArray.push("live");
+	this.suffixArray.push("rocks");
+	this.suffixArray.push("party");
+	this.suffixArray.push("realtor");
+	this.suffixArray.push("pub");
+	this.suffixArray.push("review");
+	this.suffixArray.push("one");
+	this.suffixArray.push("email");
+	this.suffixArray.push("guru");
+	this.suffixArray.push("berlin");
+	this.suffixArray.push("today");
+	this.suffixArray.push("london");
+	this.suffixArray.push("solutions");
+	this.suffixArray.push("accountant");
+	this.suffixArray.push("ovh");
+	this.suffixArray.push("mom");
+	this.suffixArray.push("design");
+	this.suffixArray.push("photography");
+	this.suffixArray.push("tokyo");
+	this.suffixArray.push("company");
+	this.suffixArray.push("jobs");
+	this.suffixArray.push("press");
+	this.suffixArray.push("life");
+	this.suffixArray.push("men");
+	this.suffixArray.push("blue");
+	this.suffixArray.push("faith");
+	this.suffixArray.push("ltd");
+	this.suffixArray.push("pink");
+	this.suffixArray.push("webcam");
+	this.suffixArray.push("help");
+	this.suffixArray.push("host");
+	this.suffixArray.push("ninja");
+	this.suffixArray.push("tips");
+	this.suffixArray.push("world");
+	this.suffixArray.push("city");
+	this.suffixArray.push("center");
+	this.suffixArray.push("bayern");
+	this.suffixArray.push("stream");
+	this.suffixArray.push("media");
+	this.suffixArray.push("expert");
+	this.suffixArray.push("agency");
+	this.suffixArray.push("bet");
+	this.suffixArray.push("global");
+	this.suffixArray.push("technology");
+	this.suffixArray.push("amsterdam");
+	this.suffixArray.push("photo");
+	this.suffixArray.push("ink");
+	this.suffixArray.push("hamburg");
+	this.suffixArray.push("koeln");
+	this.suffixArray.push("black");
+	this.suffixArray.push("services");
+	this.suffixArray.push("gift");
+	this.suffixArray.push("cricket");
+	this.suffixArray.push("academy");
+	this.suffixArray.push("paris");
+	this.suffixArray.push("systems");
+	this.suffixArray.push("wiki");
+	this.suffixArray.push("international");
+	this.suffixArray.push("education");
+	this.suffixArray.push("studio");
+	this.suffixArray.push("photos");
+	this.suffixArray.push("directory");
+	this.suffixArray.push("consulting");
+	this.suffixArray.push("events");
+	this.suffixArray.push("casa");
+	this.suffixArray.push("gallery");
+	this.suffixArray.push("digital");
+	this.suffixArray.push("network");
+	this.suffixArray.push("video");
+	this.suffixArray.push("travel");
+	this.suffixArray.push("support");
+	this.suffixArray.push("social");
+	this.suffixArray.push("uno");
+	this.suffixArray.push("training");
+	this.suffixArray.push("run");
+	this.suffixArray.push("istanbul");
+	this.suffixArray.push("swiss");
+	this.suffixArray.push("sexy");
+	this.suffixArray.push("zone");
+	this.suffixArray.push("love");
+	this.suffixArray.push("reviews");
+	this.suffixArray.push("marketing");
+	this.suffixArray.push("church");
+	this.suffixArray.push("wien");
+	this.suffixArray.push("house");
+	this.suffixArray.push("bio");
+	this.suffixArray.push("frl");
+	this.suffixArray.push("bike");
+	this.suffixArray.push("land");
+	this.suffixArray.push("pics");
+	this.suffixArray.push("clothing");
+	this.suffixArray.push("business");
+	this.suffixArray.push("guide");
+	this.suffixArray.push("cool");
+	this.suffixArray.push("gmbh");
+	this.suffixArray.push("ooo");
+	this.suffixArray.push("care");
+	this.suffixArray.push("ist");
+	this.suffixArray.push("ruhr");
+	this.suffixArray.push("property");
+	this.suffixArray.push("lawyer");
+	this.suffixArray.push("immo");
+	this.suffixArray.push("miami");
+	this.suffixArray.push("sex");
+	this.suffixArray.push("porn");
+	this.suffixArray.push("sale");
+	this.suffixArray.push("wales");
+	this.suffixArray.push("vegas");
+	this.suffixArray.push("coffee");
+	this.suffixArray.push("wine");
+	this.suffixArray.push("family");
+	this.suffixArray.push("scot");
+	this.suffixArray.push("market");
+	this.suffixArray.push("works");
+	this.suffixArray.push("software");
+	this.suffixArray.push("nrw");
+	this.suffixArray.push("buzz");
+	this.suffixArray.push("properties");
+	this.suffixArray.push("beer");
+	this.suffixArray.push("group");
+	this.suffixArray.push("kiwi");
+	this.suffixArray.push("rentals");
+	this.suffixArray.push("community");
+	this.suffixArray.push("pet");
+	this.suffixArray.push("farm");
+	this.suffixArray.push("management");
+	this.suffixArray.push("melbourne");
+	this.suffixArray.push("adult");
+	this.suffixArray.push("direct");
+	this.suffixArray.push("estate");
+	this.suffixArray.push("quebec");
+	this.suffixArray.push("legal");
+	this.suffixArray.push("sydney");
+	this.suffixArray.push("gold");
+	this.suffixArray.push("band");
+	this.suffixArray.push("team");
+	this.suffixArray.push("kaufen");
+	this.suffixArray.push("chat");
+	this.suffixArray.push("school");
+	this.suffixArray.push("barcelona");
+	this.suffixArray.push("fit");
+	this.suffixArray.push("fund");
+	this.suffixArray.push("fashion");
+	this.suffixArray.push("institute");
+	this.suffixArray.push("fitness");
+	this.suffixArray.push("boutique");
+	this.suffixArray.push("attorney");
+	this.suffixArray.push("cafe");
+	this.suffixArray.push("rent");
+	this.suffixArray.push("audio");
+	this.suffixArray.push("coop");
+	this.suffixArray.push("deals");
+	this.suffixArray.push("healthcare");
+	this.suffixArray.push("ventures");
+	this.suffixArray.push("wtf");
+	this.suffixArray.push("games");
+	this.suffixArray.push("tools");
+	this.suffixArray.push("coach");
+	this.suffixArray.push("graphics");
+	this.suffixArray.push("foundation");
+	this.suffixArray.push("immobilien");
+	this.suffixArray.push("sucks");
+	this.suffixArray.push("wedding");
+	this.suffixArray.push("fyi");
+	this.suffixArray.push("pictures");
+	this.suffixArray.push("careers");
+	this.suffixArray.push("yoga");
+	this.suffixArray.push("brussels");
+	this.suffixArray.push("dental");
+	this.suffixArray.push("domains");
+	this.suffixArray.push("dog");
+	this.suffixArray.push("solar");
+	this.suffixArray.push("vlaanderen");
+	this.suffixArray.push("jetzt");
+	this.suffixArray.push("cymru");
+	this.suffixArray.push("construction");
+	this.suffixArray.push("equipment");
+	this.suffixArray.push("bzh");
+	this.suffixArray.push("plus");
+	this.suffixArray.push("menu");
+	this.suffixArray.push("vin");
+	this.suffixArray.push("forsale");
+	this.suffixArray.push("money");
+	this.suffixArray.push("lighting");
+	this.suffixArray.push("repair");
+	this.suffixArray.push("restaurant");
+	this.suffixArray.push("eus");
+	this.suffixArray.push("kitchen");
+	this.suffixArray.push("camp");
+	this.suffixArray.push("law");
+	this.suffixArray.push("style");
+	this.suffixArray.push("clinic");
+	this.suffixArray.push("cash");
+	this.suffixArray.push("golf");
+	this.suffixArray.push("vet");
+	this.suffixArray.push("moe");
+	this.suffixArray.push("ski");
+	this.suffixArray.push("shoes");
+	this.suffixArray.push("capital");
+	this.suffixArray.push("hosting");
+	this.suffixArray.push("cards");
+	this.suffixArray.push("college");
+	this.suffixArray.push("tours");
+	this.suffixArray.push("earth");
+	this.suffixArray.push("vision");
+	this.suffixArray.push("watch");
+	this.suffixArray.push("cologne");
+	this.suffixArray.push("parts");
+	this.suffixArray.push("enterprises");
+	this.suffixArray.push("productions");
+	this.suffixArray.push("codes");
+	this.suffixArray.push("energy");
+	this.suffixArray.push("dance");
+	this.suffixArray.push("camera");
+	this.suffixArray.push("holiday");
+	this.suffixArray.push("report");
+	this.suffixArray.push("bar");
+	this.suffixArray.push("partners");
+	this.suffixArray.push("finance");
+	this.suffixArray.push("holdings");
+	this.suffixArray.push("reisen");
+	this.suffixArray.push("university");
+	this.suffixArray.push("tirol");
+	this.suffixArray.push("computer");
+	this.suffixArray.push("exchange");
+	this.suffixArray.push("tax");
+	this.suffixArray.push("limited");
+	this.suffixArray.push("capetown");
+	this.suffixArray.push("taxi");
+	this.suffixArray.push("onl");
+	this.suffixArray.push("singles");
+	this.suffixArray.push("show");
+	this.suffixArray.push("haus");
+	this.suffixArray.push("discount");
+	this.suffixArray.push("football");
+	this.suffixArray.push("contractors");
+	this.suffixArray.push("shopping");
+	this.suffixArray.push("pizza");
+	this.suffixArray.push("poker");
+	this.suffixArray.push("vacations");
+	this.suffixArray.push("nagoya");
+	this.suffixArray.push("express");
+	this.suffixArray.push("toys");
+	this.suffixArray.push("engineering");
+	this.suffixArray.push("place");
+	this.suffixArray.push("insure");
+	this.suffixArray.push("build");
+	this.suffixArray.push("cab");
+	this.suffixArray.push("builders");
+	this.suffixArray.push("gratis");
+	this.suffixArray.push("green");
+	this.suffixArray.push("plumbing");
+	this.suffixArray.push("supply");
+	this.suffixArray.push("saarland");
+	this.suffixArray.push("fish");
+	this.suffixArray.push("diet");
+	this.suffixArray.push("ngo");
+	this.suffixArray.push("ong");
+	this.suffixArray.push("gifts");
+	this.suffixArray.push("degree");
+	this.suffixArray.push("joburg");
+	this.suffixArray.push("glass");
+	this.suffixArray.push("gal");
+	this.suffixArray.push("promo");
+	this.suffixArray.push("financial");
+	this.suffixArray.push("gent");
+	this.suffixArray.push("casino");
+	this.suffixArray.push("yokohama");
+	this.suffixArray.push("catering");
+	this.suffixArray.push("archi");
+	this.suffixArray.push("apartments");
+	this.suffixArray.push("recipes");
+	this.suffixArray.push("auction");
+	this.suffixArray.push("srl");
+	this.suffixArray.push("cheap");
+	this.suffixArray.push("feedback");
+	this.suffixArray.push("futbol");
+	this.suffixArray.push("industries");
+	this.suffixArray.push("dentist");
+	this.suffixArray.push("bank");
+	this.suffixArray.push("supplies");
+	this.suffixArray.push("loans");
+	this.suffixArray.push("okinawa");
+	this.suffixArray.push("delivery");
+	this.suffixArray.push("best");
+	this.suffixArray.push("diamonds");
+	this.suffixArray.push("mortgage");
+	this.suffixArray.push("lgbt");
+	this.suffixArray.push("investments");
+	this.suffixArray.push("voyage");
+	this.suffixArray.push("town");
+	this.suffixArray.push("dating");
+	this.suffixArray.push("tienda");
+	this.suffixArray.push("rip");
+	this.suffixArray.push("surf");
+	this.suffixArray.push("limo");
+	this.suffixArray.push("florist");
+	this.suffixArray.push("horse");
+	this.suffixArray.push("ceo");
+	this.suffixArray.push("taipei");
+	this.suffixArray.push("fail");
+	this.suffixArray.push("tattoo");
+	this.suffixArray.push("moda");
+	this.suffixArray.push("film");
+	this.suffixArray.push("cleaning");
+	this.suffixArray.push("christmas");
+	this.suffixArray.push("mba");
+	this.suffixArray.push("durban");
+	this.suffixArray.push("engineer");
+	this.suffixArray.push("exposed");
+	this.suffixArray.push("associates");
+	this.suffixArray.push("jewelry");
+	this.suffixArray.push("how");
+	this.suffixArray.push("bargains");
+	this.suffixArray.push("lat");
+	this.suffixArray.push("credit");
+	this.suffixArray.push("game");
+	this.suffixArray.push("soccer");
+	this.suffixArray.push("versicherung");
+	this.suffixArray.push("condos");
+	this.suffixArray.push("furniture");
+	this.suffixArray.push("schule");
+	this.suffixArray.push("desi");
+	this.suffixArray.push("cruises");
+	this.suffixArray.push("gop");
+	this.suffixArray.push("irish");
+	this.suffixArray.push("cooking");
+	this.suffixArray.push("alsace");
+	this.suffixArray.push("flights");
+	this.suffixArray.push("blackfriday");
+	this.suffixArray.push("garden");
+	this.suffixArray.push("doctor");
+	this.suffixArray.push("study");
+	this.suffixArray.push("flowers");
+	this.suffixArray.push("surgery");
+	this.suffixArray.push("vote");
+	this.suffixArray.push("vodka");
+	this.suffixArray.push("villas");
+	this.suffixArray.push("fishing");
+	this.suffixArray.push("rehab");
+	this.suffixArray.push("blog");
+	this.suffixArray.push("mma");
+	this.suffixArray.push("hiphop");
+	this.suffixArray.push("soy");
+	this.suffixArray.push("actor");
+	this.suffixArray.push("rest");
+	this.suffixArray.push("lease");
+	this.suffixArray.push("guitars");
+	this.suffixArray.push("courses");
+	this.suffixArray.push("coupons");
+	this.suffixArray.push("fans");
+	this.suffixArray.push("tube");
+	this.suffixArray.push("claims");
+	this.suffixArray.push("country");
+	this.suffixArray.push("viajes");
+	this.suffixArray.push("tennis");
+	this.suffixArray.push("rio");
+	this.suffixArray.push("army");
+	this.suffixArray.push("reise");
+	this.suffixArray.push("accountants");
+	this.suffixArray.push("museum");
+	this.suffixArray.push("physio");
+	this.suffixArray.push("career");
+	this.suffixArray.push("movie");
+	this.suffixArray.push("gives");
+	this.suffixArray.push("maison");
+	this.suffixArray.push("juegos");
+	this.suffixArray.push("hockey");
+	this.suffixArray.push("tickets");
+	this.suffixArray.push("bingo");
+	this.suffixArray.push("gripe");
+	this.suffixArray.push("luxury");
+	this.suffixArray.push("salon");
+	this.suffixArray.push("tatar");
+	this.suffixArray.push("sarl");
+	this.suffixArray.push("theater");
+	this.suffixArray.push("corsica");
+	this.suffixArray.push("republican");
+	this.suffixArray.push("democrat");
+	this.suffixArray.push("rodeo");
+	this.suffixArray.push("creditcard");
+	this.suffixArray.push("tires");
+	this.suffixArray.push("shiksha");
+	this.suffixArray.push("navy");
+	this.suffixArray.push("osaka");
+	this.suffixArray.push("kyoto");
+	this.suffixArray.push("neustar");
+	this.suffixArray.push("ryukyu");
+	this.suffixArray.push("bible");
+	this.suffixArray.push("qpon");
+	this.suffixArray.push("memorial");
+	this.suffixArray.push("organic");
+	this.suffixArray.push("auto");
+	this.suffixArray.push("markets");
+	this.suffixArray.push("car");
+	this.suffixArray.push("ltda");
+	this.suffixArray.push("airforce");
+	this.suffixArray.push("cars");
+	this.suffixArray.push("hiv");
+	this.suffixArray.push("krd");
+	this.suffixArray.push("trading");
+	this.suffixArray.push("storage");
+	this.suffixArray.push("voto");
+	this.suffixArray.push("security");
+	this.suffixArray.push("hoteles");
+	this.suffixArray.push("abogado");
+	this.suffixArray.push("homes");
+	this.suffixArray.push("broker");
+	this.suffixArray.push("insurance");
+	this.suffixArray.push("boats");
+	this.suffixArray.push("reit");
+	this.suffixArray.push("pharmacy");
+	this.suffixArray.push("theatre");
+	this.suffixArray.push("nra");
+	this.suffixArray.push("citic");
+	this.suffixArray.push("yachts");
+	this.suffixArray.push("bradesco");
+	this.suffixArray.push("makeup");
+	this.suffixArray.push("weir");
+	this.suffixArray.push("wed");
+	this.suffixArray.push("protection");
+	this.suffixArray.push("seat");
+	this.suffixArray.push("barclays");
+	this.suffixArray.push("abbott");
+	this.suffixArray.push("leclerc");
+	this.suffixArray.push("cam");
+	this.suffixArray.push("moi");
+	this.suffixArray.push("lotto");
+	this.suffixArray.push("cancerresearch");
+	this.suffixArray.push("rich");
+	this.suffixArray.push("forex");
+	this.suffixArray.push("whoswho");
+	this.suffixArray.push("bloomberg");
+	this.suffixArray.push("fage");
+	this.suffixArray.push("motorcycles");
+	this.suffixArray.push("linde");
+	this.suffixArray.push("globo");
+	this.suffixArray.push("iselect");
+	this.suffixArray.push("audi");
+	this.suffixArray.push("trust");
+	this.suffixArray.push("monash");
+	this.suffixArray.push("autos");
+	this.suffixArray.push("man");
+	this.suffixArray.push("microsoft");
+	this.suffixArray.push("uol");
+	this.suffixArray.push("firmdale");
+	this.suffixArray.push("sener");
+	this.suffixArray.push("sky");
+	this.suffixArray.push("pictet");
+	this.suffixArray.push("abb");
+	this.suffixArray.push("mango");
+	this.suffixArray.push("windows");
+	this.suffixArray.push("xbox");
+	this.suffixArray.push("mini");
+	this.suffixArray.push("med");
+	this.suffixArray.push("shriram");
+	this.suffixArray.push("bing");
+	this.suffixArray.push("aco");
+	this.suffixArray.push("clubmed");
+	this.suffixArray.push("foo");
+	this.suffixArray.push("orange");
+	this.suffixArray.push("cba");
+	this.suffixArray.push("arte");
+	this.suffixArray.push("bentley");
+	this.suffixArray.push("bbva");
+	this.suffixArray.push("saxo");
+	this.suffixArray.push("hotmail");
+	this.suffixArray.push("aig");
+	this.suffixArray.push("azure");
+	this.suffixArray.push("tatamotors");
+	this.suffixArray.push("dvag");
+	this.suffixArray.push("cisco");
+	this.suffixArray.push("maif");
+	this.suffixArray.push("chanel");
+	this.suffixArray.push("kpn");
+	this.suffixArray.push("cern");
+	this.suffixArray.push("java");
+	this.suffixArray.push("oracle");
+	this.suffixArray.push("axa");
+	this.suffixArray.push("accenture");
+	this.suffixArray.push("lupin");
+	this.suffixArray.push("sanofi");
+	this.suffixArray.push("xperia");
+	this.suffixArray.push("aquarelle");
+	this.suffixArray.push("next");
+	this.suffixArray.push("blanco");
+	this.suffixArray.push("art");
+	this.suffixArray.push("bms");
+	this.suffixArray.push("bmw");
+	this.suffixArray.push("philips");
+	this.suffixArray.push("aeg");
+	this.suffixArray.push("liaison");
+	this.suffixArray.push("statoil");
+	this.suffixArray.push("ubs");
+	this.suffixArray.push("genting");
+	this.suffixArray.push("jaguar");
+	this.suffixArray.push("landrover");
+	this.suffixArray.push("rwe");
+	this.suffixArray.push("sbs");
+	this.suffixArray.push("bosch");
+	this.suffixArray.push("rexroth");
+	this.suffixArray.push("weber");
+	this.suffixArray.push("nikon");
+	this.suffixArray.push("kerryhotels");
+	this.suffixArray.push("nissay");
+	this.suffixArray.push("lipsy");
+	this.suffixArray.push("nextdirect");
+	this.suffixArray.push("warman");
+	this.suffixArray.push("airbus");
+	this.suffixArray.push("ericsson");
+	this.suffixArray.push("lego");
+	this.suffixArray.push("shangrila");
+	this.suffixArray.push("lundbeck");
+	this.suffixArray.push("ladbrokes");
+	this.suffixArray.push("barclaycard");
+	this.suffixArray.push("yandex");
+	this.suffixArray.push("schwarz");
+	this.suffixArray.push("google");
+	this.suffixArray.push("toray");
+	this.suffixArray.push("csc");
+	this.suffixArray.push("praxi");
+	this.suffixArray.push("jprs");
+	this.suffixArray.push("scb");
+	this.suffixArray.push("williamhill");
+	this.suffixArray.push("afl");
+	this.suffixArray.push("realty");
+	this.suffixArray.push("fox");
+	this.suffixArray.push("goog");
+	this.suffixArray.push("otsuka");
+	this.suffixArray.push("deloitte");
+	this.suffixArray.push("forum");
+	this.suffixArray.push("lamborghini");
+	this.suffixArray.push("jcb");
+	this.suffixArray.push("sap");
+	this.suffixArray.push("lidl");
+	this.suffixArray.push("shell");
+	this.suffixArray.push("total");
+	this.suffixArray.push("walter");
+	this.suffixArray.push("sandvik");
+	this.suffixArray.push("emerck");
+	this.suffixArray.push("dabur");
+	this.suffixArray.push("redstone");
+	this.suffixArray.push("gmo");
+	this.suffixArray.push("skin");
+	this.suffixArray.push("active");
+	this.suffixArray.push("nico");
+	this.suffixArray.push("samsung");
+	this.suffixArray.push("spreadbetting");
+	this.suffixArray.push("komatsu");
+	this.suffixArray.push("lancaster");
+	this.suffixArray.push("stc");
+	this.suffixArray.push("dnp");
+	this.suffixArray.push("sew");
+	this.suffixArray.push("hitachi");
+	this.suffixArray.push("sca");
+	this.suffixArray.push("latrobe");
+	this.suffixArray.push("ntt");
+	this.suffixArray.push("cfd");
+	this.suffixArray.push("sony");
+	this.suffixArray.push("erni");
+	this.suffixArray.push("pnc");
+	this.suffixArray.push("swatch");
+	this.suffixArray.push("fan");
+	this.suffixArray.push("brother");
+	this.suffixArray.push("skype");
+	this.suffixArray.push("mtn");
+	this.suffixArray.push("seven");
+	this.suffixArray.push("norton");
+	this.suffixArray.push("sfr");
+	this.suffixArray.push("frogans");
+	this.suffixArray.push("suzuki");
+	this.suffixArray.push("crs");
+	this.suffixArray.push("guardian");
+	this.suffixArray.push("sandvikcoromant");
+	this.suffixArray.push("sohu");
+	this.suffixArray.push("edeka");
+	this.suffixArray.push("abc");
+	this.suffixArray.push("afamilycompany");
+	this.suffixArray.push("ice");
+	this.suffixArray.push("aws");
+	this.suffixArray.push("wme");
+	this.suffixArray.push("everbank");
+	this.suffixArray.push("bridgestone");
+	this.suffixArray.push("cfa");
+	this.suffixArray.push("jll");
+	this.suffixArray.push("ricoh");
+	this.suffixArray.push("vistaprint");
+	this.suffixArray.push("toyota");
+	this.suffixArray.push("ferrero");
+	this.suffixArray.push("fairwinds");
+	this.suffixArray.push("dubai");
+	this.suffixArray.push("extraspace");
+	this.suffixArray.push("dhl");
+	this.suffixArray.push("marriott");
+	this.suffixArray.push("eurovision");
+	this.suffixArray.push("volkswagen");
+	this.suffixArray.push("dell");
+	this.suffixArray.push("schmidt");
+	this.suffixArray.push("canon");
+	this.suffixArray.push("nec");
+	this.suffixArray.push("nadex");
+	this.suffixArray.push("page");
+	this.suffixArray.push("sncf");
+	this.suffixArray.push("omega");
+	this.suffixArray.push("ipiranga");
+	this.suffixArray.push("amica");
+	this.suffixArray.push("kinder");
+	this.suffixArray.push("gucci");
+	this.suffixArray.push("aarp");
+	this.suffixArray.push("symantec");
+	this.suffixArray.push("travelers");
+	this.suffixArray.push("jmp");
+	this.suffixArray.push("tiffany");
+	this.suffixArray.push("teva");
+	this.suffixArray.push("itv");
+	this.suffixArray.push("bugatti");
+	this.suffixArray.push("mtr");
+	this.suffixArray.push("nokia");
+	this.suffixArray.push("glade");
+	this.suffixArray.push("here");
+	this.suffixArray.push("prod");
+	this.suffixArray.push("app");
+	this.suffixArray.push("trv");
+	this.suffixArray.push("youtube");
+	this.suffixArray.push("hermes");
+	this.suffixArray.push("gmail");
+	this.suffixArray.push("ads");
+	this.suffixArray.push("new");
+	this.suffixArray.push("toshiba");
+	this.suffixArray.push("goo");
+	this.suffixArray.push("netbank");
+	this.suffixArray.push("vista");
+	this.suffixArray.push("crown");
+	this.suffixArray.push("lexus");
+	this.suffixArray.push("aaa");
+	this.suffixArray.push("aramco");
+	this.suffixArray.push("ping");
+	this.suffixArray.push("rocher");
+	this.suffixArray.push("grainger");
+	this.suffixArray.push("redumbrella");
+	this.suffixArray.push("travelersinsurance");
+	this.suffixArray.push("statefarm");
+	this.suffixArray.push("lanxess");
+	this.suffixArray.push("natura");
+	this.suffixArray.push("quest");
+	this.suffixArray.push("chase");
+	this.suffixArray.push("jpmorgan");
+	this.suffixArray.push("passagens");
+	this.suffixArray.push("vuelos");
+	this.suffixArray.push("locus");
+	this.suffixArray.push("jcp");
+	this.suffixArray.push("bbc");
+	this.suffixArray.push("sbi");
+	this.suffixArray.push("schaeffler");
+	this.suffixArray.push("broadway");
+	this.suffixArray.push("olayan");
+	this.suffixArray.push("olayangroup");
+	this.suffixArray.push("dupont");
+	this.suffixArray.push("nfl");
+	this.suffixArray.push("allfinanz");
+	this.suffixArray.push("duck");
+	this.suffixArray.push("scjohnson");
+	this.suffixArray.push("lilly");
+	this.suffixArray.push("spiegel");
+	this.suffixArray.push("cuisinella");
+	this.suffixArray.push("boo");
+	this.suffixArray.push("channel");
+	this.suffixArray.push("dad");
+	this.suffixArray.push("day");
+	this.suffixArray.push("eat");
+	this.suffixArray.push("esq");
+	this.suffixArray.push("fly");
+	this.suffixArray.push("gbiz");
+	this.suffixArray.push("ing");
+	this.suffixArray.push("meme");
+	this.suffixArray.push("mov");
+	this.suffixArray.push("prof");
+	this.suffixArray.push("rsvp");
+	this.suffixArray.push("zip");
+	this.suffixArray.push("xerox");
+	this.suffixArray.push("dev");
+	this.suffixArray.push("office");
+	this.suffixArray.push("yahoo");
+	this.suffixArray.push("telefonica");
+	this.suffixArray.push("baidu");
+	this.suffixArray.push("fujitsu");
+	this.suffixArray.push("you");
+	this.suffixArray.push("mit");
+	this.suffixArray.push("now");
+	this.suffixArray.push("meet");
+	this.suffixArray.push("tui");
+	this.suffixArray.push("gmx");
+	this.suffixArray.push("gensberater");
+	this.suffixArray.push("gensberatung");
+	this.suffixArray.push("android");
+	this.suffixArray.push("madrid");
+	this.suffixArray.push("docs");
+	this.suffixArray.push("zuerich");
+	this.suffixArray.push("ggee");
+	this.suffixArray.push("kddi");
+	this.suffixArray.push("lds");
+	this.suffixArray.push("lotte");
+	this.suffixArray.push("mormon");
+	this.suffixArray.push("dclk");
+	this.suffixArray.push("hangout");
+	this.suffixArray.push("cbn");
+	this.suffixArray.push("goldpoint");
+	this.suffixArray.push("yodobashi");
+	this.suffixArray.push("epson");
+	this.suffixArray.push("datsun");
+	this.suffixArray.push("infiniti");
+	this.suffixArray.push("mtpc");
+	this.suffixArray.push("nissan");
+	this.suffixArray.push("guge");
+	this.suffixArray.push("bond");
+	this.suffixArray.push("panerai");
+	this.suffixArray.push("temasek");
+	this.suffixArray.push("honda");
+	this.suffixArray.push("icu");
+	this.suffixArray.push("thd");
+	this.suffixArray.push("homedepot");
+	this.suffixArray.push("montblanc");
+	this.suffixArray.push("lasalle");
+	this.suffixArray.push("drive");
+	this.suffixArray.push("play");
+	this.suffixArray.push("commbank");
+	this.suffixArray.push("scor");
+	this.suffixArray.push("bnl");
+	this.suffixArray.push("bcn");
+	this.suffixArray.push("bharti");
+	this.suffixArray.push("iinet");
+	this.suffixArray.push("sakura");
+	this.suffixArray.push("delta");
+	this.suffixArray.push("airtel");
+	this.suffixArray.push("scholarships");
+	this.suffixArray.push("lixil");
+	this.suffixArray.push("itau");
+	this.suffixArray.push("ceb");
+	this.suffixArray.push("seek");
+	this.suffixArray.push("stcgroup");
+	this.suffixArray.push("viva");
+	this.suffixArray.push("starhub");
+	this.suffixArray.push("bom");
+	this.suffixArray.push("final");
+	this.suffixArray.push("hyundai");
+	this.suffixArray.push("kia");
+	this.suffixArray.push("stockholm");
+	this.suffixArray.push("virgin");
+	this.suffixArray.push("cipriani");
+	this.suffixArray.push("mutuelle");
+	this.suffixArray.push("zara");
+	this.suffixArray.push("playstation");
+	this.suffixArray.push("comsec");
+	this.suffixArray.push("tab");
+	this.suffixArray.push("boehringer");
+	this.suffixArray.push("bostik");
+	this.suffixArray.push("verisign");
+	this.suffixArray.push("cityeats");
+	this.suffixArray.push("firestone");
+	this.suffixArray.push("lifestyle");
+	this.suffixArray.push("nowruz");
+	this.suffixArray.push("pars");
+	this.suffixArray.push("sharp");
+	this.suffixArray.push("shia");
+	this.suffixArray.push("tci");
+	this.suffixArray.push("vana");
+	this.suffixArray.push("creditunion");
+	this.suffixArray.push("lacaixa");
+	this.suffixArray.push("nhk");
+	this.suffixArray.push("gea");
+	this.suffixArray.push("kfh");
+	this.suffixArray.push("watches");
+	this.suffixArray.push("cartier");
+	this.suffixArray.push("iwc");
+	this.suffixArray.push("clinique");
+	this.suffixArray.push("contact");
+	this.suffixArray.push("lamer");
+	this.suffixArray.push("living");
+	this.suffixArray.push("origins");
+	this.suffixArray.push("pid");
+	this.suffixArray.push("safety");
+	this.suffixArray.push("star");
+	this.suffixArray.push("analytics");
+	this.suffixArray.push("sas");
+	this.suffixArray.push("weather");
+	this.suffixArray.push("alibaba");
+	this.suffixArray.push("alipay");
+	this.suffixArray.push("compare");
+	this.suffixArray.push("fresenius");
+	this.suffixArray.push("select");
+	this.suffixArray.push("softbank");
+	this.suffixArray.push("taobao");
+	this.suffixArray.push("tmall");
+	this.suffixArray.push("helsinki");
+	this.suffixArray.push("pamperedchef");
+	this.suffixArray.push("weatherchannel");
+	this.suffixArray.push("flickr");
+	this.suffixArray.push("gallup");
+	this.suffixArray.push("hdfcbank");
+	this.suffixArray.push("health");
+	this.suffixArray.push("pwc");
+	this.suffixArray.push("tvs");
+	this.suffixArray.push("wolterskluwer");
+	this.suffixArray.push("meo");
+	this.suffixArray.push("sapo");
+	this.suffixArray.push("mobily");
+	this.suffixArray.push("telecity");
+	this.suffixArray.push("viking");
+	this.suffixArray.push("kerrylogistics");
+	this.suffixArray.push("kerryproperties");
+	this.suffixArray.push("kuokgroup");
+	this.suffixArray.push("avianca");
+	this.suffixArray.push("chloe");
+	this.suffixArray.push("bcg");
+	this.suffixArray.push("anquan");
+	this.suffixArray.push("piaget");
+	this.suffixArray.push("shouji");
+	this.suffixArray.push("sina");
+	this.suffixArray.push("xihuan");
+	this.suffixArray.push("yun");
+	this.suffixArray.push("abbvie");
+	this.suffixArray.push("abudhabi");
+	this.suffixArray.push("kpmg");
+	this.suffixArray.push("mutual");
+	this.suffixArray.push("northwesternmutual");
+	this.suffixArray.push("vig");
+	this.suffixArray.push("weibo");
+	this.suffixArray.push("adac");
+	this.suffixArray.push("agakhan");
+	this.suffixArray.push("akdn");
+	this.suffixArray.push("ftr");
+	this.suffixArray.push("imamat");
+	this.suffixArray.push("ismaili");
+	this.suffixArray.push("statebank");
+	this.suffixArray.push("baby");
+	this.suffixArray.push("cyou");
+	this.suffixArray.push("jnj");
+	this.suffixArray.push("doha");
+	this.suffixArray.push("mls");
+	this.suffixArray.push("ally");
+	this.suffixArray.push("progressive");
+	this.suffixArray.push("ford");
+	this.suffixArray.push("lincoln");
+	this.suffixArray.push("barefoot");
+	this.suffixArray.push("dds");
+	this.suffixArray.push("gallo");
+	this.suffixArray.push("metlife");
+	this.suffixArray.push("aetna");
+	this.suffixArray.push("flir");
+	this.suffixArray.push("hkt");
+	this.suffixArray.push("nowtv");
+	this.suffixArray.push("pccw");
+	this.suffixArray.push("richardli");
+	this.suffixArray.push("dot");
+	this.suffixArray.push("mlb");
+	this.suffixArray.push("realestate");
+	this.suffixArray.push("dtv");
+	this.suffixArray.push("frontier");
+	this.suffixArray.push("hisamitsu");
+	this.suffixArray.push("locker");
+	this.suffixArray.push("netflix");
+	this.suffixArray.push("ollo");
+	this.suffixArray.push("ott");
+	this.suffixArray.push("pioneer");
+	this.suffixArray.push("ups");
+	this.suffixArray.push("zappos");
+	this.suffixArray.push("apple");
+	this.suffixArray.push("audible");
+	this.suffixArray.push("beats");
+	this.suffixArray.push("chintai");
+	this.suffixArray.push("deal");
+	this.suffixArray.push("epost");
+	this.suffixArray.push("fire");
+	this.suffixArray.push("imdb");
+	this.suffixArray.push("kindle");
+	this.suffixArray.push("prime");
+	this.suffixArray.push("save");
+	this.suffixArray.push("silk");
+	this.suffixArray.push("tdk");
+	this.suffixArray.push("jlc");
+	this.suffixArray.push("kosher");
+	this.suffixArray.push("anz");
+	this.suffixArray.push("orientexpress");
+	this.suffixArray.push("able");
+	this.suffixArray.push("cookingchannel");
+	this.suffixArray.push("dunlop");
+	this.suffixArray.push("farmers");
+	this.suffixArray.push("foodnetwork");
+	this.suffixArray.push("frontdoor");
+	this.suffixArray.push("goodyear");
+	this.suffixArray.push("hgtv");
+	this.suffixArray.push("politie");
+	this.suffixArray.push("travelchannel");
+	this.suffixArray.push("woodside");
+	this.suffixArray.push("icbc");
+	this.suffixArray.push("fedex");
+	this.suffixArray.push("obi");
+	this.suffixArray.push("author");
+	this.suffixArray.push("bot");
+	this.suffixArray.push("cbre");
+	this.suffixArray.push("godaddy");
+	this.suffixArray.push("got");
+	this.suffixArray.push("mitsubishi");
+	this.suffixArray.push("pin");
+	this.suffixArray.push("safe");
+	this.suffixArray.push("fast");
+	this.suffixArray.push("intuit");
+	this.suffixArray.push("joy");
+	this.suffixArray.push("like");
+	this.suffixArray.push("macys");
+	this.suffixArray.push("mint");
+	this.suffixArray.push("nike");
+	this.suffixArray.push("read");
+	this.suffixArray.push("zippo");
+	this.suffixArray.push("room");
+	this.suffixArray.push("zero");
+	this.suffixArray.push("ibm");
+	this.suffixArray.push("beauty");
+	this.suffixArray.push("circle");
+	this.suffixArray.push("comcast");
+	this.suffixArray.push("fujixerox");
+	this.suffixArray.push("homegoods");
+	this.suffixArray.push("homesense");
+	this.suffixArray.push("hsbc");
+	this.suffixArray.push("lancome");
+	this.suffixArray.push("marshalls");
+	this.suffixArray.push("panasonic");
+	this.suffixArray.push("smile");
+	this.suffixArray.push("staples");
+	this.suffixArray.push("tjmaxx");
+	this.suffixArray.push("tjx");
+	this.suffixArray.push("tkmaxx");
+	this.suffixArray.push("winners");
+	this.suffixArray.push("xfinity");
+	this.suffixArray.push("bbt");
+	this.suffixArray.push("bestbuy");
+	this.suffixArray.push("book");
+	this.suffixArray.push("buy");
+	this.suffixArray.push("call");
+	this.suffixArray.push("ieee");
+	this.suffixArray.push("jot");
+	this.suffixArray.push("nationwide");
+	this.suffixArray.push("off");
+	this.suffixArray.push("onyourside");
+	this.suffixArray.push("pfizer");
+	this.suffixArray.push("pohl");
+	this.suffixArray.push("raid");
+	this.suffixArray.push("rightathome");
+	this.suffixArray.push("ses");
+	this.suffixArray.push("swiftcover");
+	this.suffixArray.push("tushu");
+	this.suffixArray.push("wanggou");
+	this.suffixArray.push("alfaromeo");
+	this.suffixArray.push("allstate");
+	this.suffixArray.push("americanfamily");
+	this.suffixArray.push("amfam");
+	this.suffixArray.push("bofa");
+	this.suffixArray.push("booking");
+	this.suffixArray.push("chrysler");
+	this.suffixArray.push("citadel");
+	this.suffixArray.push("dealer");
+	this.suffixArray.push("discover");
+	this.suffixArray.push("esurance");
+	this.suffixArray.push("ferrari");
+	this.suffixArray.push("fiat");
+	this.suffixArray.push("hyatt");
+	this.suffixArray.push("jeep");
+	this.suffixArray.push("juniper");
+	this.suffixArray.push("lefrak");
+	this.suffixArray.push("lpl");
+	this.suffixArray.push("lplfinancial");
+	this.suffixArray.push("mckinsey");
+	this.suffixArray.push("mopar");
+	this.suffixArray.push("pramerica");
+	this.suffixArray.push("pru");
+	this.suffixArray.push("prudential");
+	this.suffixArray.push("smart");
+	this.suffixArray.push("srt");
+	this.suffixArray.push("tiaa");
+	this.suffixArray.push("uconnect");
+	this.suffixArray.push("visa");
+	this.suffixArray.push("abarth");
+	this.suffixArray.push("asda");
+	this.suffixArray.push("athleta");
+	this.suffixArray.push("bananarepublic");
+	this.suffixArray.push("blockbuster");
+	this.suffixArray.push("calvinklein");
+	this.suffixArray.push("capitalone");
+	this.suffixArray.push("cbs");
+	this.suffixArray.push("dish");
+	this.suffixArray.push("dodge");
+	this.suffixArray.push("fidelity");
+	this.suffixArray.push("gap");
+	this.suffixArray.push("goodhands");
+	this.suffixArray.push("hbo");
+	this.suffixArray.push("hot");
+	this.suffixArray.push("hughes");
+	this.suffixArray.push("intel");
+	this.suffixArray.push("lancia");
+	this.suffixArray.push("latino");
+	this.suffixArray.push("loft");
+	this.suffixArray.push("maserati");
+	this.suffixArray.push("mcd");
+	this.suffixArray.push("mcdonalds");
+	this.suffixArray.push("msd");
+	this.suffixArray.push("nba");
+	this.suffixArray.push("oldnavy");
+	this.suffixArray.push("pay");
+	this.suffixArray.push("qvc");
+	this.suffixArray.push("secure");
+	this.suffixArray.push("showtime");
+	this.suffixArray.push("sling");
+	this.suffixArray.push("target");
+	this.suffixArray.push("vivo");
+	this.suffixArray.push("wtc");
+	this.suffixArray.push("aigo");
+	this.suffixArray.push("americanexpress");
+	this.suffixArray.push("amex");
+	this.suffixArray.push("auspost");
+	this.suffixArray.push("boots");
+	this.suffixArray.push("george");
+	this.suffixArray.push("giving");
+	this.suffixArray.push("hdfc");
+	this.suffixArray.push("movistar");
+	this.suffixArray.push("nab");
+	this.suffixArray.push("open");
+	this.suffixArray.push("samsclub");
+	this.suffixArray.push("ubank");
+	this.suffixArray.push("walmart");
+	this.suffixArray.push("lifeinsurance");
+	this.suffixArray.push("diy");
+	this.suffixArray.push("eco");
+	this.suffixArray.push("honeywell");
+	this.suffixArray.push("vanguard");
+	this.suffixArray.push("yamaxun");
+	this.suffixArray.push("mattel");
+	this.suffixArray.push("luxe");
+	this.suffixArray.push("coupon");
+	this.suffixArray.push("spot");
+	this.suffixArray.push("caravan");
+	this.suffixArray.push("song");
+	this.suffixArray.push("tunes");
+	this.suffixArray.push("cal");
+	this.suffixArray.push("chrome");
+	this.suffixArray.push("gle");
+	this.suffixArray.push("nexus");
+	this.suffixArray.push("observer");
+	this.suffixArray.push("wow");
+	this.suffixArray.push("talk");
+	this.suffixArray.push("bauhaus");
+	this.suffixArray.push("budapest");
+	this.suffixArray.push("dvr");
+	this.suffixArray.push("fido");
+	this.suffixArray.push("ikano");
+	this.suffixArray.push("monster");
+	this.suffixArray.push("radio");
+	this.suffixArray.push("rogers");
+	this.suffixArray.push("volvo");
+	this.suffixArray.push("basketball");
+	this.suffixArray.push("baseball");
+	this.suffixArray.push("case");
+	this.suffixArray.push("caseih");
+	this.suffixArray.push("iveco");
+	this.suffixArray.push("ac");
+	this.suffixArray.push("africa");
+	this.suffixArray.push("alstom");
+	this.suffixArray.push("aol");
+	this.suffixArray.push("arab");
+	this.suffixArray.push("arpa");
+	this.suffixArray.push("ax");
+	this.suffixArray.push("banamex");
+	this.suffixArray.push("bnpparibas");
+	this.suffixArray.push("boston");
+	this.suffixArray.push("box");
+	this.suffixArray.push("catholic");
+	this.suffixArray.push("charity");
+	this.suffixArray.push("citi");
+	this.suffixArray.push("cruise");
+	this.suffixArray.push("cw");
+	this.suffixArray.push("data");
+	this.suffixArray.push("duns");
+	this.suffixArray.push("er");
+	this.suffixArray.push("etisalat");
+	this.suffixArray.push("food");
+	this.suffixArray.push("free");
+	this.suffixArray.push("fun");
+	this.suffixArray.push("grocery");
+	this.suffixArray.push("hair");
+	this.suffixArray.push("hospital");
+	this.suffixArray.push("hotels");
+	this.suffixArray.push("ifm");
+	this.suffixArray.push("inc");
+	this.suffixArray.push("je");
+	this.suffixArray.push("jio");
+	this.suffixArray.push("kred");
+	this.suffixArray.push("llc");
+	this.suffixArray.push("map");
+	this.suffixArray.push("merckmsd");
+	this.suffixArray.push("mobile");
+	this.suffixArray.push("moscow");
+	this.suffixArray.push("moto");
+	this.suffixArray.push("newholland");
+	this.suffixArray.push("phd");
+	this.suffixArray.push("phone");
+	this.suffixArray.push("post");
+	this.suffixArray.push("reliance");
+	this.suffixArray.push("ril");
+	this.suffixArray.push("rmit");
+	this.suffixArray.push("rugby");
+	this.suffixArray.push("search");
+	this.suffixArray.push("shaw");
+	this.suffixArray.push("sport");
+	this.suffixArray.push("stada");
+	this.suffixArray.push("sv");
+	this.suffixArray.push("sx");
+	this.suffixArray.push("unicom");
+	this.suffixArray.push("vi");
+	this.suffixArray.push("voting");
+	this.suffixArray.push("xn--11b4c3d");
+	this.suffixArray.push("xn--1ck2e1b");
+	this.suffixArray.push("xn--1qqw23a");
+	this.suffixArray.push("xn--2scrj9c");
+	this.suffixArray.push("xn--30rr7y");
+	this.suffixArray.push("xn--3bst00m");
+	this.suffixArray.push("xn--3ds443g");
+	this.suffixArray.push("xn--3e0b707e");
+	this.suffixArray.push("xn--3hcrj9c");
+	this.suffixArray.push("xn--3oq18vl8pn36a");
+	this.suffixArray.push("xn--3pxu8k");
+	this.suffixArray.push("xn--42c2d9a");
+	this.suffixArray.push("xn--45br5cyl");
+	this.suffixArray.push("xn--45brj9c");
+	this.suffixArray.push("xn--45q11c");
+	this.suffixArray.push("xn--4gbrim");
+	this.suffixArray.push("xn--54b7fta0cc");
+	this.suffixArray.push("xn--55qw42g");
+	this.suffixArray.push("xn--55qx5d");
+	this.suffixArray.push("xn--5su34j936bgsg");
+	this.suffixArray.push("xn--5tzm5g");
+	this.suffixArray.push("xn--6frz82g");
+	this.suffixArray.push("xn--6qq986b3xl");
+	this.suffixArray.push("xn--80adxhks");
+	this.suffixArray.push("xn--80ao21a");
+	this.suffixArray.push("xn--80aqecdr1a");
+	this.suffixArray.push("xn--80asehdb");
+	this.suffixArray.push("xn--80aswg");
+	this.suffixArray.push("xn--8y0a063a");
+	this.suffixArray.push("xn--90a3ac");
+	this.suffixArray.push("xn--90ae");
+	this.suffixArray.push("xn--90ais");
+	this.suffixArray.push("xn--9dbq2a");
+	this.suffixArray.push("xn--9et52u");
+	this.suffixArray.push("xn--9krt00a");
+	this.suffixArray.push("xn--b4w605ferd");
+	this.suffixArray.push("xn--bck1b9a5dre4c");
+	this.suffixArray.push("xn--c1avg");
+	this.suffixArray.push("xn--c2br7g");
+	this.suffixArray.push("xn--cck2b3b");
+	this.suffixArray.push("xn--cg4bki");
+	this.suffixArray.push("xn--clchc0ea0b2g2a9gcd");
+	this.suffixArray.push("xn--czr694b");
+	this.suffixArray.push("xn--czrs0t");
+	this.suffixArray.push("xn--czru2d");
+	this.suffixArray.push("xn--d1acj3b");
+	this.suffixArray.push("xn--d1alf");
+	this.suffixArray.push("xn--e1a4c");
+	this.suffixArray.push("xn--eckvdtc9d");
+	this.suffixArray.push("xn--efvy88h");
+	this.suffixArray.push("xn--estv75g");
+	this.suffixArray.push("xn--fct429k");
+	this.suffixArray.push("xn--fhbei");
+	this.suffixArray.push("xn--fiq228c5hs");
+	this.suffixArray.push("xn--fiq64b");
+	this.suffixArray.push("xn--fiqs8s");
+	this.suffixArray.push("xn--fiqz9s");
+	this.suffixArray.push("xn--fjq720a");
+	this.suffixArray.push("xn--flw351e");
+	this.suffixArray.push("xn--fpcrj9c3d");
+	this.suffixArray.push("xn--fzc2c9e2c");
+	this.suffixArray.push("xn--fzys8d69uvgm");
+	this.suffixArray.push("xn--g2xx48c");
+	this.suffixArray.push("xn--gckr3f0f");
+	this.suffixArray.push("xn--gecrj9c");
+	this.suffixArray.push("xn--gk3at1e");
+	this.suffixArray.push("xn--h2breg3eve");
+	this.suffixArray.push("xn--h2brj9c");
+	this.suffixArray.push("xn--h2brj9c8c");
+	this.suffixArray.push("xn--hxt814e");
+	this.suffixArray.push("xn--i1b6b1a6a2e");
+	this.suffixArray.push("xn--imr513n");
+	this.suffixArray.push("xn--io0a7i");
+	this.suffixArray.push("xn--j1aef");
+	this.suffixArray.push("xn--j1amh");
+	this.suffixArray.push("xn--j6w193g");
+	this.suffixArray.push("xn--jlq61u9w7b");
+	this.suffixArray.push("xn--jvr189m");
+	this.suffixArray.push("xn--kcrx77d1x4a");
+	this.suffixArray.push("xn--kprw13d");
+	this.suffixArray.push("xn--kpry57d");
+	this.suffixArray.push("xn--kpu716f");
+	this.suffixArray.push("xn--kput3i");
+	this.suffixArray.push("xn--l1acc");
+	this.suffixArray.push("xn--lgbbat1ad8j");
+	this.suffixArray.push("xn--mgb9awbf");
+	this.suffixArray.push("xn--mgba3a3ejt");
+	this.suffixArray.push("xn--mgba3a4f16a");
+	this.suffixArray.push("xn--mgba7c0bbn0a");
+	this.suffixArray.push("xn--mgbaakc7dvf");
+	this.suffixArray.push("xn--mgbaam7a8h");
+	this.suffixArray.push("xn--mgbab2bd");
+	this.suffixArray.push("xn--mgbai9azgqp6j");
+	this.suffixArray.push("xn--mgbayh7gpa");
+	this.suffixArray.push("xn--mgbb9fbpob");
+	this.suffixArray.push("xn--mgbbh1a");
+	this.suffixArray.push("xn--mgbbh1a71e");
+	this.suffixArray.push("xn--mgbc0a9azcg");
+	this.suffixArray.push("xn--mgbca7dzdo");
+	this.suffixArray.push("xn--mgberp4a5d4ar");
+	this.suffixArray.push("xn--mgbgu82a");
+	this.suffixArray.push("xn--mgbi4ecexp");
+	this.suffixArray.push("xn--mgbpl2fh");
+	this.suffixArray.push("xn--mgbt3dhd");
+	this.suffixArray.push("xn--mgbtx2b");
+	this.suffixArray.push("xn--mgbx4cd0ab");
+	this.suffixArray.push("xn--mix891f");
+	this.suffixArray.push("xn--mk1bu44c");
+	this.suffixArray.push("xn--mxtq1m");
+	this.suffixArray.push("xn--ngbc5azd");
+	this.suffixArray.push("xn--ngbe9e0a");
+	this.suffixArray.push("xn--ngbrx");
+	this.suffixArray.push("xn--node");
+	this.suffixArray.push("xn--nqv7f");
+	this.suffixArray.push("xn--nqv7fs00ema");
+	this.suffixArray.push("xn--nyqy26a");
+	this.suffixArray.push("xn--o3cw4h");
+	this.suffixArray.push("xn--ogbpf8fl");
+	this.suffixArray.push("xn--otu796d");
+	this.suffixArray.push("xn--p1acf");
+	this.suffixArray.push("xn--pbt977c");
+	this.suffixArray.push("xn--pgbs0dh");
+	this.suffixArray.push("xn--pssy2u");
+	this.suffixArray.push("xn--q9jyb4c");
+	this.suffixArray.push("xn--qcka1pmc");
+	this.suffixArray.push("xn--qxam");
+	this.suffixArray.push("xn--rhqv96g");
+	this.suffixArray.push("xn--rovu88b");
+	this.suffixArray.push("xn--rvc1e0am3e");
+	this.suffixArray.push("xn--s9brj9c");
+	this.suffixArray.push("xn--ses554g");
+	this.suffixArray.push("xn--t60b56a");
+	this.suffixArray.push("xn--tckwe");
+	this.suffixArray.push("xn--tiq49xqyj");
+	this.suffixArray.push("xn--unup4y");
+	this.suffixArray.push("xn--vermgensberater-ctb");
+	this.suffixArray.push("xn--vermgensberatung-pwb");
+	this.suffixArray.push("xn--vhquv");
+	this.suffixArray.push("xn--vuq861b");
+	this.suffixArray.push("xn--w4r85el8fhu5dnra");
+	this.suffixArray.push("xn--w4rs40l");
+	this.suffixArray.push("xn--wgbh1c");
+	this.suffixArray.push("xn--wgbl6a");
+	this.suffixArray.push("xn--xhq521b");
+	this.suffixArray.push("xn--xkc2al3hye2a");
+	this.suffixArray.push("xn--xkc2dl3a5ee0h");
+	this.suffixArray.push("xn--y9a3aq");
+	this.suffixArray.push("xn--yfro4i67o");
+	this.suffixArray.push("xn--ygbi2ammx");
+	this.suffixArray.push("xn--zfr164b");
+	this.suffixArray.push("yt");
+	this.suffixArray.push("ds");
+	this.suffixArray.push("lib");
+	this.suffixArray.push("amazon");
+	this.suffixArray.push("bl");
+	this.suffixArray.push("bq");
+	this.suffixArray.push("cpa");
+	this.suffixArray.push("doosan");
+	this.suffixArray.push("flsmidth");
+	this.suffixArray.push("gay");
+	this.suffixArray.push("htc");
+	this.suffixArray.push("kids");
+	this.suffixArray.push("llp");
+	this.suffixArray.push("mf");
+	this.suffixArray.push("music");
+	this.suffixArray.push("spa");
+	this.suffixArray.push("ss");
+	this.suffixArray.push("um");
+	this.suffixArray.push("pyc");	
+	this.suffixArray.push("pirate");
+	this.suffixArray.push("libre");
+	this.suffixArray.push("geek");
+	this.suffixArray.push("oss");
+	this.suffixArray.push("indy");
+	this.suffixArray.push("dyn");
+	this.suffixArray.push("gopher");
+	this.suffixArray.push("parody");
+};
+
+IValid.prototype.hasDomainSuffix = function(query) {
+	if(query === undefined || query === null || query.trim() === "" || query.charAt(query.length - 1) === ".") {
+		return false;
+	}
+	var temps = query.split(".");
+	if(null === temps || temps.length < 2) {
+		return false;
+	}
+	if(this.suffixArray.indexOf(temps[temps.length - 1].toLowerCase()) != -1) {
+		return true;
+	}
+	return false;
+};
+
+IValid.prototype.getQueryType = function(query, type) {
+	var result;
+	if(this.ipPattern.test(query)) {
+		result = this.TYPE_IP;
+	} else if(this.emailPattern.test(query)) {
+		result = this.TYPE_EMAIL;
+	} else if(this.hasDomainSuffix(query) && this.domainPattern.test(query)) {
+		result = this.TYPE_DOMAIN;
+	} else if(this.ftpPattern.test(query) || this.urlPattern.test(query)) {
+		result = this.TYPE_URL;
+	} else if(this.md5Pattern.test(query)) {
+		result = this.TYPE_MD5;
+	} else if(this.SHA1Pattern.test(query)) {
+		result = this.TYPE_SHA1;
+	} else if(this.SHA256Pattern.test(query)) {
+		result = this.TYPE_SHA256;
+	} else if(this.htmlPattern.test(query)) {
+		result = this.TYPE_HTML;
+	} else {
+		result = this.TYPE_STRING;
+	}
+	if(type === undefined) {
+		return result;
+	} else {
+		if(this.mapper[result].indexOf(type) !== -1) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+
+};
+
+//valid object
+var VALID = new IValid();
+//DOMAIN = 1;URL = 2;IP = 3;MD5=4;EMAIL=5;STRING = 7;SHA1 = 8;SHA256 = 9;
+function Valid(query, type) {
+	return VALID.getQueryType(query, type);
+};
+
+// valid email
+function valid_email(email) {
+	var patten = new RegExp(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/);
+	return patten.test(email);
+}
+
+/*==========xxx.Validation method End==========*/
+
+/*******************PUBLIC DOWNLOAD METHOD START********************/
+
+TianJiPartner.Common.download = function(downloadUrl, paramId, tipText, boxcWidth) {
+
+	$.ajax({
+		url: downloadUrl,
+		dataType: 'json',
+		method: 'post',
+		data: {
+			query: JSON.stringify({
+				id: paramId
+			})
+		},
+		success: function(jsonData) {
+			if(0 == jsonData.result.result) {
+				console.log(jsonData)
+				if(downloadUrl == "Json/intelDetailsDownload.json" || downloadUrl == "Json/organDetailsDownload.json"||downloadUrl == "Json/malware/malwareDetailsDownload.json"||downloadUrl == "Json/tool/toolDetailsDownload.json"||downloadUrl == "Json/attack/attackPatternDetailsDownload.json"){
+					JSonToCSV.SaveAs('export.json', jsonData.data);
+				}else{
+					var raw = {};
+					raw.fields = jsonData.fields;
+					raw.data = jsonData.data;
+					var dataJson= Papa.unparse(raw);
+					
+					JSonToCSV.SaveAs('export.csv', dataJson);
+				}
+				
+				
+				$("#downloadSuccess").find("span").text(tipText);
+				if(boxcWidth != undefined) {
+					$("#downloadSuccess").width(boxcWidth);
+				};
+				$("#downloadSuccess").stop().fadeIn(function() {
+					setTimeout(function() {
+						$("#downloadSuccess").stop().fadeOut(1000);
+					}, 1000);
+				});
+			} else {
+				TianJiPartner.Common.updateDataFailure(jsonData);
+			};
+
+		},
+		error: function() {}
+	});
+
+};
+/*==================PUBLIC DOWNLOAD METHOD END================*/
+
+/*******************GLOBAL SEARCH START********************/
+
+$("#globalSearch").bind("click", function() {
+	TianJiPartner.Common.globalSearch("globalInput");
+});
+
+$("#globalInput").on('keypress', function(event) {
+	if(event.keyCode == "13") {
+		TianJiPartner.Common.globalSearch("globalInput");
+	};
+});
+
+$("#homeSearch").bind("click", function() {
+	TianJiPartner.Common.globalSearch("homeInput");
+});
+
+$("#homeInput").on('keypress', function(event) {
+	if(event.keyCode == "13") {
+		TianJiPartner.Common.globalSearch("homeInput");
+	};
+});
+//搜索框赋值
+function setValueKeyword(keyword) {
+	$("#globalInput").val(keyword);
+	TianJiPartner.Common.globalSearch("globalInput");
+	$("#globalInput").val("");
+}
+TianJiPartner.Common.globalSearch = function(itemId) {
+	var isTag = "";
+	if($.trim($("#" + itemId).val()) != "") {
+		var keyWord = $.trim($("#" + itemId).val());
+	} else if($.trim($("#" + itemId).text()) != "") {
+		var keyWord = $.trim($("#" + itemId).text());
+		isTag = "tag";
+	} else {
+		var keyWord = "";
+	};
+	$("#" + itemId).val("");//关键词清空
+	if(keyWord != "" && keyWord != null) {
+		var type = Valid(keyWord);
+		if(type == 8) {
+			location.href = "/AllFilterIntel.html?key_word=" + encodeURIComponent(keyWord) + "&type=" + isTag;
+		} else {
+			sessionStorage.setItem("iocKeyword", keyWord);
+			location.href = "/AllFilterIntel.html?jump=Alice";
+			return;
+			var viewForm = top.document.createElement("form");   
+		    document.body.appendChild(viewForm);
+		    viewForm.method = 'post';
+		    viewForm.action = 'https://alice.tj-un.com/alice/dns.jsp';
+		    viewForm.target = '_blank';
+		    //创建隐藏表单
+		    var skElement = document.createElement("input");
+		    skElement.setAttribute("name","key");
+		    skElement.setAttribute("type","hidden");
+		    skElement.setAttribute("value",keyWord.replace(/^\s+|\s+$/g, ""));
+		    viewForm.appendChild(skElement);
+
+		    var initElement = document.createElement("input");
+		    initElement.setAttribute("name","init");
+		    initElement.setAttribute("type","hidden");
+		    initElement.setAttribute("value","true");
+		    viewForm.appendChild(initElement);
+		    
+		    var holdElement = document.createElement("input");
+	  	    holdElement.setAttribute("name","hold");
+	  	    holdElement.setAttribute("type","hidden");
+	  	    holdElement.setAttribute("value",-1);
+	  	    viewForm.appendChild(holdElement);
+		 
+		    viewForm.submit();
+		};
+	};
+
+};
+
+/*==================GLOBAL SEARCH END================*/
+// 转义""
+function sv(data) {
+    if (typeof data == "string") {
+        var _match = ["\\<", "\\>", "\\(", "\\)", "\\[", "\\]", "\\{", "\\}", "\\'", '\\"', "\\:"], trans = ["&lt;", "&gt;", "&#40;", "&#41;", "&#91;", "&#93;", "&#123;", "&#125;", "&#39", "&quot;", "&#58;"], _length = data.length, result = "";
+        $.each(_match, function (index, res) {
+            var reg = new RegExp(res, "g");
+            data = data.replace(reg, trans[index])
+        })
+    } else {
+        console.log("数值类型不正确");
+    }
+    return data;
+}

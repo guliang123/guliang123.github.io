@@ -1,0 +1,450 @@
+@charset "utf-8";
+.dialog-no-title .ui-dialog-titlebar {
+	display: none;
+}
+
+.dialog {
+	display: none;
+}
+
+.dialog-big-title .ui-dialog-buttonpane .ui-dialog-buttonset,
+.errorTip .ui-dialog-buttonpane .ui-dialog-buttonset {
+	float: none;
+	text-align: center;
+	padding-bottom: 15px;
+}
+
+.errorTip .dialog_content .dialog_tip {
+	min-height: 100px;
+	padding: 34px 20px 20px;
+	overflow: hidden;
+}
+
+.dialog-big-title .ui-dialog-buttonpane .ui-dialog-buttonset button {
+	height: 25px;
+	line-height: 25px;
+	min-width: 50px;
+	text-align: center;
+	border: none;
+	outline: none;
+	border-radius: 2px;
+	background-color: #e7eaed;
+	margin: 0 8px;
+	padding: 0 10px;
+	cursor: pointer;
+}
+
+.ui-dialog .ui-dialog-title {
+	margin: 0;
+	text-align: center;
+	padding-left: 10%;
+}
+
+.ui-widget-header {
+	border: none;
+	background-color: #be0d23;
+	color: #fff;
+	height: 32px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+	width: 16px;
+	height: 16px;
+	border: none;
+	outline: none;
+	border-radius: 50%;
+	margin: 0;
+	padding: 0;
+	top: 8px;
+	right: 8px;
+	background: #4b4e52 url(../Plugins/jquery-ui-1.12.1/images/ui-close.png) no-repeat center center;
+}
+
+.ui-dialog .ui-dialog-content {
+	padding: 12px 30px 0;
+}
+
+.ui-dialog .ui-dialog-titlebar-close span {
+	display: none;
+}
+
+.ui-widget-content {
+	border: none;
+	background: none;
+	color: #333;
+}
+
+.ui-widget-content .ui-datepicker-calendar {
+	color: #fff;
+}
+
+.ui-widget,
+.ui-widget button {
+	font-family: Arial, "Microsoft Yahei", Verdana, Helvetica, sans-serif;
+	padding: 0;
+}
+
+.ui-widget.ui-widget-content {
+	border: none;
+	background-color: #4b4e52;
+}
+
+.ui-corner-all {
+	border-radius: 0;
+}
+
+.ui-widget-overlay {
+	background: #000;
+	opacity: .5;
+	filter: Alpha(Opacity=50);
+	z-index: 999;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+	border: none;
+	margin: 0 30px 20px;
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+	height: 25px;
+	line-height: 25px;
+	min-width: 50px;
+	text-align: center;
+	border: none;
+	outline: none;
+	border-radius: 2px;
+	background-color: #e7eaed;
+	cursor: pointer;
+	margin: 8px 0 0 12px;
+	padding: 0 10px;
+}
+
+.ui-dialog .ui-dialog-buttonpane button:hover {
+	background-color: #008cff;
+	color: #e7eaed;
+}
+
+.dialog {
+	display: none;
+	color: #e7eaed;
+}
+
+.dialog_normal {
+	padding: 0 55px !important;
+}
+
+.dialog_normal h3 {
+	color: #008CFF;
+	font-size: 20px;
+	font-weight: bold;
+	padding-top: 20px;
+	text-align: center;
+}
+
+.dialog_normal p {
+	padding-top: 15px;
+	text-align: center;
+}
+
+.subsrc {
+	overflow: hidden;
+	padding-top: 15px;
+}
+
+.dialog_normal .subsrc_key {
+	float: left;
+}
+
+.dialog_normal .subsrc_val {
+	float: left;
+	width: 195px;
+	min-height: 90px;
+	overflow: hidden;
+}
+
+.dialog_normal .subsrc_val li {
+	float: left;
+	padding-left: 15px;
+	padding-bottom: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.dialog_normal .subsrc_val li label {
+	cursor: pointer;
+}
+
+.dialog_normal .subsrc_val li input[type="checkbox"] {
+	width: 0;
+	height: 0;
+	opacity: 0;
+	display: none;
+}
+
+.dialog_normal .subsrc_val li i {
+	display: inline-block;
+	margin-right: 3px;
+	width: 14px;
+	height: 14px;
+	font-size: 12px;
+	border-radius: 2px;
+	border: 1px solid #fff;
+	color: transparent;
+}
+
+.dialog_normal .subsrc_val li input[type="checkbox"]:checked+i {
+	background-color: #008cff;
+	border: 1px solid #008cff;
+	color: #fff;
+}
+
+.dialog_btn {
+	text-align: center;
+}
+
+.dialog_btn button {
+	height: 25px;
+	line-height: 25px;
+	width: 50px;
+	text-align: center;
+	border: none;
+	outline: none;
+	border-radius: 2px;
+	background-color: #e7eaed;
+	margin: 0 6px;
+	cursor: pointer;
+}
+
+.dialog_btn button:hover {
+	background-color: #008cff;
+	color: #e7eaed;
+}
+
+.ui-draggable .ui-dialog-titlebar {
+	cursor: default;
+}
+
+.dialog_content ul.dialog_info {}
+
+.dialog_content ul.dialog_info li {
+	position: relative;
+	padding: 12px 0;
+}
+
+.dialog_content ul.dialog_info li .ui_name {
+	display: block;
+	position: absolute;
+	top: 10px;
+	left: 0;
+}
+
+.dialog_content ul.dialog_info li .ui_name i {
+	color: transparent;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.dialog_content ul.dialog_info li .ui_value {
+	display: block;
+	margin: 0 0 0 65px;
+	overflow: hidden;
+}
+
+.dialog_content ul.dialog_info li .ui_value label .ui_radio {
+	display: block;
+	float: left;
+	margin: 2px 8px 0;
+	width: 14px;
+	height: 14px;
+	background-color: #fff;
+	border: 5px solid #fff;
+	border-radius: 50%;
+}
+
+.dialog_content ul.dialog_info li .ui_value label span {
+	display: block;
+	float: left;
+	width: 45px;
+}
+
+.dialog_content ul.dialog_info li .ui_value label input[type="radio"] {
+	width: 0;
+	height: 0;
+	opacity: 0;
+}
+
+.dialog_content ul.dialog_info li .ui_value label input[type="radio"]:checked+i {
+	border: 5px solid #008cff;
+}
+
+.dialog_content ul.dialog_info li .ui_value input,
+.dialog_content ul.dialog_info li .ui_value select {
+	width: 100%;
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #858b91;
+	outline: none;
+	padding: 0 6px;
+}
+
+.dialog_content ul.dialog_info li .ui_value input[disabled],
+.dialog_content ul.dialog_info li .ui_value select[disabled] {
+	background-color: #ddd;
+	cursor: not-allowed;
+}
+
+.dialog_content .textarea[contenteditable="false"] {
+	background-color: #ddd;
+	cursor: not-allowed;
+}
+
+.dialog_content .dialog_tip {
+	min-height: 124px;
+	padding: 34px 20px 20px;
+	overflow: hidden;
+}
+
+.dialog_content .dialog_tip .icon-warning {
+	float: left;
+	margin-top: 16px;
+	height: 36px;
+	width: 36px;
+	font-size: 36px;
+	color: #f6ab3b;
+}
+
+.dialog_content .dialog_tip .ui_tip {
+	float: left;
+	margin-left: 35px;
+	line-height: 32px;
+	width: 225px;
+}
+.dialog .error_data{
+	padding: 15px 0;
+	line-height: 20px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow: hidden;	
+}
+
+.dialog-close-btn {
+	position: absolute;
+	z-index: 400;
+	width: 16px;
+	height: 16px;
+	border: none;
+	outline: none;
+	border-radius: 50%;
+	margin: 0;
+	padding: 0;
+	top: 8px;
+	right: 8px;
+	background: #4b4e52 url(../Plugins/jquery-ui-1.12.1/images/ui-close.png) no-repeat center center;
+	cursor: pointer;
+}
+
+.dialog_tab {
+	height: 32px;
+	width: 100%;
+	line-height: 32px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 300;
+	overflow: hidden;
+	background-color: #be0d23;
+}
+
+.dialog_tab li {
+	float: left;
+	border-right: 2px solid #fff;
+	min-width: 110px;
+	padding: 0 10px;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+}
+
+.dialog_tab li.active {
+	background-color: #4b4e52;
+}
+
+#introduce P {
+	line-height: 20px;
+	padding: 5px 0;
+	font-size: 12px;
+}
+
+.dialog_tab+.dialog_content {
+	margin-top: 20px;
+}
+
+.dialog_tab+.dialog_content textarea {
+	padding: 5px 0;
+	line-height: 20px;
+	width: 100%;
+	height: 310px;
+	color: #fff;
+	font-size: 12px;
+	overflow: auto;
+	border: none;
+	outline: none;
+	resize: none;
+	background-color: transparent;
+}
+
+.ui_validate {
+	display: none;
+	height: 25px;
+	line-height: 25px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	color: #f00;
+}
+
+.zclip embed {
+	margin-top: -26px;
+}
+
+.dialog_msg {
+	display: none;
+	width: 210px;
+	height: 74px;
+	line-height: 74px;
+	background-color: #be0d23;
+	color: #fff;
+	text-align: center;
+	border-radius: 4px;
+	position: fixed;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	box-shadow: 0px 0px 10px 3px #fff;
+}
+
+.dialog_msg i {
+	font-size: 24px;
+	vertical-align: middle;
+	padding-right: 20px;
+}
+.dialog_msg span{
+	font-size: 16px;
+}
+#helpfulHints .dialog_content .dialog_tip .ui_tip {
+	line-height: 21px;
+	width: 275px;
+}
+
+#helpfulHints .dialog_content .dialog_tip .icon-warning {
+	margin-top: 25px;
+}

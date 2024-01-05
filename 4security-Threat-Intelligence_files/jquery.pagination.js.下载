@@ -1,0 +1,245 @@
+/**
+ * This jQuery plugin displays pagination links inside the selected elements.
+ *
+ * @author Gabriel Birke (birke *at* d-scribe *dot* de)
+ * @version 1.1
+ * @param {int} maxentries Number of entries to paginate
+ * @param {Object} opts Several options (see README for documentation)
+ * @return {Object} jQuery Object
+ */
+jQuery.fn.pagination = function(maxentries, opts) {
+	opts = jQuery.extend({
+		default_per_page: 10,
+		select_per_page: [20, 50],
+		num_display_entries: 10,
+		current_page: 0,
+		num_edge_entries: 0,
+		link_to: "javascript:void(0)",
+		first_text: "<<",
+		last_text: ">>",
+		prev_text: "<",
+		next_text: ">",
+		ellipse_text: "...",
+		prev_show_always: true,
+		next_show_always: true,
+		change_perpage_count: true,
+		callback: function() { return false; }
+	}, opts || {});
+
+	return this.each(function() {
+		/**
+		 * Calculate the maximum number of pages
+		 */
+		function numPages() {
+			return Math.ceil(maxentries / opts.default_per_page);
+		};
+
+		/**
+		 * Calculate start and end point of pagination links depending on 
+		 * current_page and num_display_entries.
+		 * @return {Array}
+		 */
+		function getInterval() {
+			var ne_half = Math.ceil(opts.num_display_entries / 2);
+			var np = numPages();
+			var upper_limit = np - opts.num_display_entries;
+			var start = current_page > ne_half ? Math.max(Math.min(current_page - ne_half, upper_limit), 0) : 0;
+			var end = current_page > ne_half ? Math.min(current_page + ne_half, np) : Math.min(opts.num_display_entries, np);
+			if(current_page==2){
+				end = 4;
+			}
+			return [start, end];
+		};
+
+		/**
+		 * This is the event handling function for the pagination links. 
+		 * @param {int} page_id The new page number
+		 */
+		function pageSelected(page_id, evt) {
+			current_page = page_id;
+			drawLink();
+			var continuePropagation = opts.callback(page_id, panel);
+			if(!continuePropagation) {
+				if(evt.stopPropagation) {
+					evt.stopPropagation();
+				} else {
+					evt.cancelBubble = true;
+				};
+			};
+			return continuePropagation;
+		};
+
+		/**
+		 * This function inserts the pagination links into the container element
+		 */
+		var panel = jQuery(this);
+		
+		if(panel.children().length == 0) {
+			panel.append($("<div class='perSeleted'></div><div class='perPage'></div>"));
+		};
+		
+		var $perSeleted = panel.find(".perSeleted");
+		var $perPage = panel.find(".perPage");
+
+		function drawLink() {
+			$perPage.empty();
+			var interval = getInterval();
+			var np = numPages();
+			// This helper function returns a handler function that calls pageSelected with the right page_id
+			var getClickHandler = function(page_id) {
+				return function(evt) { return pageSelected(page_id, evt); }
+			};
+			// Helper function for generating a single link (or a span tag if it'S the current page)
+			var appendItem = function(page_id, appendopts) {
+				page_id = page_id < 0 ? 0 : (page_id < np ? page_id : np - 1); // Normalize page id to sane value
+				appendopts = jQuery.extend({ text: page_id + 1, classes: "" }, appendopts || {});
+				if(page_id == current_page|| page_id == -1) {
+					var lnk = $("<span class='current'>" + (appendopts.text) + "</span>");
+				} else {
+					var lnk = $("<a>" + (appendopts.text) + "</a>")
+						.bind("click", getClickHandler(page_id))
+						.attr('href', opts.link_to.replace(/__id__/, page_id));
+				};
+				if(appendopts.classes) { lnk.addClass(appendopts.classes); }
+				$perPage.append(lnk);
+			};
+			// firstPage 跳转到首页
+			/*if (opts.first_text && (current_page > 0 || opts.prev_show_always)) {      
+				appendItem(0, { text: opts.first_text, classes: "prev disabled" });           
+			} */
+			// Generate "Previous"-Link
+			if(opts.prev_text && (current_page > 0 || opts.prev_show_always)) {
+				appendItem(current_page - 1, { text: opts.prev_text, classes: "prev" });
+			};
+			// Generate starting points
+			if(interval[0] > 0 && opts.num_edge_entries > 0) {
+				var end = Math.min(opts.num_edge_entries, interval[0]);
+				for(var i = 0; i < end; i++) {
+					appendItem(i);
+				};
+				if(opts.num_edge_entries < interval[0] && opts.ellipse_text) {
+					jQuery("<span>" + opts.ellipse_text + "</span>").appendTo($perPage);
+				};
+			};
+			// Generate interval links
+			for(var i = interval[0]; i < interval[1]; i++) {
+				appendItem(i);
+			};
+			// Generate ending points
+			if(interval[1] < np && opts.num_edge_entries > 0) {
+				if(np - opts.num_edge_entries > interval[1] && opts.ellipse_text) {
+					jQuery("<span>" + opts.ellipse_text + "</span>").appendTo($perPage);
+				};
+				var begin = Math.max(np - opts.num_edge_entries, interval[1]);
+				for(var i = begin; i < np; i++) {
+					appendItem(i);
+				};
+
+			};
+			// Generate "Next"-Link
+			if(opts.next_text && (current_page < np - 1 || opts.next_show_always)) {
+				appendItem(current_page + 1, { text: opts.next_text, classes: "next" });
+			};
+			// lastPage 
+			/*if (opts.last_text && (current_page < np - 1 || opts.next_show_always)) {            
+				 appendItem(np, { text: opts.last_text, classes: "prev disabled" });          
+			}*/
+			/****************** Added ***************/
+			/*Insert a text box, the user input and return after the jump*/
+			var pagetext = '<input class="pagevalue" type="text">';
+			var toPage = '<a class="search" href="javascript:void(0)">go</a>';
+
+			$(pagetext).appendTo($perPage);
+			$(toPage).appendTo($perPage);
+
+			$(function() {
+				$(".pagevalue").keyup(function() {
+					this.value = this.value.replace(/[^\d]/g, '');
+				});
+			});
+
+			$perPage.find(".search").on("click", function(evt) {
+				if($perPage.find(".search").siblings(".pagevalue").val() != "") {
+					var iPageNum = $.trim($perPage.find(".search").siblings(".pagevalue").val()) - 1;
+					if(iPageNum < 1) {
+						pageSelected(0, evt);
+					} else if(iPageNum < np) {
+						pageSelected(iPageNum, evt);
+					} else if(iPageNum >= np) {
+						pageSelected(np - 1, evt);
+					};
+					$perPage.find(".search").siblings(".pagevalue").val("");
+				}
+			});
+
+		};
+
+		function drawLinks() {
+
+			drawLink();
+
+			if(opts.change_perpage_count) {
+				var sOptions = "";
+				for(var i =0; i < opts.select_per_page.length; i++){
+					if(opts.default_per_page == opts.select_per_page[i]){
+						sOptions = sOptions + '<option value="' + opts.select_per_page[i] + '" selected="selected">' + opts.select_per_page[i] + '</option>';
+					}else{
+						sOptions = sOptions + '<option value="' + opts.select_per_page[i] + '">' + opts.select_per_page[i] + '</option>';
+					}
+				}
+				
+				var totalPage = '<div class="totalPage">每页显示<select>' + sOptions +
+					'</select>条记录, 共有<i>' + Math.ceil(maxentries / opts.default_per_page) + '</i>页</div>';
+				if($perSeleted.children().length == 0) {
+					$(totalPage).appendTo($perSeleted);
+				} else {
+					opts.default_per_page = $(".totalPage select").val();
+
+				};
+				$(".totalPage select").on("change", function(evt) {
+
+					pageSelected(0, evt);
+					opts.default_per_page = $(this).val();
+					$(".totalPage i").text(Math.ceil(maxentries / opts.default_per_page));
+					drawLink();
+
+				});
+			} else {
+				var totalPage = '<div class="totalPage">共有<i>' + maxentries + '</i>条数据, 每页显示<i>' + opts.default_per_page + '</i>条</div>';
+				if($perSeleted.children().length == 0) {
+					$(totalPage).appendTo($perSeleted);
+				};
+			};
+
+			/****************** Added End ******************/
+		};
+		// Extract current_page from options
+		var current_page = opts.current_page;
+		// Create a sane value for maxentries and default_per_page
+		//maxentries = (!maxentries || maxentries < 0) ? 1 : maxentries;
+		maxentries = (!maxentries || maxentries < 0) ? 0 : maxentries;
+		opts.default_per_page = (!opts.default_per_page || opts.default_per_page < 0) ? 1 : opts.default_per_page;
+		// Store DOM element for easy access from all inner functions
+		// Attach control functions to the DOM element 
+		this.selectPage = function(page_id) { pageSelected(page_id); }
+		this.prevPage = function() {
+			if(current_page > 0) {
+				pageSelected(current_page - 1);
+				return true;
+			} else {
+				return false;
+			};
+		};
+		this.nextPage = function() {
+			if(current_page < numPages() - 1) {
+				pageSelected(current_page + 1);
+				return true;
+			} else {
+				return false;
+			};
+		};
+		// When all initialisation is done, draw the links
+		drawLinks();
+		opts.callback(current_page, this);
+	});
+};

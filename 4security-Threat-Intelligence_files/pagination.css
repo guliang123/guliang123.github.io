@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+/* pagination */
+
+.pagination {
+	font-size: 14px;
+	padding: 10px 0 30px;
+	text-align: center;
+	text-align: right;
+}
+.pagination .perSeleted,.pagination .perPage{
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+}
+.pagination a {
+	text-decoration: none;
+	border: solid 1px #bcbdbd;
+}
+
+.pagination a,
+.pagination span {
+	display: block;
+	float: left;
+	padding:0 5px;
+	text-align: center;
+	margin-left: 10px;
+	font-size: 12px;
+	height: 20px;
+	line-height: 20px;
+}
+
+.pagination .current {
+	background-color: #bcbdbd;
+	border: solid 1px #eaebeb;
+}
+.pagination .current.prev,
+.pagination .current.next {
+	color: #999;
+	border: solid 1px #bcbdbd;
+	background: #fff;
+}
+.pagination .pagevalue{
+	float: left;
+	width:48px;
+	text-align: center;
+	height: 20px;
+	margin-left: 10px;
+	border: solid 1px #bcbdbd;
+	outline: none;
+	font-size: 12px;
+}
+.pagination .pagevalue:focus{
+	border:1px solid #008CFF;
+}
+.pagination .search{
+	display: inline-block;
+	background-color: #008CFF;
+	color: #fff;
+	border:1px solid #008CFF;
+}
+.pagination .totalPage{
+	display: inline-block;
+	padding-right: 13px;
+	font-weight: bold;
+	vertical-align: middle;
+}
+.pagination .totalPage select{
+	display: inline-block;
+	border:1px solid #bcbdbd;
+	margin: 0 4px;
+	outline: none;
+}
+.pagination .totalPage select:focus{
+	border:1px solid #008CFF;
+}

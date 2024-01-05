@@ -1,0 +1,979 @@
+//The method name namespace
+var Global = {};
+
+var GlobalSearch = {
+	key_word: ""
+};
+
+$(window).scroll(function () {
+	var s = $(window).scrollTop();
+	if (s > 108) {
+		$(".header").find(".search_box").show();
+		$(".header").find(".prompt").show();
+	} else {
+		$(".header").find(".search_box").hide();
+		$(".header").find(".prompt").hide();
+	};
+});
+
+$("#globalInput").val(TianJiPartner.Common.getUrlParam("key_word"));
+GlobalSearch.key_word = ($("#globalInput").val() != "" ? $("#globalInput").val() : "");
+console.log(GlobalSearch.key_word);
+
+$(document).on("click", "#threatIntel li a,#vulIntel li a,#assetIntel li a,#eventIntel li a,#newInfo li a", function () {
+	$(this).find(".is_new").hide();
+});
+
+//Screening information list
+var intelFilter = {
+	tag_type: 0, //0-全部类型、1-公开情报、2-行业情报、3-业务安全、4-品牌安全、5-基础设施安全，6-订阅数量
+	region: "" //国家省份传中文名
+};
+Global.intelFilter = intelFilter;
+
+var $myInter = $("#myInter");
+var $mySub = $("#mySub");
+
+TianJiPartner.InterHome = TianJiPartner.InterHome || {};
+
+TianJiPartner.InterHome.Maps = function () { };
+
+/**********New.1.My message Start************/
+TianJiPartner.InterHome.myMessage = function () {
+	$.ajax({
+		url: 'Json/intelHomeMessageList.json',
+		dataType: 'json',
+		type: 'post',
+		success: function (jsonData) {
+			if (0 == jsonData.result.result) {
+
+				var content = "";
+				//				if(jsonData.rel_intel_count > 0) {
+				//					content = '<li><a href="MessageCenter.html">与您相关的未读情报累计共' + jsonData.rel_intel_count + '条</a></li>';
+				//				}
+				$.each(jsonData.ioc_list, function (i, ele) {
+					content += '<li><a href="MessageDetail.html?id=' + ele.id + '">' + ele.name + '</a></li>';
+				});
+				$("#myMessage").html(content);
+				TianJiPartner.InterHome.switchMessage();
+			} else {
+				TianJiPartner.Common.updateDataFailure(jsonData);
+			}
+		},
+		error: function () {
+
+		}
+	});
+};
+
+TianJiPartner.InterHome.myMessage();
+
+TianJiPartner.InterHome.switchMessage = function () {
+	var $myMessage = $("#myMessage");
+	$myMessage.prepend($myMessage.find("li:last-child").clone(true));
+	$myMessage.append($myMessage.find("li:first-child").clone(true));
+
+	var step = $myMessage.find("li").height();
+	var len = $myMessage.find("li").length;
+	$myMessage.height(step * len);
+
+	var num = 1;
+	var timer = setInterval(move, 3000);
+	$myMessage.hover(function () {
+		clearInterval(timer);
+	}, function () {
+		timer = setInterval(move, 3000);
+	});
+	$myMessage.css({
+		marginTop: -step
+	});
+
+	function move() {
+
+		if (num < len - 2) {
+			num++;
+			$myMessage.animate({
+				marginTop: -step * num
+			}, 300);
+		} else {
+			$myMessage.animate({
+				marginTop: -step * (len - 1)
+			}, 300, function () {
+				$myMessage.css({
+					marginTop: -step * num
+				});
+			});
+			num = 1;
+		};
+	};
+
+};
+/*==========New.1.My message End==========*/
+
+/**********New.2.Global search Start************/
+/*port of common.js*/
+/*==========New.2.Global search  End==========*/
+
+/**********New.3.Recommendation intelligence tags Start************/
+TianJiPartner.InterHome.updataIntelTag = function () {
+	$.ajax({
+		url: 'Json/intelHomeRelIntelTags.json',
+		dataType: 'json',
+		type: 'post',
+		success: function (jsonData) {
+			if (0 == jsonData.result.result) {
+
+				var content = "";
+				$.each(jsonData.intel_tags, function (i, ele) {
+					content += '<span id="' + ele.id + '"><b class="icon-tags"></b>' + ele.name + '</span>'
+				});
+				$("#recTag").html(content);
+				$("#recTag").find("span").on("click", function () {
+					TianJiPartner.Common.globalSearch($(this).attr("id"));
+				});
+			} else {
+				TianJiPartner.Common.updateDataFailure(jsonData);
+			}
+		},
+		error: function () {
+
+		}
+	});
+};
+TianJiPartner.InterHome.updataIntelTag();
+/*==========New.3.Recommendation intelligence tags End==========*/
+
+/**********New.4.Intelligence List Start************/
+var intelListParam = {
+	page: 1,
+	page_count: 10
+};
+Global.intelListParam = intelListParam;
+var changeNum = true;
+
+TianJiPartner.InterHome.getInterList = function (url, info) {
+
+	TianJiPartner.Common.anchorScroll($('#interList'));
+
+	$.ajax({
+		url: url,
+		dataType: 'json',
+		type: 'post',
+		data: {
+			query: JSON.stringify(info)
+		},
+		success: function (jsonData) {
+			if (0 == jsonData.result.result) {
+
+
+				$("#pagination").html("");
+
+				if (jsonData.isBuy == 0) {
+					$("#interList").html('<li class="notbuy">您尚未订购任何情报，<a href="Subscr.html?pagetab=intelMarket">去订购</a></li>');
+					return false;
+				}
+
+				$("#pagination").pagination(jsonData.total, {
+					default_per_page: info.page_count, //defult 10
+					select_per_page: [5, 10, 20], //defult [20,50]
+					num_display_entries: jsonData.total > 2 ? 3 : jsonData.total,
+					current_page: info.page - 1,
+					num_edge_entries: 1,
+					callback: pageselectCallback
+				});
+
+				function pageselectCallback(page_index) {
+					var newcontent = "";
+					$.each(jsonData.intgs, function (i, eles) {
+						if (url == "Json/vuln/intelHomeNewVulnIntelList.json") {
+							var _tags = "";
+							$.each(eles.tags, function (a, b) {
+								_tags += '<div class="tagTemplate"><b class="icon-tags" style="display: inline-block;padding-right: 5px;vertical-align: middle;"></b>' + b + '</div>'
+							})
+							var _level = "";
+							switch (Number(eles.severity)) {
+								case 1://低
+									_level = "level1";
+									break;
+								case 2://中
+									_level = "level2";
+									break;
+								case 3://高
+									_level = "level3";
+									break;
+								case 4://严重
+									_level = "level4";
+									break;
+							}
+							newcontent += '<li class="loopHoleInfoList"><a target="_blank" href="bugDetail.html?id=' + eles.id + '"  class="headerInfo seriousness ' + _level + '">' + eles.title + '</a><div class="tagList">' + _tags + '</div><div class="bottomInfoList"><div class="bottomInfoTemp"><span>披露时间：</span><small style="font-weight:normal;font-size:14px;">' + eles.post_time + '</small></div><div class="bottomInfoTemp"><span>更新时间：</span><small style="font-weight:normal;font-size:14px;">' + eles.update_time + '</small></div></div></li>'
+						} else {
+							var content = '';
+							content += '<span><b class="icon-tags"></b>' + TianJiPartner.Common.numSwitchStr(eles.tag.is_open, ["公开", "非公开", "无效"]) + '</span>';
+
+							$.each(eles.tag.threat_category, function (k, ele) {
+								content += '<span><b class="icon-tags"></b>' + ele.name + '</span>';
+							});
+
+							$.each(eles.tag.organ, function (k, ele) {
+								content += '<span><b class="icon-tags"></b>' + ele.name + '</span>';
+							});
+
+							$.each(eles.tag.target, function (k, ele) {
+								content += '<span><b class="icon-tags"></b>' + ele.name + '</span>';
+							});
+
+							$.each(eles.tag.trade, function (k, ele) {
+								content += '<span><b class="icon-tags"></b>' + ele.name + '</span>';
+							});
+							newcontent += '<li><a target="_blank" class="int_tit" href="IntelDetails.html?id=' + eles.id + '">' + eles.title +
+								'</a><div class="int_tag"><div class="tag_show">' + content + '</div><div class="is_show"></div>' +
+								'</div><div class="int_det"><div class="source">' +
+								'<span>情报来源:</span><label>' + eles.pub_sou + '</label><br>' +
+								'<span>更新来源:</span><label>' + eles.upd_sou + '</label>' +
+								'</div><div class="times"><span>发布时间:</span><label>' +
+								eles.pub_time + '</label><br>' +
+								'<span>更新时间:</span><label>' + eles.upd_time +
+								'</label></div></div><div class="is_new icon-read_' + eles.is_read + '"></div>' +
+								'<div class="intel_level tlp_' + eles.tlp + '"></div></li>';
+						}
+
+						if (i == info.page_count - 1) {
+							return false;
+						};
+
+					});
+
+					$('#interList').html(newcontent);
+
+					//					if(page_index + 1 === info.page) {
+					//						return;
+					//					};
+					if (info.page_count === parseInt($("#pagination .totalPage select").val()) && page_index + 1 === info.page) {
+
+						return;
+					}
+
+					info.page = page_index + 1;
+
+					console.log(info.page);
+
+					info.page_count = parseInt($("#pagination .totalPage select").val());
+
+					TianJiPartner.InterHome.getInterList(url, info);
+
+
+				};
+			} else {
+
+				TianJiPartner.Common.updateDataFailure(jsonData);
+
+			};
+
+			$(window).resize(function () {
+
+				$.each($("#interList").find(".tag_show"), function (i, ele) {
+					if ($(ele).outerHeight() > 50) {
+						$(ele).siblings(".is_show").show();
+						$(ele).parent().css({
+							borderColor: "#e7e7e8"
+						});
+					} else {
+						$(ele).siblings(".is_show").hide();
+						$(ele).parent().css({
+							borderColor: "transparent"
+						});
+					};
+				})
+
+			});
+
+			$.each($("#interList").find(".tag_show"), function (i, ele) {
+				if ($(ele).outerHeight() > 50) {
+					$(ele).siblings(".is_show").show();
+					$(ele).parent().css({
+						borderColor: "#e7e7e8"
+					});
+
+				} else {
+					$(ele).siblings(".is_show").hide();
+					$(ele).parent().css({
+						borderColor: "transparent"
+					});
+				};
+			})
+
+			$(".int_tag .is_show").click(function () {
+
+				if ($(this).parent().outerHeight() == 50) {
+
+					$(this).css({
+						transform: "rotate(180deg)"
+					});
+					$(this).parent().animate({
+						height: $(this).siblings(".tag_show").outerHeight()
+					}, 300)
+
+				} else {
+
+					$(this).css({
+						transform: "rotate(0deg)"
+					});
+					$(this).parent().animate({
+						height: 50
+					}, 300)
+
+				};
+
+			});
+
+			//			if(changeNum) {
+			//				$("#pagination .totalPage select").on("change", function() {
+			//					info.page_count =  parseInt($("#pagination .totalPage select").val());
+			//					TianJiPartner.InterHome.getInterList(url, info);
+			//				});
+			//				changeNum = false;
+			//			};
+
+		},
+		error: function () {
+
+		}
+	});
+};
+
+TianJiPartner.InterHome.getInterList("Json/intelHomeSafetyIntelList.json", Global.intelListParam);
+$("#intelSwitchTab").find("span").on("click", function () {
+	$(this).addClass("active").siblings().removeClass("active");
+	Global.intelListParam.page = 1;
+	if ($(this).data("intel") == 0) {
+		TianJiPartner.InterHome.getInterList("Json/intelHomeSafetyIntelList.json", Global.intelListParam);
+	} else {
+		TianJiPartner.InterHome.getInterList("Json/vuln/intelHomeNewVulnIntelList.json", Global.intelListParam);
+	}
+});
+/*==========New.4.Intelligence List End==========*/
+
+/**********New.5.Intelligence statistical Start************/
+TianJiPartner.InterHome.updataIntelStatis = function (url) {
+	$.ajax({
+		url: url,
+		dataType: 'json',
+		type: 'post',
+		success: function (jsonData) {
+			if (0 == jsonData.result.result) {
+
+				var content = "";
+				var numArr = [];
+				$.each(jsonData.intel_statis, function (i, ele) {
+					content += '<li id="' + ele.id + '"><span>' + ele.name + '</span><p><b></b><label>' + TianJiPartner.Common.number(String(ele.count)) + '</label></p></li>';
+					numArr.push(ele.count);
+				});
+				$("#intelStatis").html(content);
+				var maxNum = Math.max.apply(null, numArr);
+				_labelWidth = 0;
+				$.each($("#intelStatis li label"), function () {
+					var _width = $(this).width();
+					_labelWidth = _labelWidth > _width ? _labelWidth : _width;
+				})
+				console.log(_labelWidth);
+				var len = $("#intelStatis li p").width() - _labelWidth -10;
+				$.each($("#intelStatis li"), function (i, ele) {
+					$(ele).find("b").animate({
+						width: numArr[i] / maxNum * len
+					}, 600);
+				});
+
+			} else {
+				TianJiPartner.Common.updateDataFailure(jsonData);
+			}
+		},
+		error: function () {
+
+		}
+	});
+};
+
+TianJiPartner.InterHome.updataIntelStatis("Json/intelHomeIntelStatisTotal.json");
+$("#statisSwitchTab").find("span").on("click", function () {
+	$(this).addClass("active").siblings().removeClass("active");
+	if ($(this).data("intel") == 0) {
+		TianJiPartner.InterHome.updataIntelStatis("Json/intelHomeIntelStatisTotal.json");
+	} else {
+		TianJiPartner.InterHome.updataIntelStatis("Json/intelHomeIntelStatisNew.json");
+	}
+});
+/*==========New.5.Intelligence statistical End==========*/
+
+/*################################################################## OLD DIVISION ##########################################################################*/
+
+/**********1.My intelligence Start************/
+
+/*==========1.My intelligence End==========*/
+
+/**********2.My subscription Start************/
+
+/*==========2.My subscription End==========*/
+
+/********3.The map module function display Start**********/
+
+//Upadta map of data
+TianJiPartner.InterHome.Maps.prototype.updateMaps = function (info) {
+	$.ajax({
+		url: 'Json/intelHomeMap.json',
+		dataType: 'json',
+		type: 'post',
+		data: {
+			query: JSON.stringify(info)
+		},
+		success: function (jsonData) {
+			if (0 == jsonData.result.result) {
+
+				var intelDetail = "{";
+				var ChinaData = "{";
+				var ChinaPlots = "{";
+				var chinaMaxIOC = 0;
+
+				// 3.1China map data binding
+				$.each(jsonData.china, function (i, e) {
+					ChinaData += '"' + e.name + '":{"value"' + ':"' + e.ioc_count + '","href":"javascript:void(0)",' + '"tooltip":' + '{"content":"<b>地理位置:' + e.name + '</b><i>IOCs:</i>' + e.ioc_count + '"}},';
+					e.value = e.ioc_count;
+					if (e.value > chinaMaxIOC) {
+						chinaMaxIOC = e.value;
+					};
+				});
+
+				$(".color_level b.num_china").text(chinaMaxIOC);
+
+				$.each(jsonData.china_ioc, function (i, e) {
+					ChinaPlots += '"' + e.id + '":{"value"' + ':' + chinaMaxIOC + ',"longitude":' + e.lon + ',"latitude":' + e.lat + '},';
+
+					intelDetail += '"' + e.id + '":{"title":"' + e.title + '","pub_time":"' + e.pub_time + '","source":"' + e.source + '","is_open":' + e.is_open + '},';
+
+				});
+
+				ChinaData = ChinaData.length > 1 ? ChinaData.substring(0, ChinaData.length - 1) + "}" : "{}";
+				ChinaData = $.parseJSON(ChinaData);
+
+				ChinaPlots = ChinaPlots.length > 1 ? ChinaPlots.substring(0, ChinaPlots.length - 1) + "}" : "{}";
+				ChinaPlots = $.parseJSON(ChinaPlots);
+
+				$(".china_content").mapael({
+					map: {
+						name: "china_province",
+						zoom: {
+							enabled: true,
+							maxLevel: 500,
+							step: 0.2
+						},
+						defaultArea: {
+							attrs: {
+								fill: "#C3C4C5",
+								stroke: "#fff",
+								"stroke-width": 0.1,
+								opacity: 1
+							},
+							attrsHover: {
+								fill: "#E0E0E2"
+							},
+						},
+
+						cssClass: "map_china"
+					},
+					legend: {
+						area: {
+							mode: "horizontal",
+							title: "Cities population",
+							labelAttrs: {
+								"font-size": 12
+							},
+							slices: [{
+								min: 1,
+								max: chinaMaxIOC * 0.2,
+								attrs: {
+									fill: "#009a3e"
+								}
+							}, {
+								min: chinaMaxIOC * 0.2,
+								max: chinaMaxIOC * 0.4,
+								attrs: {
+									fill: "#2ea7e0"
+								}
+							}, {
+								min: chinaMaxIOC * 0.4,
+								max: chinaMaxIOC * 0.6,
+								attrs: {
+									fill: "#fff100"
+								}
+							}, {
+								min: chinaMaxIOC * 0.6,
+								max: chinaMaxIOC * 0.8,
+								attrs: {
+									fill: "#f39800"
+								}
+							}, {
+								min: chinaMaxIOC * 0.8,
+								max: chinaMaxIOC,
+								attrs: {
+									fill: "#c30d23"
+								}
+							}]
+						},
+						plot: {
+							mode: "horizontal",
+							slices: [{
+								attrs: {
+									fill: "#f00",
+								},
+								attrsHover: {
+									transform: "s1.2",
+									"stroke-width": 2,
+								},
+								label: "2",
+								size: 5
+							}]
+						}
+					},
+					plots: ChinaPlots,
+					areas: ChinaData
+
+				});
+
+				// 3.2 World map data binding
+				var WorldData = "{";
+				var WorldPlots = "{";
+				var worldMaxIOC = 0;
+
+				$.each(jsonData.world, function (i, e) {
+					WorldData += '"' + e.name + '":{' + '"value"' + ':"' + e.ioc_count + '","href":"javascript:void(0)",' + '"tooltip":' + '{"content":"' + '<span style=\'background:#c2c0c0 url(Images/map/' + e.img + ') no-repeat center;background-size:auto 16px;\'></span><b>' + e.name + '</b><i>IOCs:</i>' + e.ioc_count + '"}},';
+					e.value = e.ioc_count;
+					if (e.value > worldMaxIOC) {
+						worldMaxIOC = e.value;
+					};
+				});
+
+				$(".color_level b.num_world").text(worldMaxIOC);
+
+				$.each(jsonData.world_ioc, function (i, e) {
+					WorldPlots += '"' + e.id + '":{' + '"value"' + ':' + worldMaxIOC + ',"longitude":' + e.lon + ',"latitude":' + e.lat + '},';
+					intelDetail += '"' + e.id + '":{"title":"' + e.title + '","pub_time":"' + e.pub_time + '","source":"' + e.source + '","is_open":' + e.is_open + '},';
+
+				});
+
+				WorldData = WorldData.length > 1 ? WorldData.substring(0, WorldData.length - 1) + "}" : "{}";
+				WorldData = $.parseJSON(WorldData);
+				WorldPlots = WorldPlots.length > 1 ? WorldPlots.substring(0, WorldPlots.length - 1) + "}" : "{}";
+				WorldPlots = $.parseJSON(WorldPlots);
+				intelDetail = intelDetail.length > 1 ? intelDetail.substring(0, intelDetail.length - 1) + "}" : "{}";
+				intelDetail = $.parseJSON(intelDetail);
+
+				$(".world_content").mapael({
+					map: {
+						name: "world_countries_miller",
+						zoom: {
+							enabled: true,
+							maxLevel: 500,
+							step: 0.2
+						},
+						defaultArea: {
+							attrs: {
+								fill: "#C3C4C5",
+								stroke: "#fff",
+								"stroke-width": 0.1,
+								opacity: 1
+							},
+							attrsHover: {
+								fill: "#E0E0E2"
+							},
+						},
+
+						cssClass: "map_world"
+					},
+					legend: {
+						area: {
+							mode: "horizontal",
+							labelAttrs: {
+								"font-size": 12
+							},
+							slices: [{
+								min: 1,
+								max: worldMaxIOC * 0.2,
+								attrs: {
+									fill: "#009a3e"
+								}
+							}, {
+								min: worldMaxIOC * 0.2,
+								max: worldMaxIOC * 0.4,
+								attrs: {
+									fill: "#2ea7e0"
+								}
+							}, {
+								min: worldMaxIOC * 0.4,
+								max: worldMaxIOC * 0.6,
+								attrs: {
+									fill: "#fff100"
+								}
+							}, {
+								min: worldMaxIOC * 0.6,
+								max: worldMaxIOC * 0.8,
+								attrs: {
+									fill: "#f39800"
+								}
+							}, {
+								min: worldMaxIOC * 0.8,
+								max: worldMaxIOC,
+								attrs: {
+									fill: "#c30d23"
+								}
+							}]
+						},
+						plot: {
+							mode: "horizontal",
+							slices: [{
+								attrs: {
+									fill: "#f00",
+								},
+								attrsHover: {
+									transform: "s1.2",
+									"stroke-width": 2,
+								},
+								size: 5
+							}]
+						}
+					},
+					plots: WorldPlots,
+					areas: WorldData
+
+				});
+
+				$(document.createElementNS("http://www.w3.org/2000/svg", "g")).appendTo(".map_china svg");
+				$(document.createElementNS("http://www.w3.org/2000/svg", "g")).appendTo(".map_world svg");
+
+				if (Global.intelFilter.region != "") {
+					if ($('[data-id=' + Global.intelFilter.region + ']').parents(".mapael").hasClass("china_content")) {
+						$('[data-id=' + Global.intelFilter.region + ']').clone(true).appendTo($(".map_china svg g")).attr({
+							fill: "#888",
+							id: "clonePath"
+						});
+					} else {
+						$('[data-id=' + Global.intelFilter.region + ']').clone(true).appendTo($(".map_world svg g")).attr({
+							fill: "#888",
+							id: "clonePath"
+						});
+					};
+
+				};
+
+				$(".maps .mapael svg path").unbind("click").bind("click", function () {
+					var region = "";
+					var $gBox = "";
+
+					if ($(this).parents(".mapael").hasClass("china_content")) {
+						$gBox = $(".map_china svg g");
+					} else {
+						$gBox = $(".map_world svg g");
+					};
+
+					$(this).parents(".maps").find("g").empty();
+
+					if ($(this).attr("id") == "clonePath") {
+						region = "";
+					} else {
+						$(this).clone(true).appendTo($gBox).attr({
+							fill: "#888",
+							id: "clonePath"
+						});
+
+						region = $(this).data("id");
+
+					};
+
+					TianJiPartner.InterHome.IntelDetail.prototype.filterRegion(region);
+					TianJiPartner.InterHome.Maps.prototype.updateMaps();
+
+					console.log(Global.intelFilter);
+
+				});
+
+				console.log("map filter" + "\n tag_type:" + Global.intelFilter.tag_type + "\n region:" + Global.intelFilter.region);
+
+				$(".map_world svg").css({
+					"padding-left": ($(".map_world").width() - 580) / 2,
+					"overflow": "visible"
+				});
+				$(".map_china svg").css({
+					"padding-left": ($(".map_world").width() - 380) / 2,
+					"overflow": "visible"
+				});
+				$(window).resize(function () {
+					$(".map_world svg").css({
+						"padding-left": ($(".map_world").width() - 580) / 2
+					});
+					$(".map_china svg").css({
+						"padding-left": ($(".map_world").width() - 380) / 2
+					});
+				})
+
+				//Add gradients, transparent color dots
+				setInterval(changeCircle, 10);
+
+				function changeCircle() {
+					$("circle[data-id]").attr({
+						fill: "url(#color)"
+					});
+				};
+				$(".mapTooltip").find("i[data-src]").css({
+					"background": "#f00"
+				});
+
+				//Click on the dot display information details
+				$('circle[data-id]').on("click", function (evt) {
+					$("#intelDetail").show();
+					TianJiPartner.Common.BindJson.prototype.isFormEle("intelDetail", ".title", intelDetail[$(this).data("id")].title);
+					TianJiPartner.Common.BindJson.prototype.isFormEle("intelDetail", ".pub_time", intelDetail[$(this).data("id")].pub_time);
+					TianJiPartner.Common.BindJson.prototype.isFormEle("intelDetail", ".source", intelDetail[$(this).data("id")].source);
+					TianJiPartner.Common.BindJson.prototype.isFormEle("intelDetail", ".is_open", TianJiPartner.Common.numSwitchStr(intelDetail[$(this).data("id")].is_open, ["公开", "非公开", "无效"]));
+
+					$("#intelDetail").find(".intel_click").attr("href", 'IntelDetails.html?id=' + $(this).data("id"));
+				})
+				var iocsNum = 0;
+				$.each(jsonData.detail_ioc, function (i, ele) {
+					TianJiPartner.Common.BindJson.prototype.isFormEle("iocsDetail", '[data-id="' + ele.name + '"]', TianJiPartner.Common.number(String(ele.count)));
+					iocsNum += ele.count;
+				});
+				TianJiPartner.Common.BindJson.prototype.isFormEle("iocsDetail", '[data-id="iocs"]', TianJiPartner.Common.number(String(iocsNum)));
+
+			} else {
+				TianJiPartner.Common.updateDataFailure(jsonData);
+			}
+		},
+		error: function () {
+
+		}
+	});
+
+};
+
+TianJiPartner.InterHome.Maps.prototype.updateMaps();
+
+TianJiPartner.InterHome.Maps.prototype.switchMaps = function () {
+	$(this).addClass("active").siblings().removeClass("active");
+	var index = $(this).index();
+	$(".map_content ul li").eq(index).removeClass("hide_map").siblings().addClass("hide_map");
+	$(".color_level b").eq(index).show().siblings("b").hide();
+};
+
+$(".map_tab a").on("click", TianJiPartner.InterHome.Maps.prototype.switchMaps);
+
+//Dots blinking effect
+var r = 5;
+var timer = setInterval(function () {
+	if (r == 25) {
+		r = 5
+	};
+	$("circle[data-id]").attr({
+		r: r,
+		opacity: 0.7
+	});
+	r += 0.5;
+}, 60);
+
+/*==========3.The map module function display End==========*/
+
+/**********4.Data binding information list Start************/
+
+//4.1 Updated information list public methods
+TianJiPartner.InterHome.IntelDetail = function () { };
+TianJiPartner.InterHome.IntelDetail.prototype.updateIntel = function (dataUrl, itemId, showNum, info) {
+	$.ajax({
+		url: dataUrl,
+		dataType: 'json',
+		type: 'post',
+		//		data: {
+		//			query: JSON.stringify(info)
+		//		},
+		success: function (jsonData) {
+			if (0 == jsonData.result.result) {
+
+				if (jsonData.isBuy == 0) {
+					$("#" + itemId).html('<li class="notbuy">您尚未订购任何情报，<a href="Subscr.html?pagetab=intelMarket">去订购</a></li>');
+					return false;
+				}
+
+				TianJiPartner.InterHome.IntelDetail.prototype.updateList(itemId, jsonData.intel_list, showNum);
+				if (jsonData.intel_list.length > 5) {
+					$("#" + itemId).next().show();
+				}
+
+			} else {
+				TianJiPartner.Common.updateDataFailure(jsonData);
+			}
+		},
+		error: function () {
+
+		}
+	});
+};
+
+TianJiPartner.InterHome.IntelDetail.prototype.updateIntelList = function (info) {
+	TianJiPartner.InterHome.IntelDetail.prototype.updateIntel("Json/intelHomeKeyList.json", "keyIntel", 5, info);
+};
+
+TianJiPartner.InterHome.IntelDetail.prototype.updateIntelList(GlobalSearch.key_word);
+//4.2 Screening information list
+
+TianJiPartner.InterHome.IntelDetail.prototype.filterTag = function (filterTag) {
+	Global.intelFilter.tag_type = filterTag;
+	TianJiPartner.InterHome.IntelDetail.prototype.updateIntelList(Global.intelFilter);
+};
+
+TianJiPartner.InterHome.IntelDetail.prototype.filterRegion = function (filterRegion) {
+	Global.intelFilter.region = filterRegion;
+	//	TianJiPartner.InterHome.IntelDetail.prototype.updateIntelList(Global.intelFilter);
+};
+
+$myInter.on("click", ".filter", function () {
+	var type = "";
+	$mySub.find('.filter').removeClass('active');
+
+	if ($(this).find('.total').length) {
+		$myInter.find('.filter').removeClass('active');
+		type = 0;
+	} else {
+		if ($(this).hasClass("active")) {
+			$(this).removeClass("active");
+			type = 0;
+		} else {
+			$myInter.find('.filter').removeClass('active');
+			$(this).addClass("active");
+			type = $(this).find("div").data("type");
+		};
+
+	};
+	TianJiPartner.InterHome.Maps.prototype.updateMaps(Global.intelFilter);
+	TianJiPartner.InterHome.IntelDetail.prototype.filterTag(type);
+	console.log(Global.intelFilter);
+});
+
+$mySub.on("click", ".filter", function () {
+	var type = "";
+	$myInter.find('.filter').removeClass('active');
+
+	if ($(this).hasClass("active")) {
+		$(this).removeClass("active");
+		type = 0;
+	} else {
+		$(this).addClass("active");
+		type = $(this).find("div").data("type");
+	};
+	TianJiPartner.InterHome.IntelDetail.prototype.filterTag(type);
+	console.log(Global.intelFilter);
+});
+//4.3 Intelligence source information
+TianJiPartner.InterHome.IntelDetail.prototype.updateList = function (templateId, jsonDatas, showNum) {
+	var eleContent = "";
+	$.each(jsonDatas, function (i, ele) {
+		eleContent += '<li><a  target="_blank" href="IntelDetails.html?id=' + ele.id + '">' +
+			'<p class="row_webkit" title="' + ele.title + '">' + ele.title + '</p><div class="dot_line">' +
+			'<span>' + ele.pub_time + '</span>' +
+			'<label>来源: ' + ele.source + '</label></div>' +
+			'<div class="is_new icon-read_' + ele.is_read + '"></div>' +
+			'<div class="intel_level tlp_normal tlp_' + ele.tlp + '"></div>' +
+			'</a></li>';
+		if ((i + 2) > showNum)
+			return false;
+	});
+
+	$("#" + templateId).html(eleContent);
+};
+/*==========4.Data binding information list End==========*/
+
+/**********5.Data binding recommended collection Start************/
+TianJiPartner.InterHome.recCol = function () { };
+TianJiPartner.InterHome.recCol.prototype.updateIntel = function (info) {
+	$.ajax({
+		url: 'Json/intelHomeRecCol.json',
+		dataType: 'json',
+		type: 'post',
+		data: {
+			query: JSON.stringify(info)
+		},
+		success: function (jsonData) {
+			if (0 == jsonData.result.result) {
+				TianJiPartner.InterHome.recCol.prototype.updateList("recCol", jsonData.rec_col, 3);
+
+			} else {
+				TianJiPartner.Common.updateDataFailure(jsonData);
+			}
+		},
+		error: function () {
+
+		}
+	});
+};
+TianJiPartner.InterHome.recCol.prototype.updateIntel();
+
+TianJiPartner.InterHome.recCol.prototype.updateList = function (templateId, jsonDatas, showNum) {
+	var eleContent = "";
+	$.each(jsonDatas, function (i, ele) {
+		eleContent += '<li><a target="_blank" href="SubscrColDetail.html?id=' + ele.id + '&is_add=0">' +
+			'<p>' + ele.title + '</p><div class="dot_line">' +
+			'<span>' + ele.pub_time + '</span>' +
+			'<label>IOCs: ' + TianJiPartner.Common.number(String(ele.iocs)) + '</label></div>' +
+			'</a></li>';
+		if ((i + 2) > showNum)
+			return false;
+	});
+
+	$("#" + templateId).append(eleContent);
+};
+/*==========5.Data binding recommended collection End==========*/
+
+/**********6.My assets data binding Start************/
+
+/*==========6.My assets data binding End==========*/
+
+/**********7.All data amount of threat Start************/
+
+/*==========7.All data amount of threat End==========*/
+
+/**********8.The latest information Start************/
+TianJiPartner.InterHome.newInfo = function () { };
+TianJiPartner.InterHome.newInfo.prototype.updateInfo = function (info) {
+	$.ajax({
+		url: 'Json/intelHomeNewInfo.json',
+		dataType: 'json',
+		type: 'post',
+		data: {
+			query: JSON.stringify(info)
+		},
+		success: function (jsonData) {
+			if (0 == jsonData.result.result) {
+				TianJiPartner.InterHome.newInfo.prototype.updateList("newInfo", jsonData.new_info, 9);
+
+			} else {
+				TianJiPartner.Common.updateDataFailure(jsonData);
+			}
+		},
+		error: function () {
+
+		}
+	});
+};
+
+TianJiPartner.InterHome.newInfo.prototype.updateInfo();
+
+TianJiPartner.InterHome.newInfo.prototype.updateList = function (templateId, jsonDatas, showNum) {
+	var eleContent = "";
+	$.each(jsonDatas, function (i, ele) {
+		eleContent += '<li><a target="_blank" href="InfoDetails.html?id=' + ele.id + '">' +
+			'<span>' + ele.pub_time + '</span>' +
+			'<p>' + ele.title.sublen(52) + '</p>' +
+			'<div class="is_new ' + ele.is_new + '"></div>' +
+			'</a></li>';
+		if ((i + 2) > showNum)
+			return false;
+	});
+
+	$("#" + templateId).append(eleContent);
+};
+/*==========8.The latest information End==========*/

@@ -1,0 +1,1151 @@
+@charset "utf-8";
+
+.my_message{
+	width: 100%;
+	height: 24px;
+	background-color: #e7e7e8;
+	overflow: hidden;
+	margin-bottom: 12px;
+}
+.my_message a.prompt_icon{
+	width: 48px;
+	height: 100%;
+	display:block;
+	background:#f3f4f6 url(../Images/prompt_red.png) no-repeat center center;
+	float: left;
+}
+.my_message .message_box{
+	margin-left:60px;
+	height: 100%;
+	overflow: hidden;
+}
+.my_message .message_box a{
+	display: block;
+	color: #be0d23;
+	line-height: 24px;
+}
+.content .search_box{
+	width: 100%;
+	height: 48px;
+	border: 2px solid #e7e7e8;
+	position: relative;
+}
+.content .search_box span{
+	width: 72px;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	background-color: #c94a5a;
+	color: #fff;
+	font-size: 16px;
+	position: absolute;
+	left: -1px;
+	top: -1px;
+}
+.content .search_box input{
+	display: block;
+	border: none;
+	outline: none;
+	height: 100%;
+	width: 100%;
+	line-height: 44px;
+	padding: 0 100px;
+}
+.content .search_box a{
+	width: 72px;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	background-color: #c94a5a;
+	color: #fff;
+	font-size: 30px;
+	position: absolute;
+	right: -1px;
+	top: -1px;
+}
+.tag_box{
+	background-color: #f3f4f6;
+}
+.tag_box .rec_tag{
+	line-height: 25px;
+	padding: 8px 18px 2px;
+	height: 60px;
+	overflow: hidden;
+}
+.tag_box .rec_tag span{
+	display: inline-block;
+	padding: 0 9px;
+	cursor: pointer;
+}
+.tag_box .rec_tag span b{
+	padding-right: 4px;
+}
+.tag_box .rec_tag span:hover{
+	color: #008cff;
+}
+.switch_tab{
+	margin: 1px 0;
+	height: 32px;
+	background-color: #e7e7e8;
+}
+.switch_tab span{
+	display: inline-block;
+	line-height: 32px;
+	width: 72px;
+	text-align: center;
+	cursor: pointer;
+}
+.switch_tab span.active{
+	color: #be0d23;
+	background-color: #d9d9da;
+}
+
+.intel_box .intel_list>li {
+	border-bottom: 1px dotted #93989e;
+	padding: 8px 0 8px 25px;
+	position: relative;
+	font-weight: bold;
+}
+.intel_box .intel_list>li:first-child {
+	border-top: 1px dotted #93989e;
+}
+
+.intel_box .intel_list .int_tit {
+	font-size: 16px;
+	height: 40px;
+	line-height: 24px;
+	overflow: hidden;
+}
+.intel_box .intel_list .int_tit:hover {
+	color: #ff6a00;
+}
+
+.intel_box .intel_list .int_tag {
+	height: 50px;
+	padding-right: 40px;
+	border-top:1px solid transparent;
+	border-bottom:1px solid transparent;
+	position: relative;
+	overflow: hidden;
+	
+}
+.intel_box .intel_list .int_tag .tag_show{
+	min-height: 50px;	
+}
+
+.intel_box .intel_list .int_tag .is_show {
+	width: 40px;
+	height: 30px;
+	position: absolute;
+	top: 10px;
+	right: 0;
+	background: url(../Images/arrow_hide.png) no-repeat center;
+	cursor: pointer;
+	display: none;
+}
+
+.intel_box .intel_list .int_tag span {
+	display: inline-block;
+	height: 25px;
+	line-height: 25px;
+	padding: 0 9px;
+	font-weight: normal;
+}
+.intel_box .intel_list .int_tag span b {
+	display: inline-block;
+	padding-right: 5px;
+    vertical-align: middle;
+}
+.intel_box .intel_list .int_det {
+	overflow: hidden;
+	font-style: italic;
+	padding: 7px 0;
+	line-height: 21px;
+}
+
+.intel_box .intel_list .int_det .source {
+	float: left;
+	padding-right: 35px;
+}
+
+.intel_box .intel_list .int_det span {
+	display: inline-block;
+	padding-right: 8px;
+}
+.intel_box .intel_list .int_det label {
+	font-weight: normal;
+}
+
+.intel_box .intel_list .int_det .times {
+	float: left;
+}
+
+.intel_box .intel_list .int_det .times label {
+	font-style: normal;
+	font-weight: normal;
+}
+
+.intel_box .intel_list .intel_level {
+	position: absolute;
+	top: 20px;
+	left: 0;
+	width: 10px;
+	height: 16px;
+}
+
+.intel_box .intel_list .tlp_0 {
+	background: url(../Images/level_red.png) no-repeat left center;
+}
+
+.intel_box .intel_list .tlp_1 {
+	background: url(../Images/level_orange.png) no-repeat left center;
+}
+
+.intel_box .intel_list .tlp_2 {
+	background: url(../Images/level_green.png) no-repeat left center;
+}
+
+.intel_box .intel_list .is_new {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 32px;
+}
+
+.intel_box .intel_list .icon-read_0 {
+	color: #f1596c;
+}
+
+.intel_box .intel_list .icon-read_1 {
+	color: #07cbb1;
+}
+
+
+.intel_statis ul{
+	border-bottom: 1px dotted  #949a9f;
+}
+.intel_statis ul>li{
+	height: 25px;
+	padding: 5px 0 4px;
+	font-size: 12px;
+	overflow: hidden;
+}
+.intel_statis ul>li>span{
+	display: block;
+	height: 100%;
+	width: 72px;
+	text-align: center;
+	line-height: 16px;
+	background-color: #3f4245;
+	color: #fff;
+	border-radius: 0 8px 8px 0;
+	float: left;
+}
+.intel_statis ul>li>p{
+	padding-left:74px;
+	height: 100%;
+	white-space: nowrap;
+}
+.intel_statis ul>li>p b{
+	display: block;
+	height: 100%;
+	border: 2px solid #e7e7e8;
+	border-radius: 8px;
+	background-color: #c94a5a;
+	float: left;;
+}
+.intel_statis ul>li>p label{
+	display: block;
+	padding:1px 0 0 5px;
+	color: #c94a5a;
+	float: left;
+}
+/********** 1.my_inter Start**********/
+
+.my_inter .my_rel {
+	width: 100%;
+	height: 175px;
+}
+
+.my_inter .my_rel p {
+	padding: 20px 0 0 15px;
+	font-weight: bold;
+}
+
+.my_inter .my_rel ul {
+	overflow: hidden;
+	padding-right: 10px;
+}
+
+.my_inter .my_rel ul>li {
+	text-align: center;
+	width: 23%;
+	padding: 0 1%;
+	float: left;
+}
+
+.my_inter .my_rel ul>li:last-child {
+	width: 31%;
+	position: relative;
+}
+
+.my_inter .my_rel ul>li a {
+	display: block;
+}
+
+.my_inter .my_rel ul>li a div {
+	background: url(../Images/water1.png) no-repeat center;
+	height: 70px;
+	line-height: 70px;
+	margin-top: 15px;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 20px;
+}
+
+.my_inter .my_rel ul>li:hover a div,.my_inter .my_rel ul>.active a div {
+	background: url(../Images/water2.png) no-repeat center;
+	cursor: pointer;
+}
+
+.my_inter .my_rel ul>li:hover a span,.my_inter .my_rel ul>.active a span {
+	color: #008cff;
+}
+
+.my_inter .my_rel ul>li:last-child:hover a span {
+	color: #fff;
+}
+
+.my_inter .my_rel ul>li:last-child span {
+	display: block;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	top: 82px;
+	color: #fff;
+	font-weight: bold;
+}
+
+.my_inter .my_rel ul>li .total {
+	background: url(../Images/water3.png) no-repeat center;
+	height: 105px;
+	line-height: 95px;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 26px;
+}
+
+.my_inter .my_rel ul>li:last-child:hover .total {
+	background: url(../Images/water3.png) no-repeat center;
+}
+
+.my_inter .my_rel ul>li span {
+	display: inline-block;
+	text-align: center;
+	font-weight: bold;
+}
+
+.my_inter .my_inf {
+	border-top: 1px solid #fff;
+	height: 86px;
+}
+
+.my_inter .my_inf ul {
+	overflow: hidden;
+}
+
+.my_inter .my_inf li {
+	width: 50%;
+	padding: 16px 10px;
+	float: left;
+	overflow: hidden;
+}
+
+.my_inter .my_inf ul>li a {
+	display: block;
+	height: 100%;
+	overflow: hidden;
+}
+
+.my_inter .my_inf ul>li div {
+	height: 55px;
+	background-color: #07cbb1;
+	border: 2px solid #FFFFFF;
+	width: 60%;
+	float: left;
+	line-height: 55px;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 26px;
+}
+
+.my_inter .my_inf ul>li:last-child {
+	border-left: 1px solid #fff;
+}
+
+.my_inter .my_inf ul>li a:hover div ,.my_inter .my_inf ul>.active a div {
+	background-color: #008cff;
+}
+
+.my_inter .my_inf ul>li a:hover span,.my_inter .my_inf ul>.active a span {
+	color: #008cff;
+}
+
+.my_inter .my_inf ul>li span {
+	display: block;
+	padding-top: 7px;
+	width: 35%;
+	text-align: center;
+	float: left;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+
+/********** 1.my_inter End**********/
+
+
+/********** 2.my_sub Start**********/
+
+.my_sub ul>li {
+	border-bottom: 1px solid #fff;
+	overflow: hidden;
+	height: 88px;
+	padding: 15px 10px;
+}
+
+.my_sub ul>li:last-child {
+	border: none;
+}
+
+.my_sub ul>li a {
+	display: block;
+	height: 100%;
+}
+
+.my_sub ul>li div {
+	height: 55px;
+	width: 50%;
+	background-color: #3f4245;
+	border: 2px solid #FFFFFF;
+	line-height: 55px;
+	color: #FFFFFF;
+	text-align: center;
+	float: left;
+	font-size: 26px;
+}
+
+.my_sub ul>li a:hover div,.my_sub ul>.active a div {
+	background-color: #008cff;
+}
+
+.my_sub ul>li a:hover span,.my_sub ul>.active a span {
+	color: #008cff;
+}
+
+.my_sub ul>li span {
+	display: block;
+	float: left;
+	text-align: center;
+	padding-top: 7px;
+	font-weight: bold;
+	font-size: 16px;
+	width: 40%;
+}
+
+
+/********** 2.my_sub End**********/
+
+.my_inter,
+.my_sub,
+.maps {
+	height: 379px;
+	background: #f3f4f6;
+	position: relative;
+}
+
+
+/**********3.map Start**********/
+
+.maps .plotLegend,
+.maps .areaLegend {
+	display: none;
+}
+
+.maps .zoomButton {
+	position: absolute;
+	right: 0;
+	width: 24px;
+	height: 24px;
+	color: transparent;
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.maps .zoomButton:hover {
+	background-color: #008cff;
+}
+
+.maps .zoomIn {
+	top: 20px;
+	background: #6c7884 url(../Images/zoom_in.png) no-repeat center center;
+}
+
+.maps .zoomOut {
+	top: 45px;
+	background: #6c7884 url(../Images/zoom_out.png) no-repeat center center;
+}
+
+.maps .zoomReset {
+	top: 70px;
+	background: #6c7884 url(../Images/zoom_reset.png) no-repeat center center;
+}
+
+.maps circle:hover {
+	cursor: pointer;
+}
+
+.maps .map_content {
+	position: relative;
+	height: 316px;
+	overflow:hidden;
+}
+
+.maps .map_tab {
+	width: 50px;
+	position: absolute;
+	top: 20px;
+	left: 0;
+	z-index: 600;
+}
+
+.maps .color_level {
+	width: 142px;
+	position: absolute;
+	bottom: 32px;
+	left: 12px;
+	z-index: 600;
+	font-size: 10px;
+}
+
+.maps .color_level img {
+	width: 100%;
+}
+
+.maps .color_level b {
+	float: right;
+}
+
+.maps .color_level b.num_china {
+	display: none;
+}
+
+.maps .map_tab a {
+	display: block;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.maps .map_tab .world {
+	background: url(../Images/world_map.png) no-repeat center center;
+}
+
+.maps .map_tab .china {
+	background: url(../Images/china_map.png) no-repeat center center;
+}
+
+.maps .map_tab .active {
+	background-color: #E0E1E2;
+}
+
+.maps .map_china,
+.maps .map_world {
+	position: relative;
+}
+
+.maps .map_china>svg,
+.maps .map_world>svg {
+	height: 310px;
+	padding: 15px 15px 15px 80px;
+}
+
+.maps .mapael .mapTooltip {
+	padding: 0 5px;
+	height: 25px;
+	line-height: 25px;
+	position: absolute;
+	top: 220px !important;
+	left: 12px !important;
+	border: 1px solid #c3c4c5;
+	background-color: #fff;
+	color: #343434;
+	font-size: 12px;
+	font-weight: bold;
+	z-index: 1000;
+	overflow: hidden;
+}
+
+.maps .mapael .mapTooltip>span {
+	display: block;
+	width: 15px;
+	height: 15px;
+	border: 1px solid #e5e5e5;
+	border-radius: 50%;
+	margin-right: 8px;
+	margin-top: 4px;
+	float: left;
+}
+
+.maps .mapael .mapTooltip>b {
+	display: inline-block;
+	font-weight: bold;
+	font-size: 12px;
+}
+.maps .mapael .mapTooltip>i {
+	display: inline-block;
+	color: #f1596c;
+	font-weight: bold;
+	padding: 0 5px 0 10px;
+	font-size: 14px;
+}
+
+.maps .hide_map {
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+.maps #intelDetail {
+	position: absolute;
+	top: 1px;
+	right: 0;
+	bottom: 0;
+	z-index: 40;
+	background-color: rgba(32, 47, 64, 0.8);
+	width: 240px;
+	padding-left: 14px;
+	color: #fff;
+	display: none;
+}
+
+.maps #intelDetail .intel_close {
+	width: 12px;
+	height: 12px;
+	margin-left: -14px;
+	font-size: 0;
+	padding-bottom: 25px;
+}
+
+.maps #intelDetail ul{
+	border: none;
+}
+.maps #intelDetail ul>li {
+	padding: 6px 0;
+	height: auto;
+}
+
+.maps #intelDetail ul>li span {
+	font-weight: bold;
+}
+
+.maps #intelDetail ul>li label {
+	display: inline-block;
+	padding-left: 5px;
+	color: #A7B0BE;
+}
+
+.maps #intelDetail .intel_close a {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background: #424548 url(../Images/close.png) no-repeat center;
+}
+
+.maps .intel_click {
+	display: block;
+	width: 114px;
+	height: 35px;
+	border-radius: 3px;
+	color: #fff;
+	background-color: #008cff;
+	line-height: 35px;
+	text-align: center;
+	text-decoration: none;
+	position: absolute;
+	bottom: 26px;
+	right: 65px;
+}
+
+.maps ol.iocs_detail {
+	width: 100%;
+	height: 40px;
+	border-top: 1px solid #fff;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+.maps ol.iocs_detail>li {
+	float: left;
+	font-weight: bold;
+	font-size: 10px;
+	height: 40px;
+	width: 12%;
+	text-align: center;
+	position: relative;
+}
+
+.maps ol.iocs_detail>li b {
+	display: inline-block;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	margin-left: -3px;
+	background-color: #ff1d25;
+	position: absolute;
+	top: -4px;
+	left: 49.55%;
+	z-index: 30;
+}
+
+.maps ol.iocs_detail>li span {
+	display: block;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.maps ol.iocs_detail>li i {
+	font-weight: bold;
+	color: #c94a5a;
+}
+
+.maps ol.iocs_detail>.iocs {
+	height: 40px;
+	width: 14.5%;
+	padding-left: 12px;
+	white-space: nowrap;
+	text-align: left;
+}
+
+.maps ol.iocs_detail>li.iocs span {
+	font-size: 12px;
+	display: inline;
+	padding-top: 0;
+	line-height: 40px;
+}
+
+.maps ol.iocs_detail>li.iocs i {
+	font-size: 16px;
+	display: inline;
+	padding-top: 0;
+	line-height: 40px;
+}
+
+
+/**********3.map End**********/
+
+
+/**********4.Information list Start**********/
+
+.threat_intel,
+.vul_inter,
+.asset_inter {
+	width: 100%;
+	height: 580px;
+	background-color: #f3f4f6;
+	position: relative;
+}
+.key_intel {
+	width: 100%;
+	height: 379px;
+	background-color: #f3f4f6;
+	position: relative;
+}
+
+.event_inter,
+.rec_col {
+	width: 100%;
+	height: 264px;
+	background-color: #f3f4f6;
+	position: relative;
+}
+
+.my_asset,
+.threat_data,
+.new_info {
+	width: 100%;
+	height: 488px;
+	background-color: #f3f4f6;
+	position: relative;
+}
+.new_info {
+	width: 100%;
+	height: 353px;
+	background-color: #f3f4f6;
+	position: relative;
+}
+
+.intel_detail ul {
+	border-top: 1px solid #fff;
+}
+
+.intel_detail ul li {
+	height: 64px;
+	position: relative;
+}
+
+.intel_detail ul li>a {
+	display: block;
+	height: 100%;
+	padding: 0 38px 0 28px;
+}
+
+.intel_detail ul li>a:hover {
+	background-color: #e0e1e2;
+}
+
+.intel_detail ul li>a:hover p {
+	color: #008cff;
+}
+
+.intel_detail ul li>a>p {
+	height: 45px;
+	padding-top: 8px;
+}
+
+.intel_detail ul li>a>.dot_line {
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	font-style: italic;
+	color: #737475;
+	overflow: hidden;
+	border-bottom: 1px dotted #93989e;
+}
+
+.intel_detail ul li>a>.dot_line span {
+	float: left;
+}
+
+.intel_detail ul li>a>.dot_line label {
+	float: right;
+	display: block;
+	width: 40%;
+}
+
+.intel_detail ul li>a>.is_new {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size:24px;
+}
+
+.intel_detail ul li>a>.icon-read_0 {
+	color: #f1596c;
+}
+
+.intel_detail ul li>a>.icon-read_1 {
+	color: #07cbb1;
+}
+
+.intel_detail ul li>a>.intel_level {
+	position: absolute;
+	top: 10px;
+	left: 0;
+	width: 10px;
+	height: 16px;
+}
+
+.intel_detail ul li>a>.tlp_0 {
+	background: url(../Images/level_red.png) no-repeat left center;
+}
+
+.intel_detail ul li>a>.tlp_1 {
+	background: url(../Images/level_orange.png) no-repeat left center;
+}
+.intel_detail ul li>a>.tlp_2 {
+	background: url(../Images/level_green.png) no-repeat left center;
+}
+.intel_detail ul li>a>.tlp_normal {
+	background: url(../Images/level_gray.png) no-repeat left center;
+}
+
+
+/**********4.Information list End**********/
+
+
+/**********5. rec_col Start*************/
+
+.rec_col ul li>a>p {
+	padding: 13px 0 5px 25px;
+	height: 35px;
+	font-weight: bold;
+	background: url(../Images/folder.png) no-repeat left 16px;
+}
+
+.rec_col ul li>a>.dot_line {
+	height: 30px;
+	padding-bottom: 10px;
+	font-style: normal;
+}
+
+
+/***********5. rec_col End**************/
+
+
+/**********6.my_asset Start**********/
+
+.my_asset .not_login {
+	height: 190px;
+	width: 150px;
+	text-align: center;
+	margin: 180px auto 0;
+}
+
+.my_asset .lock {
+	padding-bottom: 20px;
+}
+
+.my_asset .not_login a {
+	color: #0a90ff;
+	font-weight: bold;
+}
+
+.my_asset .not_login p {
+	font-weight: bold;
+}
+
+.my_asset .is_login {
+	width: 100%;
+}
+
+.my_asset .is_login p {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: right;
+	padding-right: 23px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.my_asset .is_login p a:hover {
+	color: #008cff;
+}
+
+.my_asset .is_login #myAsset {
+	color: #008cff;
+	height: 428px;
+	padding: 20px 0;
+}
+
+
+/**********6.my_asset End**********/
+
+
+/**********7.threat_data Start**********/
+
+.threat_data ul {
+	padding: 15px 12px;
+}
+
+.threat_data ul li {
+	height: 35px;
+	line-height: 35px;
+}
+
+.threat_data ul li label {
+	display: inline-block;
+	width: 50%;
+	font-size: 16px;
+}
+
+.threat_data ul li:hover {
+	color: #008cff;
+}
+
+.threat_data ul li span {
+	font-size: 16px;
+}
+
+
+/**********7.threat_data End**********/
+
+
+/**********8.my_asset Start**********/
+
+.new_info ul {
+	border-top: 1px solid #fff;
+}
+
+.new_info ul li {
+	height: 33px;
+	padding: 0 38px 0 12px;
+	position: relative;
+}
+
+.new_info ul li>a {
+	display: block;
+	height: 33px;
+	border-bottom: 1px dotted #93989e;
+	line-height: 32px;
+	overflow: hidden;
+}
+
+.new_info ul li span {
+	color: #737475;
+	position: absolute;
+	left: 12px;
+	top: 0;
+}
+
+.new_info ul li p {
+	margin-left: 85px;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.new_info ul li p:hover {
+	color: #008cff;
+}
+
+.new_info ul li>a>.is_new {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 24px;
+	height: 24px;
+}
+
+.new_info ul li>a>.new {
+	background: url(../Images/new_1.png) no-repeat left top;
+}
+
+
+/**********8.my_asset End**********/
+
+.notbuy{
+	font-size: 24px;
+	text-align: center;
+	margin-top: 120px;
+	border: 0 !important;
+	font-weight: normal !important;
+}
+.notbuy a{
+	display: inline-block !important;
+	padding: 0 !important;
+	color: #3036F0;
+	line-height: normal;
+	text-decoration: underline;
+}
+.notbuy a:hover{
+	background-color: transparent !important;
+}
+
+
+
+/* 漏洞情报新样式 */
+.loopHoleInfoList{
+	padding:16px 8px!important;
+	border-bottom: 1px dashed #999DA3!important;
+}
+.loopHoleInfoList .headerInfo{
+	/* height:22px; */
+	line-height:24px;
+	color: #1A1A1A;
+	font-size: 16px;
+	display:block;
+	word-break: break-all;
+}
+.loopHoleInfoList .headerInfo:hover{
+	color:#BE0D23;
+}
+.loopHoleInfoList .headerInfo.seriousness:before{
+	/* content: "严重"; */
+	display:inline-block;
+	vertical-align: top;
+	/* background: #BE0D23; */
+	border-radius: 1.625px;
+	padding: 0px 3px;
+	height: 18px;
+    line-height: 18px;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 2px;
+	margin-right:6px;
+	font-weight:normal;
+}
+.loopHoleInfoList .headerInfo.level1:before {
+	content:"低";
+	background:#0469C6
+}
+.loopHoleInfoList .headerInfo.level2:before {
+	content:"中";
+	background:#E58B36
+}
+.loopHoleInfoList .headerInfo.level3:before {
+	content:"高";
+	background:#D44F5F
+}
+.loopHoleInfoList .headerInfo.level4:before {
+	content:"严重";
+	background:#BE0D23
+}
+.loopHoleInfoList .tagList{
+	margin:8px 0 16px;
+	display:flex;
+	column-gap:12px;
+	row-gap:6px;
+	flex-wrap:wrap;
+}
+.loopHoleInfoList .tagList .tagTemplate{
+	height: 20px;
+	line-height:20px;
+	/* padding-left:15px; */
+	position:relative;
+	color: #000;
+	font-size: 14px;
+	font-weight: normal;
+}
+.loopHoleInfoList .tagList .tagTemplate:before{
+	/* content:""; */
+	width:11px;
+	height:11px;
+	position:absolute;
+	left:0;
+	top:4.5px;
+	background:url(images/tagSign.svg) no-repeat;
+	background-size:100% 100%;
+}
+.loopHoleInfoList .bottomInfoList{
+	display:flex;
+	gap:24px;
+}
+.loopHoleInfoList .bottomInfoList .bottomInfoTemp{
+	height:20px;
+	line-height:20px;
+}
+.loopHoleInfoList .bottomInfoList .span{
+	color: #1A1A1A;
+	font-size: 14px;
+	font-weight: 600;
+}
+.loopHoleInfoList .bottomInfoList .small{
+	color: #1A1A1A;
+	font-size: 14px;
+	font-weight: 400;
+}
+.overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
