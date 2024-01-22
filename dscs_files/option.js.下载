@@ -1,0 +1,71 @@
+$(function () {
+  $(document).ready(function() {
+    // 绑定点击事件
+    $('.d3-ten-slides .main:first').addClass('active')
+    $('.d3-ten-slides .main').hover(function() {
+      $('.d3-ten-slides .main').removeClass('active')
+      $(this).addClass('active')
+    })
+  })
+  $(document).ready(function() {
+    // 绑定点击事件
+    $('.option_others1 .main_box .main:first').addClass('active')
+    $('.option_others1 .main_box .main').hover(function() {
+      $('.option_others1 .main_box .main').removeClass('active')
+      $(this).addClass('active')
+    })
+  })
+  $(document).ready(function() {
+    // 绑定点击事件
+    $('.option_insurance_main .change_tab .tabs:first').addClass('active')
+    $('.option_insurance_main .box .tab_pic:first').addClass('active')
+    $('.option_insurance_main .change_tab .tabs').on('click', function() {
+      $('.option_insurance_main .change_tab .tabs').removeClass('active')
+      $(this).addClass('active')
+      if ($(this)[0].innerText === '保险行业数据模型') {
+        $('.option_insurance_main .box .tab_pic').removeClass('active')
+        $('.option_insurance_main .box .tab_pic:first').addClass('active')
+      } else if ($(this)[0].innerText === '保险业务规则') {
+        $('.option_insurance_main .box .tab_pic').removeClass('active')
+        $('.option_insurance_main .box .tab_pic:last').addClass('active')
+      } else if ($(this)[0].innerText === '保险行业标准') {
+        $('.option_insurance_main .box .tab_pic').addClass('active')
+        $('.option_insurance_main .box .tab_pic:first').removeClass('active')
+        $('.option_insurance_main .box .tab_pic:last').removeClass('active')
+      }
+    })
+  })
+  $(document).ready(function() {
+    // 绑定点击事件
+    $('.option_others1 .main_box .fund_main:first').addClass('active')
+    $('.option_others1 .main_box .fund_main').hover(function() {
+      $('.option_others1 .main_box .fund_main').removeClass('active')
+      $(this).addClass('active')
+    })
+  })
+  $(document).ready(function() {
+    // 绑定点击事件
+    $('.option_others1 .main_box .automobile_main:first').addClass('active')
+    $('.option_others1 .main_box .automobile_main').hover(function() {
+      $('.option_others1 .main_box .automobile_main').removeClass('active')
+      $(this).addClass('active')
+    })
+  })
+  $(document).ready(function() {
+    // 绑定点击事件
+    $('.bank_slides .main:first').addClass('active')
+    $('.bank_slides .main').hover(function() {
+      $('.bank_slides .main').removeClass('active')
+      $(this).addClass('active')
+    })
+  })
+})
+function trialClick () {
+  let url = $(window)[0].location.origin + '/index/lists.html?catname=ApplyTrial'
+  window.open(url)
+}
+function partnersClick () {
+  // $(location).attr('href', $(window)[0].location.origin + '/index/lists.html?catname=apply_friend')
+  let url = $(window)[0].location.origin + '/index/lists.html?catname=apply_friend'
+  window.open(url)
+}
