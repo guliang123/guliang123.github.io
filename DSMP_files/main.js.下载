@@ -1,0 +1,319 @@
+$(function () {
+    // 首页banner轮播图
+    setTimeout(() => {
+        if ($('.home-banner.swiper-container .swiper-slide').length === 3) {
+            mySwiper && mySwiper.destroy()
+            var mySwiper = new Swiper('.home-banner.swiper-container', {
+                // direction: 'horizontal',
+                loop: true, // 循环模式选项
+                autoplay: true,
+                // 分页器
+                pagination: {
+                    el: '.swiper-pagination',
+                    bulletClass: 'my-bullet',
+                },
+    
+                // 进后退按钮
+                navigation: {
+                    nextEl: '.swiper-home-next',
+                    prevEl: '.swiper-home-prev',
+                },
+    
+                // 滚动条
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                },
+            })
+        }
+    }, 0);
+    // 荣誉墙
+    var mySwiper = new Swiper('.companys_swiper', {
+      loop: true,
+      slidesPerView: 'auto',
+      loopedSlides: 4,
+      autoplay: {
+        delay: 1000,
+        stopOnLastSlide: false,
+        disableOnInteraction: true,
+      }
+    })
+    // 合作伙伴
+    if ($('.frm-swiper').length) {
+        var num = $(document).width()<=768?2:6;
+        var mySwiper2 = new Swiper('.frm-swiper', {
+            slidesPerView: num,
+            spaceBetween: 30,
+            // pagination: {
+            //     el: ".swiper-pagination",
+            //     clickable: true,
+            // },
+
+            // 进后退按钮
+            navigation: {
+                nextEl: '.swiper-outside-next',
+                prevEl: '.swiper-outside-prev',
+            },
+        })
+    }
+    var newClass = $('#header-all-auto').attr('class')
+    var topHeight = $('.common-top').height();
+    var footerHeight = $('.footer').height() + $('#footer').height() + $('.drown-slide-father').height();
+    if ($(window).scrollTop() >= topHeight) {
+        $('.drown-slide-father').addClass('scoll-auto');
+    } else {
+        $('.drown-slide-father').removeClass('scoll-auto')
+    }
+    if ($(document).height() - $(document).scrollTop() <= footerHeight){
+        $('.drown-slide-father').css('display', 'none');
+    } else {
+        $('.drown-slide-father').css('display', 'block');
+    }
+    // console.log($(window)[0], 'location')
+    // if ($(window)[0].location.search === '')
+    // 滚动改变导航栏
+    $(window).on('scroll', function () {
+        function fixedHeader() {
+            var topHeight1 = $('.common-top').height();
+            var footerHeight1 = $('.footer').height() + $('#footer').height() + $('.drown-slide-father').height();
+            var headerTopBar = 43;
+            var headerOneTopSpace = 0;
+            var headerOneELement = $('.header-one .site-navigation');
+            var headerTwoELement = $('.header-two .all');
+            var slideElement = $('.drown-slide-father');
+
+            if ($(window).scrollTop() > headerTopBar + headerOneTopSpace) {
+                $(headerOneELement).addClass('navbar-fixed');
+                $('#header-all-auto').removeClass(newClass)
+                $('.header-one').css('margin-bottom', headerOneELement.outerHeight());
+            } else {
+                $(headerOneELement).removeClass('navbar-fixed');
+                $('#header-all-auto').addClass(newClass)
+                $('.header-one').css('margin-bottom', 0);
+            }
+            if ($(window).scrollTop() > headerTopBar) {
+                $(headerTwoELement).addClass('navbar-fixed');
+                $('#header-all-auto').removeClass(newClass)
+                $('.header-two').css('margin-bottom', headerTwoELement.outerHeight());
+            } else {
+                $(headerTwoELement).removeClass('navbar-fixed');
+                $('#header-all-auto').addClass(newClass)
+                $('.header-two').css('margin-bottom', 0);
+            }
+            if ($(window).scrollTop() >= topHeight1) {
+                $(slideElement).addClass('scoll-auto')
+                // $('.drown-slide-father').css('left', '10%');
+                // if(document.documentElement.clientWidth < 1280) {
+                //     $('.drown-slide-father').css('left', '0');
+                // }
+            } else {
+                $(slideElement).removeClass('scoll-auto')
+                // $('.drown-slide-father').css('left', '10%');
+                // if (document.documentElement.clientWidth < 1280) {
+                //     $('.drown-slide-father').css('left', '0');
+                // }
+            }
+            if ($(document).height() - $(document).scrollTop() <= footerHeight1){
+                $('.drown-slide-father').css('display', 'none');
+            } else {
+                $('.drown-slide-father').css('display', 'block');
+            }
+        }
+        fixedHeader();
+
+        function scrollTopBtn() {
+            var scrollToTop = $('#back-to-top'),
+                scroll = $(window).scrollTop();
+            if (scroll >= 50) {
+                scrollToTop.fadeIn();
+            } else {
+                scrollToTop.fadeOut();
+            }
+        }
+        scrollTopBtn();
+    });
+    if ($(window).scrollTop()>100) {
+        $('.header-two .all').addClass('navbar-fixed');
+        $('#header-all-auto').removeClass(newClass)
+        $('.header-two').css('margin-bottom', $('.header-two .all').outerHeight());
+    }
+    var sideBar = document.getElementsByClassName('drown-slide-father')[0]
+    if (sideBar && !$(window).scrollTop()) {
+        if (sideBar.classList.contains('scoll-auto')) {
+            $('.drown-slide-father').removeClass('scoll-auto')
+        }
+    }
+    // 搜索
+    function navSearch() {
+        $('.nav-search').on('click', function () {
+            $('.search-block').fadeIn(350);
+        });
+        $('.search-close').on('click', function () {
+            $('.search-block').fadeOut(350);
+        });
+        // 绑定搜索回车
+        $('#search-field').on('keypress',function () {})
+        $('.search-field').on('keypress',function () {})
+    }
+    navSearch();
+
+    // 滚动到顶部
+    function backToTop() {
+        $('#back-to-top').on('click', function () {
+            $('#back-to-top').tooltip('hide');
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+    }
+    backToTop();
+
+    // 图片放大
+    if ($('[data-toggle="photos"]').length>0) {
+        $('[data-toggle="photos"]').click(function () {
+            var data = [];
+            $('#'+$(this).data('id')).find('img').each(function(index){
+                var othis = $(this);
+                othis.attr('layer-index', index);
+                data.push({
+                    alt: othis.attr('alt'),
+                    pid: othis.attr('layer-pid'),
+                    src: othis.attr('layer-src') || othis.attr('src'),
+                    thumb: othis.attr('src')
+                });
+            });
+            if (data) {
+                layer.photos({
+                    photos: {
+                        start: $(this).attr('layer-index'),
+                        data: data
+                    },
+                }, true);
+            }
+        })
+    }
+
+    // 视频播放
+    if ($('[data-toggle="h5video"]').length>0) {
+        console.log(12123213123)
+        $('[data-toggle="h5video"]').click(function () {
+            layer.open({
+                type: 1
+                ,title: false
+                ,closeBtn: true
+                ,area: $('body').width()<768?'95%':'600px'
+                ,id: 'home-id-css'
+                ,btnAlign: 'c'
+                ,moveType: 1
+                ,resize: false
+                ,content: '<video style="width: 100%;height: 100%;margin-bottom: -8px;" controls>\n' +
+                    '<source src="'+$(this).data('url')+'" type="video/mp4"></video>'
+                ,success: function(layero){}
+            });
+        })
+    }
+
+    // 邮箱、手机号弹出
+    $('.social').click(function (e) {
+        layer.open({
+            type: 1
+            ,title: false
+            ,closeBtn: true
+            ,id: 'home-id-css'
+            ,btnAlign: 'c'
+            ,moveType: 1
+            ,resize: false
+            ,content: '<div style="background-color: #ffffff;padding: 20px 30px">'+$(this).data('url')+'</div>'
+            ,success: function(layero){}
+        });
+    })
+
+    // 图片弹出
+    $('.social-img').click(function (e) {
+        layer.open({
+            type: 1
+            ,title: false
+            ,closeBtn: true
+            ,id: 'home-id-css'
+            ,btnAlign: 'c'
+            ,moveType: 1
+            ,resize: false
+            ,content: '<div style="background-color: #ffffff;padding: 20px 30px"><img src="'+$(this).data('url')+'" alt="" style="width: 250px;"></div>'
+            ,success: function(layero){}
+        });
+    })
+
+    if ($(document).width()<1000) {
+        $('.navbar-collapse>ul>li.dropdown').children('.dropdown-toggle').attr('data-toggle','dropdown');
+        // 手机端默认展开全部子栏目
+        $('.navbar-collapse>ul>li.dropdown').click(function (e) {
+            $(this).find('.dropdown-submenu .dropdown-menu').addClass('show')
+        });
+    }
+
+    function openBox () {
+      $('.open-box-form').click(function (e) {
+        $('.all-auto-form').css('display', 'block');
+        $('body').css('overflow', 'hidden');
+        $('body').css('height', '100%');
+        $('body').css('width', '100%');
+      })
+    }
+    openBox()
+    $(document).ready(function() {
+        $('.message-board .banner').hover(function () {
+            if ($(this)[0].innerText === '电话咨询') {
+                $('#about-us').css('display', 'block')
+            }
+            if ($(this)[0].innerText === '投诉反馈') {
+                $('#complaint').css('display', 'block')
+            }
+        })
+        $('.message-board .banner').mouseleave(function () {
+            $('#about-us').css('display', 'none')
+            $('#complaint').css('display', 'none')
+        })
+    })
+    window.onload = () => {
+      if (document.title.includes('000000')) {
+        document.title = document.title.split('000000')[0]
+      }
+    }
+})
+// 在线血缘工具跳转
+function onlineBlood () {
+    window.open('http://lineage.datablau.cn:28080/')
+}
+// 免费试用跳转
+function trialClick () {
+    let url = $(window)[0].location.origin + '/index/lists.html?catname=ApplyTrial'
+    window.open(url)
+}
+function goToUrl(val) {
+  $(location).attr('href', $(window)[0].location.origin + val)
+}
+function trialFriendsClick () {
+//   $(location).attr('href', $(window)[0].location.origin + '/index/lists.html?catname=apply_friend')
+  let url = $(window)[0].location.origin + '/index/lists.html?catname=apply_friend'
+  window.open(url)
+}
+function openDdmListClick () {
+  let url = $(window)[0].location.origin + '/index/lists.html?catname=ddmList'
+  window.open(url)
+}
+// 生态伙伴跳转
+function partnersClick () {
+//   $(location).attr('href', $(window)[0].location.origin + '/index/lists.html?catname=apply_friend')
+  let url = $(window)[0].location.origin + '/index/lists.html?catname=apply_friend'
+  window.open(url)
+}
+// 方案咨询跳转
+function schemeConsultation () {
+  // $(location).attr('href', $(window)[0].location.origin + '/index/lists.html?catname=ApplyConsultation')
+  let url = $(window)[0].location.origin + '/index/lists.html?catname=ApplyConsultation'
+  window.open(url)
+}
+// 英文页面
+function convertToEnglish () {
+  $(location).attr('href', 'https://www.datablau.com/main/index')
+}

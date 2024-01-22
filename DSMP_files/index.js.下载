@@ -1,0 +1,349 @@
+$(function () {
+    $(document).ready(function() {
+    // 默认第一个选项为选中状态
+      $('.sort .slide-sort:first').addClass('active');  
+      // 点击切换选中状态
+      $('.sort .slide-sort').on('mouseenter', function() {
+        $('.sort .slide-sort').removeClass('active'); // 移除全部选项的选中状态
+        $(this).addClass('active'); // 设置当前点击的选项为选中状态
+      });
+    });
+    $(document).ready(function() {
+      // 默认第一个选项为选中状态
+        $('.question .question-sort:first').addClass('active');  
+        // 点击切换选中状态
+        $('.question .question-sort').on('mouseenter', function() {
+          $('.question .question-sort').removeClass('active'); // 移除全部选项的选中状态
+          $(this).addClass('active'); // 设置当前点击的选项为选中状态
+        });
+      });
+    $(document).ready(function() {
+      // 绑定点击事件
+      $('.project-area .button-son:first').addClass('active');  
+      $('.other-concents .concent:first').addClass('active'); 
+      $('.project-area .button-son').on('mouseenter', function() {
+        const tabId = $(this).data('tab');
+        $('.project-area .button-son').removeClass('active');
+        $(this).addClass('active');
+        $('.other-concents .concent').removeClass('active');
+        $('#' + tabId).addClass('active');
+      });
+    });
+    $(document).ready(function() {
+      var logoItems = document.querySelectorAll('.hidden .logo-item');
+      var swiperWrapper = document.querySelector('.right.swiper-container .swiper-wrapper');
+      for (var i = 0; i < logoItems.length; i += 4) {
+        var slideDiv = document.createElement('div');
+        slideDiv.classList.add('swiper-slide');
+        slideDiv.classList.add('clearfix');
+        for (var j = i; j < i + 4 && j < logoItems.length; j++) {
+          slideDiv.appendChild(logoItems[j]);
+        }
+        swiperWrapper.appendChild(slideDiv);
+      }
+      setTimeout(() => {
+        if ($('.right.swiper-container').length) {
+          var swiper = new Swiper('.right.swiper-container', {
+            direction: 'vertical', // 设置为垂直方向轮播
+            slidesPerView: 'auto', // 自动适应每个swiper-slide的数量
+            loop: true, // 启用无限循环模式
+            autoplay: {
+              delay: 1000, // 轮播间隔时间，单位为毫秒
+            },
+          });
+        }
+      }, 1000)
+    });
+    $(document).ready(function() {
+      // 默认第一个选项为选中状态
+        $('.include-other .buttons .button:first').addClass('active'); 
+        $('.include-other .content .col-md-12:first').addClass('active');  
+        // 点击切换选中状态
+        $('.include-other .buttons .button').on('click', function() {
+          const tabId = $(this).data('tab-button');
+          $('.include-other .buttons .button').removeClass('active'); // 移除全部选项的选中状态
+          $(this).addClass('active'); // 设置当前点击的选项为选中状态
+          $('.include-other .content .col-md-12').removeClass('active');
+          $('#' + tabId).addClass('active')
+        });
+      });
+
+    $(document).ready(function() {
+      var breadcrumb = $('.navs-all-bre .navs-breadcrumb');
+      var breadcrumbSpan = $('.navs-all-bre .navs-breadcrumb .active').textContent;
+      if (breadcrumb && breadcrumbSpan) {
+        var newBreadcrumbSpan = breadcrumbSpan.split('000000')[0];
+        var newSpan = document.createElement('span');
+        newSpan.textContent = newBreadcrumbSpan;
+        breadcrumb.appendChild(newSpan);
+      }
+    });
+    $(document).ready(function() {
+      // 绑定点击事件
+      $('.product_ddm_first_slide .slide:first').addClass('active');  
+      $('.product_ddm_first_slide .right img:first').addClass('active'); 
+      $('.product_ddm_first_slide .slide').on('mouseenter', function() {
+        const tabId = $(this).data('tab-title');
+        $('.product_ddm_first_slide .slide').removeClass('active');
+        $(this).addClass('active');
+        $('.product_ddm_first_slide .right img').removeClass('active');
+        $('#' + tabId).addClass('active');
+      });
+    });
+    $(document).ready(function() {
+      // 绑定点击事件
+      $('.product_ddm_second_slide .title:first').addClass('active');  
+      $('.product_ddm_second_slide .main:first').addClass('active'); 
+      $('.product_ddm_second_slide .title').on('click', function() {
+        const tabId = $(this).data('tab-title');
+        $('.product_ddm_second_slide .title').removeClass('active');
+        $(this).addClass('active');
+        $('.product_ddm_second_slide .main').removeClass('active');
+        $('#' + tabId).addClass('active');
+      });
+    });
+    // dam 点击切换
+    $(document).ready(function() {
+      // 绑定点击事件
+      $('.auto-dam-width .dam-first-slides .slide:first').addClass('active');
+      $('.auto-dam-width .mains-dam-all .dam-mains:first').addClass('active'); 
+      $('.auto-dam-width .dam-first-slides .slide').on('click', function() {
+        const tabId = $(this).data('tab-title');
+        $('.auto-dam-width .dam-first-slides .slide').removeClass('active');
+        $(this).addClass('active');
+        $('.auto-dam-width .mains-dam-all .dam-mains').removeClass('active');
+        $('#' + tabId).addClass('active');
+      });
+    });
+    $(document).ready(function() {
+      // 绑定点击事件
+      $('.d3-ten-slides .main:first').addClass('active');
+      $('.d3-ten-slides .main').hover(function() {
+        $('.d3-ten-slides .main').removeClass('active');
+        $(this).addClass('active');
+      });
+    });
+    $('#form-text .custom-checkbox').click(function() {
+      if ($(this).find('input').is(':checked')) {
+        $(this).css('border-color', '#175CFF')
+        $(this).css('color', '#175CFF')
+      } else {
+        $(this).css('border-color', '#A0A2A8')
+        $(this).css('color', '#52565D')
+      }
+    })
+    $(document).ready(function() {
+      // 默认第一个选项为选中状态
+        $('.adress-auto .buttons .button:first').addClass('active');
+        $('.adress-auto .adresss .all-adress:first').addClass('active');  
+        // 点击切换选中状态
+        $('.adress-auto .buttons .button').on('click', function() {
+          const tabId = $(this).data('button-title');
+          $('.adress-auto .buttons .button').removeClass('active'); // 移除全部选项的选中状态
+          $(this).addClass('active'); // 设置当前点击的选项为选中状态
+          $('.adress-auto .adresss .all-adress').removeClass('active');
+          $('#' + tabId).addClass('active')
+        });
+      });
+    $(document).ready(function() {
+      // 默认第一个选项为选中状态
+      $('.carry_out_css .buttons button:first').addClass('active'); 
+      $('.carry_out_css .other-carry-ot .others:first').addClass('active');  
+      // 点击切换选中状态
+      $('.carry_out_css .buttons button').on('click', function() {
+        const tabId = $(this).data('tab-carry-out');
+        $('.carry_out_css .buttons button').removeClass('active'); // 移除全部选项的选中状态
+        $(this).addClass('active'); // 设置当前点击的选项为选中状态
+        $('.carry_out_css .other-carry-ot .others').removeClass('active');
+        $('#' + tabId).addClass('active')
+      });
+    });
+    $(document).ready(function() {
+      // 默认第一个选项为选中状态
+      $('.button-content-carry-out .left .button:first').addClass('active'); 
+      $('.button-content-carry-out .right .content:first').addClass('active');  
+      // 点击切换选中状态
+      $('.button-content-carry-out .left .button').hover(function() {
+        const tabId = $(this).data('tab-web');
+        $('.button-content-carry-out .left .button').removeClass('active'); // 移除全部选项的选中状态
+        $(this).addClass('active'); // 设置当前点击的选项为选中状态
+        $('.button-content-carry-out .right .content').removeClass('active');
+        $('#' + tabId).addClass('active')
+      });
+    });
+    $(document).ready(function() {
+      // 默认第一个选项为选中状态
+      $('.top_about_friesd .buttons button:first').addClass('active'); 
+      $('.top_about_friesd .other-carry-ot .others:first').addClass('active');  
+      // 点击切换选中状态
+      $('.top_about_friesd .buttons button').on('click', function() {
+        const tabId = $(this).data('tab-carry-out');
+        $('.top_about_friesd .buttons button').removeClass('active'); // 移除全部选项的选中状态
+        $(this).addClass('active'); // 设置当前点击的选项为选中状态
+        $('.top_about_friesd .other-carry-ot .others').removeClass('active');
+        $('#' + tabId).addClass('active')
+      });
+    });
+    // $(document).ready(function() {
+    //   var sumTrp = window.sessionStorage.getItem('formToken')
+    //   if (sumTrp) {
+    //     document.body.style = "oveflow: scroll;"
+    //     $('.all-auto-form').css('display', 'none')
+    //   } else {
+    //     document.body.style = "oveflow: hidden;"
+    //     $('.all-auto-form').css('display', 'block')
+    //   }
+    // })
+  })
+  function applyTrialSubmit () {
+    if (!document.getElementById('name').value) {
+      $('.read-only.name').css('display', 'block')
+      return
+    };
+    if (!document.getElementById('usename').value) {
+      $('.read-only.usename').css('display', 'block')
+      return
+    };
+    if (!document.getElementById('exampleFormControlSelect1').value || document.getElementById('exampleFormControlSelect1').value === '请选择试用需求') {
+      $('.read-only.exampleFormControlSelect1').css('display', 'block')
+      return
+    };
+    if (!document.getElementById('phone').value) {
+      $('.read-only.phone').css('display', 'block')
+      return
+    };
+    if (!document.getElementById('code').value) {
+      $('.read-only.code').css('display', 'block')
+      return
+    };
+    if (!document.getElementById('codeImage').value) {
+      $('.read-only.code-image').css('display', 'block')
+      return
+    };
+    const selectedInterests = []
+    const checkboxs = document.querySelectorAll('input[name="interPruduct"]:checked')
+    checkboxs.forEach(function (val) {
+      selectedInterests.push(val.id)
+    }) 
+    if (selectedInterests.length === 0) {
+      $('.read-only.pruduct').css('display', 'block')
+      return
+    } else {
+      $('.read-only.pruduct').css('display', 'none')
+    }
+    const checkboxs1 = document.querySelectorAll('input[name="isTrue"]:checked')
+    if (!checkboxs1 || checkboxs1.length < 1) {
+      $('.read-only.isTrue').css('display', 'block')
+      return
+    } else {
+      $('.read-only.isTrue').css('display', 'none')
+    }
+    const data = {
+      attempt: document.getElementById('exampleFormControlSelect1').value,
+      captcha_code: document.getElementById('code').value,
+      company: document.getElementById('usename').value,
+      email: '',
+      phone: document.getElementById('phone').value,
+      product: selectedInterests,
+      username: document.getElementById('name').value,
+    }
+    console.log($('.loading999'), 'loading999')
+    $('.loading999').css('display', 'block');
+    $.ajax({
+      url: 'https://www.datablau.cn/webapi/reg/info',
+      type: 'POST',
+      dataType: 'json',
+      xhrFields: {
+        withCredentials: true
+      },
+      data: data,
+      timeout: 30000,
+      success: function(res) {
+        if (res.status == 'OK') {
+          $('.loading999').css('display', 'none');
+          $(location).attr('href', $(window)[0].location.origin + '/index/lists.html?catname=ApplyTrialSuccess')
+        } else {
+          $('.loading999').css('display', 'none');
+          alert('提交失败')
+        }
+      },
+      error: function (res) {
+        $('.loading999').css('display', 'none');
+        alert('提交失败')
+      }
+    })
+  }
+  function autoImageClick () {
+    $('#autoImage').attr({
+      src: 'https://www.datablau.cn/webapi/captcha/image?' + Math.random()
+    })
+  }
+  function timersFunction () {
+    var countdown = 60;
+    var timer = setInterval(function(){
+      if (countdown >0) {
+        countdown--;
+        $(".titer-none-num").text(countdown + "秒");
+      } else {
+        clearInterval(timer);
+        $('.titer-click').css('display', 'block')
+        $('.titer-none-num').css('display', 'none')
+        setTimeout(() => {
+          $(".titer-none-num").text('60' + "秒");
+        }, 0)
+      }
+    }, 1000);
+  }
+  function autoPhoneClick () {
+    const imageCode = document.getElementById('codeImage').value
+    const phonenum = document.getElementById('phone').value
+    if (!imageCode) {
+      $('.read-only.code-image').css('display', 'block')
+      return
+    }
+    if (!phonenum) {
+      $('.read-only.phone').css('display', 'block')
+      return
+    }
+    $.ajax({
+      url: 'https://www.datablau.cn/webapi/captcha/sms',
+      type: 'GET',
+      dataType: 'json',
+      xhrFields: {
+        withCredentials: true
+      },
+      data: {
+        imageCode: imageCode,
+        phonenum: phonenum
+      },
+      timeout: 30000,
+      success: function(res) {
+        $('.titer-click').css('display', 'none')
+        $('.titer-none-num').css('display', 'block')
+        // autoImageClick()
+        timersFunction()
+      },
+      error: function(e) {
+        console.log(e, e.responseJSON)
+        if (e.responseJSON) {
+          $('.read-only.code-image').text(e.responseJSON.message)
+        }
+        $('.read-only.code-image').css('display', 'block')
+        
+      }
+    })
+  }
+  function trialClick () {
+    let url = $(window)[0].location.origin + '/index/lists.html?catname=ApplyTrial'
+    window.open(url)
+  }
+  function partnersClick () {
+    // $(location).attr('href', $(window)[0].location.origin + '/index/lists.html?catname=apply_friend')
+    let url = $(window)[0].location.origin + '/index/lists.html?catname=apply_friend'
+    window.open(url)
+  }
+  function openDdmListClick () {
+    let url = $(window)[0].location.origin + '/index/lists.html?catname=ddmList'
+    window.open(url)
+  }
+ 
