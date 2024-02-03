@@ -1,0 +1,117 @@
+﻿
+require.config({
+    map: {
+        "*": {
+            "css": "css"
+        }
+    },
+    paths: {
+        /*common*/
+        "domReady":"./domReady.min.js.下载",
+        "jquery": "./jquery-1.10.2.js.下载",
+        "imagesloaded": "./imagesloaded.pkgd.min.js.下载",
+        "velocity": "./velocity.min.js.下载",
+        "velocity.ui": "./velocity.ui.min.js.下载",
+        /*comm*/
+        "comm": "fan/comm",
+        "comm_ie9":"fan/comm_ie9",
+        "other":"fan/other",
+        /*swiper*/
+        "swiper": "./swiper.min.js.下载",
+        "swiper_ie9":"lib/swiper_ie9/idangerous.swiper",
+        "resizend": "./jquery-resizeEnd.min.js.下载",
+        /**/
+        "TweenMax": "lib/TweenMax.min",
+        "jq_scrollbar":"lib/scrollbar/jquery.scrollbar.min"
+    },
+    shim: {
+        "velocity": {
+            deps: ["jquery"]
+        },
+        "velocity-ui": {
+            deps: ["velocity"]
+        },
+        "comm": {
+            deps: ["jquery", "css!css/animate.min"]
+        },
+        "comm_ie9": {
+            deps: ["jquery","css!css/animate.min"]
+        },
+        "other": {
+            deps: ["jquery","css!css/animate.min"]
+        },
+        "swiper": {
+            deps: ["jquery", "css!lib/swiper/swiper.min"]
+        },
+        "swiper_ie9": {
+            deps: ["jquery","css!lib/swiper_ie9/idangerous.swiper"]
+        },
+        "TweenMax": {
+            deps: ["jquery"]
+        }
+    },
+
+    urlArgs: "bust=" + (new Date()).getTime()
+});
+
+
+//init
+//require(["jquery", "imagesloaded"]);
+
+var iever = IEVersion();
+
+if (iever == 9) {
+    if (pages.indexOf("index") > -1) {
+        require(["comm_ie9"]);
+    }
+}
+else {
+    if (pages.indexOf("index") > -1) {
+        require(["comm"]);
+    }
+}
+
+
+
+
+
+function IEVersion() {
+    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串  
+    var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器  
+    var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器  
+    var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+    if (isIE) {
+        var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+        reIE.test(userAgent);
+        var fIEVersion = parseFloat(RegExp["$1"]);
+        if (fIEVersion == 7) {
+            return 7;
+        } else if (fIEVersion == 8) {
+            return 8;
+        } else if (fIEVersion == 9) {
+            return 9;
+        } else if (fIEVersion == 10) {
+            return 10;
+        } else {
+            return 6;//IE版本<=7
+        }
+    } else if (isEdge) {
+        return 'edge';//edge
+    } else if (isIE11) {
+        return 11; //IE11  
+    } else {
+        return -1;//不是ie浏览器
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
