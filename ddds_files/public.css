@@ -1,0 +1,82 @@
+﻿/*.bxqcx_03 table tr th:nth-child(7){border-right:1px solid #dfeaf2;}
+.bxqcx_03 table tr td{border-bottom:1px solid #dfeaf2;font-size:14px;color:#000;line-height:24px;padding:10px 10px;border-right:0px solid #dfeaf2;text-align:center;}
+.bxqcx_03 table tr td:nth-child(7){border-right:1px solid #dfeaf2;}*/
+/*.loginfr2 p select.sel2 {
+	width: 109px;
+}
+.loginfr p select {
+	width: 113px;
+}
+ 
+ .loginfr1 p select {
+	 width: 113px;
+ }
+
+.loginfr2 p input.input-focus {
+	width: 348px;
+	height: 38px;
+	border: 1px solid #e7e7e7;
+	border-radius: 4px;
+	padding: 0px;
+	text-indent: 10px;
+	float: left;
+	overflow: hidden;
+}
+
+.loginfr2 p div.onError {
+	width: 250px;
+	display: inline-block;
+	line-height: 20px;
+	font-size: 12px;
+	text-align: left;
+	float: left;
+	margin-left: 10px;
+	color: #ff0000;
+}
+.loginfr2 p div.onShow {
+	width: 250px;
+	display: inline-block;
+	line-height: 20px;
+	font-size: 12px;
+	text-align: left;
+	float: left;
+	margin-left: 10px;
+	color: #8f8f8f;
+}
+.loginfr2 p div.onFocus {
+	width: 250px;
+	display: inline-block;
+	line-height: 20px;
+	font-size: 12px;
+	text-align: left;
+	float: left;
+	margin-left: 10px;
+	color: #8f8f8f;
+}
+.loginfr2 p div.onCorrect {
+	width: 250px;
+	display: inline-block;
+	line-height: 20px;
+	font-size: 12px;
+	text-align: left;
+	float: left;
+	margin-left: 10px;
+	color: #258f00;
+}*/
+input, select, textarea {
+	font-family: "Microsoft Yahei";
+	outline: none;
+}
+input, textarea, select, button {
+	text-rendering: auto;
+	color: initial;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: start;
+	margin: 0em;
+	font: 400 13.3333px Arial;
+}

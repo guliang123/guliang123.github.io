@@ -778,7 +778,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{-webk
 .cpjs_03{overflow:hidden;}
 .cpjs_03_c{width:100%;overflow:hidden;margin-top:30px;}
 .cpjs_03_c table{width:100%;overflow:hidden;}
-.cpjs_03_c table tr th{background:url("../images/cpjs_02.jpg");color:#fff;text-align:center;font-size:14px;font-weight:normal;line-height:24px;padding:10px 0px;}
+.cpjs_03_c table tr th{background:url("./cpjs_02.jpg");color:#fff;text-align:center;font-size:14px;font-weight:normal;line-height:24px;padding:10px 0px;}
 .cpjs_03_c table tr td{font-size:14px;color:#333;line-height:24px;border-bottom:1px solid #fff;text-align:left;padding:14px 20px;}
 .cpjs_03_c table tr td.td1{width:150px;background-color:#e3e3e3;text-align:center;padding:14px 10px;}
 .cpjs_03_c table tr:nth-child(2n) td{background-color:#f6f6f6;}

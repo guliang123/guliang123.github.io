@@ -3817,7 +3817,7 @@
             <a href="javascript:;">
               <em class="">
                 <span class="sp1"
-                  style="background-image:url(&#39;/uploadfile/2020/0806/20200806025959154.png&#39;);"><i>全面审计、防止漏审</i></span>
+                  style="background-image:url(./dba_files/20200806025959154.png);"><i>全面审计、防止漏审</i></span>
                 <span class="sp2">
                   <p>可通过主机探针技术对数据库行为进行流量捕获，从而实现了对数据库访问流量的全方位监控。</p>
                 </span>
@@ -3828,7 +3828,7 @@
             <a href="javascript:;">
               <em class="">
                 <span class="sp1"
-                  style="background-image:url(&#39;/uploadfile/2020/0806/20200806024317246.png&#39;);"><i>精准识别、准确解析</i></span>
+                  style="background-image:url(./dba_files/20200806024317246.png);"><i>精准识别、准确解析</i></span>
                 <span class="sp2">
                   <p>基于精确SQL语句协议识别、解析和三层关联技术，提供更准确的数据库审计记录，为可信审计溯源提供了坚实的基础。</p>
                 </span>
@@ -3839,7 +3839,7 @@
             <a href="javascript:;">
               <em class="">
                 <span class="sp1"
-                  style="background-image:url(&#39;/uploadfile/2020/0806/20200806030717248.jpg&#39;);"><i>高效存储、快速分析</i></span>
+                  style="background-image:url(./dba_files/20200806030717248.jpg);"><i>高效存储、快速分析</i></span>
                 <span class="sp2">
                   <p>创新的采用非结构化的存储方式，1T 硬盘可以存储15亿到 20 亿条日志；同时配合海量日志存储分析检索技术，实现了亿级数据的秒级检索和分析。</p>
                 </span>
@@ -3850,7 +3850,7 @@
             <a href="javascript:;">
               <em class="">
                 <span class="sp1"
-                  style="background-image:url(&#39;/uploadfile/2020/0806/20200806023426438.png&#39;);"><i>日志脱敏、简单易用</i></span>
+                  style="background-image:url(./dba_files/20200806023426438.png);"><i>日志脱敏、简单易用</i></span>
                 <span class="sp2">
                   <p>提供业务翻译能力，便于非专业人员查看，可以用其它内容或符号代替日志中存在的敏感信息，防止敏感数据的泄露。</p>
                 </span>
@@ -4105,109 +4105,9 @@
   </script>
 
 
-  <div class="wrap btn_03">
-    <div class="wrap_c">
-      <p class="p1">
-        <a href="javascript:void(0);" class="a1"><span>官方微信</span></a>
-        <a href="javascript:void(0);" class="a2"><span>官方微博</span></a>
-      </p>
-      <p class="p2">
-        <img class="img0" src="./dba_files/btn_01.jpg" style="display:none;">
-        <img class="img0" src="./dba_files/btn_01.jpg" style="display:none;">
-        <img class="img1" src="./dba_files/btn_02.jpg" style="display:none;">
-      </p>
-    </div>
-  </div>
 
 
 
-  <script type="text/javascript">
-    //表单验证
-    $('#message_form').submit(function () {
-      var xingming = $('.xingming');
-      var shouji = $('.shouji');
-      var youxiang = $('.youxiang');
-      var miaoshu = $('.miaoshu');
-      var msg_code = $('.msg_code');
-      if (xingming.val() == '') {
-        alert('请输入姓名');
-        xingming.focus();
-        return false;
-      }
-      else {
-        // $("#xingming").val($(".xingming").val());
-      }
-
-      if (shouji.val() == '') {
-        alert('请输入手机');
-        shouji.focus();
-        return false;
-      }
-      else {
-        // $("#shouji").val($(".shouji").val());
-      }
-
-
-      if (youxiang.val() == '') {
-        alert('请输入邮箱');
-        youxiang.focus();
-        return false;
-      }
-      else {
-        // $("#youxiang").val($(".youxiang").val());
-      }
-
-      if (miaoshu.val() == '') {
-        alert('请输入描述');
-        miaoshu.focus();
-        return false;
-      } else {
-        // $("#miaoshu").val($(".miaoshu").val());
-      }
-
-      if (msg_code.val() == '') {
-        alert('请输入验证码');
-        msg_code.focus();
-        return false;
-      }
-
-      else {
-        $("#msg_code").val($(".msg_code").val());
-      }
-
-      return true;
-    });
-
-    var pagew = $(document).outerWidth(true) + (window.innerWidth - document.body.clientWidth);
-    $(".zxly_click").click(function () {
-      if (pagew > 900) {
-        $(".zxly_01").css({ "left": $(this).offset().left - $(".zxly_01").width() + $(this).width() / 2 + "px", "top": $(this).offset().top + "px" }).show();
-      }
-      else {
-        $(".zxly_01").css({ "left": "5%", "top": $(this).offset().top + "px" }).show();
-      }
-    });
-    $(".zxly_01").hover(
-      function () { },
-      function () {
-        //$(this).hide();
-      }
-    );
-
-    $(".zxly_01 .zxly_01_close").click(function () {
-      $(".zxly_01").hide();
-    });
-
-    $(".btn_01_r").click(function () {
-      if (pagew > 900) {
-        $(".zxly_01").css({ "left": $(this).offset().left - $(".zxly_01").width() + $(this).width() / 2 + "px", "top": ($(this).offset().top - $(".zxly_01").height() + $(this).height()) + "px" }).show();
-      }
-      else {
-        $(".zxly_01").css({ "left": "5%", "top": $(this).offset().top + "px" }).show();
-      }
-    });
-
-  </script>
 
 
 
