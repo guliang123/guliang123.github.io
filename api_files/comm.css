@@ -3029,7 +3029,7 @@ html {
 
 .pc_banner{
 	display: block;
-        padding-top: 62px;
+        /*padding-top: 62px;*/
 }
 .pc_banner img,.mobile_banner img{
   width:100%;
