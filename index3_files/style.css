@@ -1033,8 +1033,8 @@ body.show-mobile-search .mobile-search-panel {
     max-height: 2.8em;
     text-overflow: ellipsis;
     overflow: hidden;
-    -webkit-line-clamp: 2;
-    display: -webkit-box
+    -webkit-line-clamp: 2
+    
 }
 
 .page-header .breadcrumb a,
