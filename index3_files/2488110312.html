@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="telephone=no, email=no, address=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>农信社安全信息安全解决方案 _赛博特安网络安全 您身边最懂业务的网络安全专家</title>
+    <meta name="Keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="./2488110312_files/jquery-3.4.1.min.js.下载"></script>
+    <script src="./2488110312_files/jquery.easing.min.js.下载"></script>
+    <script src="./2488110312_files/imagesloaded.pkgd.min.js.下载"></script>
+    <script src="./2488110312_files/jquery-simple-slider.min.js.下载"></script>
+    <script src="./2488110312_files/bxslider.js.下载"></script>
+    <script src="./2488110312_files/script.js.下载"></script>
+    <link rel="shortcut icon" type="image/png" href="">
+</head>
+
+<body>
+    <div class="page-header news">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="https://4security.cn">首页</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="news-header">
+        <h1>农信社安全信息安全解决方案 </h1>
+    </div>
+    <div class="page-content news-content">
+        <h3>项目背景</h3>
+        <p>目前XX农村信用社网络系统主要面向农村信用社各营业业务提供网络基础支持，如储蓄、支付/清算、会计、信用卡，并且通过前置机连接各业务合作伙伴，如信用证业务、代收费业务、结算业务等。XX农村信用社生产业务网连接所有与生产业务相关的系统，并提供了与代收费业务、大客户服务业务、人行连接、联社下联等多个网络部分的接入，生产业务网是本项目的重要建设对象；外联网是业务网与合作伙伴之间互联的部分，也应包括对端业务合作伙伴的相应系统。这部分网络一般而言是都为结算业务、代理业务、信托业务、租赁业务、保管业务等所专门建设的，通常又称为中间业务或外联业务。外联业务是指商业银行除传统的资产业务和负债业务以外，不直接承担或不直接形成债权债务，不动用或极少动用自身资产，为社会提供的各类金融服务并收取手续费的业务。
+        </p>
+        <h3>需求分析</h3>
+        <ul class="column_list">
+            <li>要求按照安全等级将网络分割成不同区域。由于每个区域都应该将其他高危险网段视为需要重点防备的不可知领域，如：业务网与中间业务合作伙伴链路之间，市农信社与下属各信用社之间，由于管理权限的不同从而造成不同的IT部门对不同网段具备不同程度的可操作性，因此应该区别对待业务网络与中间业务合作伙伴网络，业务网本身应该被看成待保护的网络资源；
+            </li>
+            <li>提供对重要服务器的重点保护。农信社在开展储蓄、支付/清算、会计、信用卡和中间业务时依赖于综合业务生产机、综合业务备份机、中间业务平台、中间业务前置机等重要计算、存储资源，是农信金融业务正常运作的重要物质基础，也是有价电子数据的载体，该系统是否正常运行直接决定农信业务对外提供服务的质量，因此要求对这部分信息资产进行必要的访问保护；
+            </li>
+            <li>要求为进入内网服务器网段的流量进行深层次的行为分析与日志审计。访问控制设备通常无法提供更接近应用层的协议分析，同时由于部署位置的差异，难以对全部的访问行为进行过滤，并形成完备的日志记录，便于实时分析报警和事后取证追朔，因此应提供合理的网络监控设备提供入侵分析和日志审计功能。&lt;
+            </li>
+        </ul>
+        <h3>解决方案</h3>
+        <p>网络安全的防范是通过安全技术、安全产品集成及安全管理来实现的。一个优秀的安全解决方案应该能够提供完整的产品集成、人性化的安全管理。赛博特安公司网络安全解决方案通过边界访问控制和关键流量行为分析多种机制为XX农信社业务网络构建了包括访问控制、内容过滤、协议分析、入侵检测、日志审计等多种功能模块的网络安全体系。
+        </p>
+        <h3>具体实施方案：</h3>
+        <ul class="column_list">
+            <li>构建分界点：<br>
+                业务网中心机房与中间业务合作伙伴网络之间；<br>
+                城域网/广域网与业务网络中心机房之间；<br>
+                各区县联社OA网与业务网之间。</li>
+            <li>定义关键流量：<br>
+                中间业务合作伙伴专线流量（入方向）；<br>
+                连接人行支付/清算系统的专线流量（入方向）；<br>
+                各区县联社上联市联社的专线流量（入方向）。</li>
+            <li>部署合理设备与防护策略：<br>
+                在业务网中心机房与中间业务合作伙伴和广域网之间部署两台防火墙设备，并进入双机热备模式；<br>
+                按照所属业务系统的不同，将服务器网段中的综合业务服务器、www服务器、中间业务服务器等分别接入到不同的VLAN中，并禁止不同VLAN之间的访问；<br>
+                在联社一级，配置 FW4016-FE3防火墙，将办公网和业务网隔离；<br>
+                禁止来自低安全等级区域的用户访问高安全等级区域的网络资源，只允许访问指定的资源服务；<br>
+                对于进入受保护网段的访问流量，每个用户的访问行为和可访问的资源列表受防火墙控制，并可以考虑根据内部用户的权限身份不同实施不同的控制力度；<br>
+                中中心机房服务器网段交换机上部署IDS入侵检测系统，对预先定义的关键流量进行协议分析、内容过滤、入侵检测以及日志审计等旁路操作。<br>
+                <br>
+            </li>
+        </ul>
+        <script src="./2488110312_files/add_click.jsp" type="text/javascript"></script>
+    </div>
+</body>
+
+</html>
