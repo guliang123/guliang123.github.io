@@ -50,14 +50,14 @@ header p {
 }
 .main {
   width: 100%;
-  height: 78%;
+  height: 70%;
   padding: 0 2.5%;
   box-sizing: border-box;
   position: relative;
 }
 .main .top5 {
   width: 17.5%;
-  height: 70%;
+  height: 100%;
   float: left;
 }
 .main .top5 .top5-title {
@@ -96,12 +96,13 @@ header p {
   background-size: contain;
   font-size: 0.7rem;
   padding-left: 15%;
-  padding-top: 6%;
+  padding-top: 1%;
   color: #fff;
   box-sizing: border-box;
 }
 .main .top5 .top5-content ul li .li-content span {
   margin-right: 2%;
+  
 }
 .main .top5 .top5-content ul li .cicle {
   content: '';
@@ -124,7 +125,7 @@ header p {
 }
 .main .total {
   width: 65%;
-  height: 100%;
+  height: 40%;
   float: left;
   position: relative;
 }
@@ -163,16 +164,16 @@ header p {
   top: 12%;
 }
 .main .total .data2 {
-  left: 42%;
-  top: 3%;
+  left: 35%;
+  top: 12%;
 }
 .main .total .data3 {
-  left: 62%;
-  top: 5%;
+  left: 60%;
+  top: 12%;
 }
 .main .total .data4 {
-  left: 73%;
-  top: 28%;
+  left: 85%;
+  top: 12%;
 }
 .main .total .dashed {
   position: absolute;
@@ -201,23 +202,23 @@ header p {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 80%;
   background: url(./images/53cloud.png) no-repeat center;
-  background-size: 55%;
+  background-size: 50%;
 }
 .main .total .sphere .sum span {
   display: block;
-  margin-top: 30%;
+  margin-top: 25%;
   padding-left: 32%;
   color: #005a79;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
 }
 .main .total .sphere .sum p {
   margin-top: 2%;
   text-align: center;
   color: #003c63;
   font-family: 'LCdd';
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .main .total .cicle3 {
   width: 35rem;
@@ -335,7 +336,7 @@ header p {
 }
 .main .analyse {
   width: 17.5%;
-  height: 70%;
+  height: 100%;
   float: left;
 }
 .main .analyse .analyse-title {
@@ -354,22 +355,23 @@ header p {
 }
 .main .analyse ul {
   width: 100%;
-  height: 60%;
+  height: 50%;
 }
 .main .analyse ul li {
   width: 100%;
-  height: 30%;
-  margin: 3% 0;
+  height: 20%;
+  margin: 3% ;
 }
 .main .analyse ul li img {
-  height: 80%;
+  height: 20%;
   float: left;
   vertical-align: 0%;
 }
 .main .analyse ul li h5 {
   float: left;
   color: #fff;
-  margin-left: 5%;
+  float: left;
+  margin-left: 8%;
 }
 .main .analyse ul li span {
   font-size: 0.5rem;
@@ -379,8 +381,8 @@ header p {
 }
 .main .analyse ul li em {
   font-style: normal;
-  font-size: 1.3rem;
-  margin-left: 5%;
+  font-size: 0.8rem;
+  margin-left: 25%;
   color: #0ac1c7;
 }
 .main .analyse ul li:nth-of-type(1) em {
@@ -505,7 +507,7 @@ header p {
 }
 .bottom {
   width: 100%;
-  height: 10%;
+  height: 14%;
   background: url(./images/53bottomsjbg.png) no-repeat bottom center;
   background-size: 100%;
   text-align: center;
